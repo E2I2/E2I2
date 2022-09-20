@@ -1,0 +1,11 @@
+var express = require("express");
+var controller = require("../controller/Cmain");
+var controllerSign = require("../controller/Csign");
+const router = express.Router();
+
+router.get("/", controller.main);
+
+router.get("/signup", controllerSign.signup);
+router.get("/signin", controllerSign.signin);
+
+module.exports = router;
