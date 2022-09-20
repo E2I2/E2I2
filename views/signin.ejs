@@ -18,7 +18,7 @@
     <div class="containerSignin">
       <h2>Sign In</h2>
       <div class="signin">
-        <a class="logo" href="#"><img src="./../static/img/logo.png" /></a>
+        <a class="logo" href="/"><img src="./../static/img/logo.png" /></a>
 
         <form>
           <div class="signinForm">
@@ -37,10 +37,22 @@
             |
             <a href="/signup">회원가입</a>
           </div>
-          <button type="button" id="signinBtn">로그인</button>
+          <button type="button" id="signinBtn" onclick="onLogin()">
+            로그인
+          </button>
         </form>
       </div>
     </div>
-    <script></script>
+    <script>
+      function onLogin() {
+        var form = document.querySelector("form");
+
+        // required
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return false;
+        }
+      }
+    </script>
   </body>
 </html>
