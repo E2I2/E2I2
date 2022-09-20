@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <!-- style -->
+    <link rel="stylesheet" href="./../static/css/style.css" />
+    <link rel="stylesheet" href="./../static/css/signin.css" />
+    <!-- icon -->
+    <script
+      src="https://kit.fontawesome.com/c44f54db1d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="containerSignin">
+      <h2>Sign In</h2>
+      <div class="signin">
+        <a class="logo" href="#"><img src="./../static/img/logo.png" /></a>
+
+        <form>
+          <div class="signinForm">
+            <input type="text" name="id" placeholder="아이디" required />
+            <input type="password" name="pw" placeholder="비밀번호" required />
+            <div>
+              <input type="checkbox" id="loginState" /><label for="loginState">
+                로그인 상태 유지</label
+              >
+            </div>
+          </div>
+          <hr />
+
+          <div class="etc">
+            <a href="#">아이디/비밀번호찾기</a>
+            |
+            <a href="/signup">회원가입</a>
+          </div>
+          <button type="button" id="signinBtn">로그인</button>
+        </form>
+      </div>
+    </div>
+    <script></script>
+  </body>
+</html>
