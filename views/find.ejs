@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아이디/비밀번호찾기</title>
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+      crossorigin="anonymous"
+    ></script>
+    <!-- style -->
+    <link rel="stylesheet" href="./../static/css/style.css" />
+    <link rel="stylesheet" href="./../static/css/find.css" />
+    <!-- icon -->
+    <script
+      src="https://kit.fontawesome.com/c44f54db1d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="containerFind">
+      <h2>ID/PW 찾기</h2>
+      <div class="find">
+        <div class="header">
+          <button
+            type="button"
+            id="findID"
+            onclick="idView(this)"
+            class="select"
+          >
+            아이디 찾기
+          </button>
+          <span class="borderL"></span>
+          <button type="button" id="findPW" onclick="pwView(this)">
+            비밀번호 재설정
+          </button>
+        </div>
+        <span class="borderB"></span>
+        <div class="View">
+          <section class="idView">
+            <form id="idForm">
+              <input type="email" name="email" placeholder="이메일" required />
+              <input type="text" name="name" placeholder="이름" required />
+              <button type="button" onclick="onIdFind()" class="btnStyle">
+                아이디찾기
+              </button>
+            </form>
+          </section>
+          <section class="pwView d-none">
+            <form class="pwView">
+              <input type="text" name="id" placeholder="아이디" required />
+              <input type="email" name="email" placeholder="이메일" required />
+              <button type="button" onclick="onIdFind()" class="btnStyle">
+                비밀번호 재설정
+              </button>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script>
+      function idView(obj) {
+        $(".pwView").addClass("d-none");
+        $(".idView").removeClass("d-none");
+
+        $(obj).addClass("select");
+        $("#findPW").removeClass("select");
+      }
+      function pwView(obj) {
+        $(".idView").addClass("d-none");
+        $(".pwView").removeClass("d-none");
+
+        $(obj).addClass("select");
+        $("#findID").removeClass("select");
+      }
+      function onIdFind() {
+        var form = document.querySelector("form");
+
+        // required
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
