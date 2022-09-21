@@ -5,3 +5,7 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
   res.render("signin");
 };
+
+exports.find = (req, res) => {
+  res.render("find");
+};

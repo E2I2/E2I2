@@ -1,4 +1,4 @@
-.containerSignup {
+.containerFind {
   background: #4568dc; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to bottom,
@@ -14,16 +14,16 @@
   width: 100%;
   height: 100vh;
 }
-.containerSignup h2 {
+.containerFind h2 {
   text-align: center;
   color: #fff;
-  padding-top: 0.1rem;
+  padding-top: 3rem;
 }
-.signup {
+.find {
   width: 50vw;
   max-width: 470px;
   min-width: 350px;
-  height: 90vh;
+  height: 60vh;
   background-color: rgba(255, 255, 255);
   position: absolute;
   left: 50%;
@@ -33,69 +33,60 @@
   border: 1px solid #fff;
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
-.signup .logo {
+.find .header {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 3rem;
+}
+.find .header button {
+  font-size: 1rem;
+  width: 100%;
+  color: var(--main-color);
+}
+.find .header span.borderL {
+  border-left: 1px solid var(--main-color);
+}
+.find span.borderB {
+  border-bottom: 1px solid var(--main-color);
+  width: 100%;
   display: block;
-  margin: 0.5rem auto 0;
-  text-align: center;
 }
-.signup .logo img {
-  width: 2.8rem;
-  height: auto;
+
+/* select area */
+.d-none {
+  display: none;
 }
-.signup form {
+.select {
+  background-color: var(--main-color);
+  color: #fff !important;
+}
+
+section form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 85%;
-  justify-content: space-evenly;
-}
-.signup form a {
-  font-size: 0.8rem;
-}
-.signup form a:hover {
-  color: var(--sub-color);
-}
-.signup form .inputList {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-}
-.signup form .inputList input {
   width: 100%;
+  height: 200px;
+  justify-content: space-around;
+  margin-top: 2rem;
 }
-.signup form input {
+
+form input {
   background-color: transparent;
   border: 1px solid var(--main-color);
   width: 60%;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  box-sizing: border-box;
 }
-.signup form input::placeholder {
+form input::placeholder {
   color: var(--main-color);
 }
-.signup form .radio {
-  width: 60%;
-  height: 1em;
-  display: flex;
-  align-items: center;
-}
-.signup form .radio i {
-  color: var(--main-color);
-  font-size: 1.2rem;
-}
-.signup form .radio input {
-  height: 1rem;
-}
-.signup form .radio div {
-  width: 50%;
-  display: flex;
-  align-items: center;
-}
-#signupBtn {
+.btnStyle {
   display: block;
-  margin: 0.8rem auto 0;
+  margin: 1rem auto 0;
   background-color: #89d8d3;
   background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
   width: 7rem;
@@ -103,19 +94,4 @@
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   border-radius: 0.3rem;
-}
-/* 유효성검사 */
-.signup form div {
-  width: 100%;
-}
-.signup form div span {
-  font-size: 0.5rem;
-  height: 1rem;
-  color: red;
-  text-indent: 0.5rem;
-}
-
-/* mobile */
-
-@media (max-width: 576px) {
 }
