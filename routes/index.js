@@ -8,6 +8,7 @@ router.get("/", controller.main);
 
 router.get("/signup", controllerSign.signup);
 router.get("/signin", controllerSign.signin);
+router.get("/find", controllerSign.find);
 
 router.get("/profile", controllerProfile.profile);
 

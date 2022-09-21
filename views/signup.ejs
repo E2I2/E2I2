@@ -5,6 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원가입</title>
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+      crossorigin="anonymous"
+    ></script>
     <!-- style -->
     <link rel="stylesheet" href="./../static/css/style.css" />
     <link rel="stylesheet" href="./../static/css/signup.css" />
@@ -20,17 +31,61 @@
       <div class="signup">
         <a class="logo" href="/"><img src="./../static/img/logo.png" /></a>
         <form id="signupForm">
-          <input type="text" name="mbti" placeholder="나의 MBTI" required />
+          <div class="inputList">
+            <input
+              type="text"
+              name="mbti"
+              placeholder="나의 MBTI"
+              required
+            /><span></span>
+          </div>
           <a
             target="_blank"
             href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC"
             ><u><i class="fa-solid fa-link"></i> MBTI검사 하러가기</u></a
           >
-          <input type="text" name="id" placeholder="아이디" required />
-          <input type="password" name="pw" placeholder="비밀번호" required />
-          <input type="text" name="name" placeholder="이름" required />
-          <input type="number" name="age" placeholder="나이" required />
-          <input type="text" name="nick" placeholder="닉네임" required />
+          <div class="inputList">
+            <input type="text" name="id" placeholder="아이디" required />
+            <span></span>
+          </div>
+          <div class="inputList">
+            <input type="password" name="pw" placeholder="비밀번호" required />
+            <span></span>
+          </div>
+          <div class="inputList">
+            <input
+              type="email"
+              name="email"
+              placeholder="이메일"
+              required
+            /><span></span>
+          </div>
+          <div class="inputList">
+            <input
+              type="text"
+              name="name"
+              placeholder="이름"
+              required
+            /><span></span>
+          </div>
+          <div class="inputList">
+            <input
+              id="date"
+              type="date"
+              name="age"
+              placeholder="생년월일"
+              required
+            />
+            <span></span>
+          </div>
+          <div class="inputList">
+            <input
+              type="text"
+              name="nick"
+              placeholder="닉네임"
+              required
+            /><span></span>
+          </div>
 
           <div class="radio">
             <div><i class="fa-solid fa-venus-mars"></i></div>
@@ -52,12 +107,28 @@
     <script>
       function onSignup() {
         var form = document.querySelector("form");
+        // var id = $("input[name=id]").val();
+        var id = $("input[name=id]");
+        var idRegExp = /^[a-zA-z0-9]{4,12}$/;
+        var pw = $("input[name=pw]");
+        var pwRegExp = /^[a-zA-z0-9]{4,12}$/;
 
+        console.log(id.val());
         // required
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return false;
+        // if (!form.checkValidity()) {
+        //   form.reportValidity();
+        //   return false;
+        // }
+        if (id.val() != idRegExp) {
+          $(id).next().text("영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
+          // return false;
+        } else {
+          $(id).next().text("ok!");
         }
+
+        // if (pw.val() != pwRegExp) {
+        //   $(pw).next().text("영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
+        // }
       }
     </script>
   </body>
