@@ -4,10 +4,175 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>MBTingI</title>
+    <!--style css-->
+    <link rel="stylesheet" href="./../static/css/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <!-- icon -->
+    <script
+      src="https://kit.fontawesome.com/c44f54db1d.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--jquery-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+      integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+      crossorigin="anonymous"
+    ></script>
+    <!--slick js-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
   </head>
   <body>
-    메인페이지
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <a href="#"
+            ><h1 class="logo">
+              <img src="./../static/img/logo.png" alt="logo" /></h1
+          ></a>
+          <nav class="nav">
+            <ul>
+              <li><a href="#">로그인</a></li>
+              <li><a href="/signup">회원가입</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <section id="content1">
+      <div class="container">
+        <h1 class="content-title">
+          나랑 딱 맞는<br />
+          [ <span class="content-title-span">MBTI</span> ]<br />
+          끼리끼리
+        </h1>
+        <a href="/signup" class="button-main">
+          <button type="button">가입하기</button>
+        </a>
+      </div>
+    </section>
+    <section id="content2">
+      <div class="container">
+        <div class="content2-title-group">
+          <h1 class="content2-title">
+            지구상에 없던<br />
+            새로운 매칭
+          </h1>
+          <p class="content2-desc">
+            MBTI 결과에 따라 달라지는 스토리!<br />내가 선택한 mbti 를
+            확인하고,<br />
+            궁합에 따른 이성들과 매칭까지!
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="content3">
+      <div class="container">
+        <div class="content3-title-group">
+          <h1 class="content3-title">
+            좋은사람들과<br />
+            엠비팅아이에서<br />
+            매칭해보세요!
+          </h1>
+          <p class="content3-desc">
+            MBTI 결과에 따라 달라지는 스토리!<br />내가 선택한 mbti 를
+            확인하고,<br />
+            궁합에 따른 이성들과 매칭까지!
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="content4">
+      <!-- <div class="post-slider">
+        <h1 class="sider-title">MBTingI의 생생한 후기</h1> -->
+        <div class="page-wrapper" style="position: relative">
+          <!--page slider -->
+          <div class="post-slider">
+            <h1 class="silder-title">MBTingI의 생생한 후기</h1>
+            <i class="fas fa-chevron-left prev"></i>
+            <i class="fas fa-chevron-right next"></i>
+            <div class="post-wrapper">
+              <div class="post">
+               <div class="post-img">
+                <!-- <img src="./../static/img/logo.png" alt=""> -->
+               </div>
+                <div class="post-info">
+                  <h4 class="post-desc">
+                    <a href="#" class="post-subject"
+                      >저에게 딱 맞는 상대를 찾았어요!
+                    </a>
+                  </h4>
+                  <p class="post-mbti-detail">
+                    ENTP / 여
+                  </p>
+                </div>
+              </div>
+              <div class="post">
+                <div class="post-img">
+                  <!-- <img src="./../static/img/logo.png" alt=""> -->
+                 </div>
+                <div class="post-info">
+                  <h4 class="post-desc"><a href="#"> 저에게 딱 맞는 상대를 찾았어요!</a></h4>
+                  <p class="post-mbti-detail">
+                    ENTP / 여
+                  </p>
+                </div>
+              </div>
+              <div class="post">
+                <div class="post-img">
+                  <!-- <img src="./../static/img/logo.png" alt=""> -->
+                 </div>
+                <div class="post-info">
+                  <h4 class="post-desc">
+                    <a href="#"
+                      >저에게 딱 맞는 상대를 찾았어요!
+                    </a>
+                  </h4>
+                  <p class="post-mbti-detail">
+                    ENTP / 여
+                  </p>
+                </div>
+              </div>
+              <div class="post">
+                <div class="post-img">
+                  <!-- <img src="./../static/img/logo.png" alt=""> -->
+                 </div>
+                <div class="post-info">
+                  <h4 class="post-desc"><a href="#">저에게 딱 맞는 상대를 찾았어요!</a></h4>
+                  <p class="post-mbti-detail">
+                    ENTP / 여
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--post slider-->
+        </div>
+      </div>
+    </section>
+    <!--testmonial-->
+    <script>
+      $('.post-wrapper').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        nextArrow: $('.next'),
+        prevArrow: $('.prev'),
+      })
+    </script>
   </body>
   <script></script>
 </html>
