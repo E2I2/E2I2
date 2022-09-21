@@ -1,0 +1,218 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  box-sizing: border-box;
+}
+/*font*/
+@font-face {
+    font-family: 'BMHANNAPro';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+ul li {
+  text-decoration: none;
+  padding-left: 0;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+}
+:root {
+  --main-color: #6e4cde;
+  --sub-color: #2e97f9;
+  --normal :color :#000;
+}
+label {
+  cursor: pointer;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+.header {
+  width: 100%;
+  height: 168px;
+  background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 90px;
+  margin: 33px 0;
+}
+.logo img {
+  width: 100%;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+}
+ul li:nth-child(1) {
+  margin-right: 40px;
+}
+ul li a {
+  display: block;
+  color: var(--normal);
+  font-weight: bold;
+}
+ul li a:hover{
+    color: var(--main-color);
+    text-decoration: underline;
+    transition: 3s smooth;
+}
+#content1{
+    width: 100%;
+    height: 100vh;
+    background-color: #ccc;
+}
+.content-title{
+    font-size: 90px;
+    padding: 125px 0;
+}
+.content-title-span{
+    color: var(--main-color);
+    font-family: 'BMHANNAPro';
+    font-size: 128px;
+    border: 1px solid #000000
+}
+.button-main{
+    padding: 1em 2em;
+    cursor: pointer;
+    background-color: #89d8d3;
+    background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-weight: 700;
+}
+.button-main:hover{
+    background: linear-gradient(180.9deg, #B06AB3 -18.92%, #4568DC 99.21%, rgba(69, 104, 220, 0) 99.23%, #6769CF 99.23%, #6469D0 99.23%), #4568DC;
+    transition: 3s smooth;
+}
+.button{
+    display: block;
+    font-weight: 700;
+}
+#content2{
+    width: 100%;
+    height: 500px;
+    background-color: #eee;
+}
+.content2-title-group{
+    padding: 157px 0 173px 0;
+}
+.content2-title{
+    font-size: 37px;
+    color: var(--main-color);
+    margin-bottom: 15px;
+}
+#content3{
+    width: 100%;
+    height: 500px;
+    background-color: #ccc;
+}
+.content3-title-group{
+    padding: 117px 0 169px 0;
+}
+.content3-title{
+    font-size: 37px;
+    color: var(--main-color);
+    margin-bottom: 15px;
+}
+#content4{
+    width: 100%;
+    height: 600px;
+    display: block;
+    margin: 0 auto;
+}
+#content4 h3{
+    background-color: #fff;
+    color: #3498db;
+    font-size: 36px;
+    line-height: 100px;
+    margin: 10px;
+    padding: 2%;
+    position: relative;
+    text-align: center;
+}
+  .post-slider{
+    margin:0px auto;
+    position:relative;
+  }
+  .post-slider .silder-title{
+    text-align:center;
+    margin:30px auto;
+  }
+  .post-slider .next{
+    position:absolute;
+    top:50%;
+    right:30px;
+    font-size:2em;
+    color:gray;
+    cursor: pointer;
+  }
+  .post-slider .prev{
+    position:absolute;
+    top:50%;
+    left:30px;
+    font-size:2em;
+    color:gray;
+      cursor: pointer;
+  }
+  .post-slider .post-wrapper{
+  
+    width:1200px;
+    margin:0px auto;
+    overflow: hidden;
+    padding:10px 0px 10px 0px;
+  }
+  .post-slider .post-wrapper .post{
+    width: 444px;
+    height: 408px;
+    margin:0px 10px;
+    display:inline-block;
+    background: #D9D9D9;
+    border-radius: 20px;
+  }
+  .post-slider .post-wrapper .post .post-info{
+    font-size:15px;
+    height:30%;
+    padding-left:10px;
+  }
+  .post-slider .post-wrapper .post .slider-image{
+    width:100%;
+    height:175px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+  }
+  .silder-title{
+    color: var(--main-color);
+    font-size: 37px;
+  }
+  .post-img{
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    background-color: #000;
+    margin: 0 auto;
+  }
+  .post-desc{
+    text-align: center;
+  }
+  .post-mbti-detail{
+    text-align: center;
+  }
