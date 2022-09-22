@@ -12,5 +12,10 @@ const sequelize = new Sequelize(
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+db.Userinfo = require("./Userinfo")(sequelize, Sequelize);
+db.Mbtibest = require("./Mbtibest")(sequelize, Sequelize);
+db.Mbtigood = require("./Mbtigood")(sequelize, Sequelize);
+db.Mbtisoso = require("./Mbtisoso")(sequelize, Sequelize);
+db.Mbtibad = require("./Mbtibad")(sequelize, Sequelize);
 
 module.exports = db;

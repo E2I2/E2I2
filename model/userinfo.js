@@ -6,7 +6,6 @@ const userinfo = (Sequelize, DataTypes) => {
         type: DataTypes.STRING(15),
         allowNull: false,
         primaryKey: true,
-        // autoIncrement: true,
       },
       pw: {
         type: DataTypes.STRING(15),
