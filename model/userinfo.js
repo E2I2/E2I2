@@ -2,14 +2,21 @@ const userinfo = (Sequelize, DataTypes) => {
   const model = Sequelize.define(
     "userinfo",
     {
+      mbti: {
+        type: DataTypes.STRING(4),
+        allowNull: false,
+      },
       id: {
         type: DataTypes.STRING(15),
         allowNull: false,
         primaryKey: true,
-        // autoIncrement: true,
       },
       pw: {
         type: DataTypes.STRING(15),
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING(30),
         allowNull: false,
       },
       name: {
@@ -20,25 +27,17 @@ const userinfo = (Sequelize, DataTypes) => {
         type: DataTypes.STRING(8),
         allowNull: false,
       },
-      gender: {
-        type: DataTypes.STRING(2),
-        allowNull: false,
-      },
-      email: {
-        type: DataTypes.STRING(30),
-        allowNull: false,
-      },
-      mbti: {
-        type: DataTypes.STRING(4),
-        allowNull: false,
-      },
       nick: {
         type: DataTypes.STRING(8),
         allowNull: false,
       },
+      gender: {
+        type: DataTypes.STRING(2),
+        allowNull: false,
+      },
       imgurl: {
         type: DataTypes.STRING(100),
-        allowNull: false,
+        allowNull: true,
       },
       userdesc: {
         type: DataTypes.STRING(100),

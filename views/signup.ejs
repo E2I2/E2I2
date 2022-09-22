@@ -216,6 +216,7 @@
           nick: form.nick.value,
           gender: genderCheck.value,
         };
+        console.log(userInfo);
         axios({
           url: "/signup/post",
           method: "post",
@@ -227,7 +228,6 @@
             window.location.replace("/signin");
           }
         });
-        console.log(userInfo);
       }
     </script>
   </body>

@@ -1,4 +1,4 @@
-const mbtigood = (Sequelize, DataTypes) => {
+const Mbtigood = (Sequelize, DataTypes) => {
   const model = Sequelize.define(
     "mbtigood",
     {
@@ -19,4 +19,4 @@ const mbtigood = (Sequelize, DataTypes) => {
   );
   return model;
 };
-module.exports = mbtigood;
+module.exports = Mbtigood;
