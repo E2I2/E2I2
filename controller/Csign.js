@@ -5,7 +5,6 @@ exports.signup = (req, res) => {
 };
 
 exports.signup_post = (req, res) => {
-  console.log(req.body);
   var data = {
     mbti: req.body.mbti,
     id: req.body.id,
@@ -17,7 +16,6 @@ exports.signup_post = (req, res) => {
     gender: req.body.gender,
   };
   Userinfo.create(data).then((result) => {
-    res.send({ data: result });
     res.send("가입완료");
   });
 };
