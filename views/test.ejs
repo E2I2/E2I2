@@ -12,6 +12,7 @@
     <div>서버 테스트 페이지</div>
   </body>
   <script>
+    // 기존 정보 가져오기
     function test() {
       axios({
         method: "get",
@@ -21,11 +22,12 @@
           return data.data;
         })
         .then((data) => {
-          console.log(data);
+          console.log(data.data);
         });
     }
     test();
 
+    // 회원가입 유저 정보 저장
     function userinfo() {
       axios({
         method: "post",
@@ -46,8 +48,10 @@
         })
         .then((data) => {
           console.log(data);
+          console.log(data.data);
+          console.log(data.data.mbti);
         });
     }
-    userinfo();
+    // userinfo();
   </script>
 </html>

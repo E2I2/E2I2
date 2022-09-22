@@ -1,16 +1,15 @@
 const { Mbtibest } = require("../model/main");
+const { Userinfo } = require("../model/main");
 
 exports.render = (req, res) => {
   res.render("test");
 };
 
 exports.test = (req, res) => {
-  Mbtibest.findAll().then((result) => {
+  Userinfo.findAll().then((result) => {
     res.send({ data: result });
   });
 };
-
-const { Userinfo } = require("../model/main");
 
 exports.usersave = (req, res) => {
   console.log(req.body);
