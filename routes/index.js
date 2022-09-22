@@ -3,6 +3,7 @@ var controller = require("../controller/Cmain");
 var controllerSign = require("../controller/Csign");
 var controllerProfile = require("../controller/Cprofile");
 var testcontroller = require("../controller/Ctest");
+// var controllerChat  = require("../controller/Cchat")
 const router = express.Router();
 
 router.get("/", controller.main);
@@ -16,5 +17,6 @@ router.get("/find", controllerSign.find);
 
 router.get("/profile", controllerProfile.profile);
 router.get("/matching", controllerProfile.matching);
+// router.get("/chatting", controllerChat.chatting);
 
 module.exports = router;
