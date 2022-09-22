@@ -75,9 +75,14 @@
             placeholder="내 소개"
           ></textarea>
 
-          <button type="submit">업로드</button>
+          <button type="button" onclick="onUpload()">업로드</button>
         </form>
       </div>
     </div>
+    <script>
+      function onUpload() {
+        window.location.replace("/matching");
+      }
+    </script>
   </body>
 </html>
