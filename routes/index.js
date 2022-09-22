@@ -2,6 +2,7 @@ var express = require('express')
 var controller = require('../controller/Cmain')
 var controllerSign = require('../controller/Csign')
 var controllerProfile = require('../controller/Cprofile')
+
 const router = express.Router()
 
 router.get('/', controller.main)
