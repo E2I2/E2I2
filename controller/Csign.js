@@ -15,8 +15,18 @@ exports.signup_post = (req, res) => {
     nick: req.body.nick,
     gender: req.body.gender,
   };
-  Userinfo.create(data).then((result) => {
-    res.send("가입완료");
+  Userinfo.findOne({
+    where: {
+      id: req.body.id,
+    },
+  }).then((result) => {
+    if (result) {
+      res.send("같은 ID의 사용자가 있습니다.");
+    } else {
+      Userinfo.create(data).then(() => {
+        res.send("가입완료");
+      });
+    }
   });
 };
 

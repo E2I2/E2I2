@@ -2,7 +2,6 @@ var express = require('express')
 var controller = require('../controller/Cmain')
 var controllerSign = require('../controller/Csign')
 var controllerProfile = require('../controller/Cprofile')
-// var testcontroller = require("../controller/Ctest");
 const router = express.Router()
 
 router.get('/', controller.main)
