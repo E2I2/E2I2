@@ -12,9 +12,11 @@ router.get("/test/test", testcontroller.test);
 router.post("/test/user", testcontroller.usersave);
 
 router.get("/signup", controllerSign.signup);
+router.post("/signup/post", controllerSign.signup_post);
 router.get("/signin", controllerSign.signin);
 router.get("/find", controllerSign.find);
 
 router.get("/profile", controllerProfile.profile);
+router.get("/matching", controllerProfile.matching);
 
 module.exports = router;
