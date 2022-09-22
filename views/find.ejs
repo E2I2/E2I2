@@ -68,26 +68,26 @@
     </div>
     <script>
       function idView(obj) {
-        $(".pwView").addClass("d-none");
-        $(".idView").removeClass("d-none");
+        $('.pwView').addClass('d-none')
+        $('.idView').removeClass('d-none')
 
-        $(obj).addClass("select");
-        $("#findPW").removeClass("select");
+        $(obj).addClass('select')
+        $('#findPW').removeClass('select')
       }
       function pwView(obj) {
-        $(".idView").addClass("d-none");
-        $(".pwView").removeClass("d-none");
+        $('.idView').addClass('d-none')
+        $('.pwView').removeClass('d-none')
 
-        $(obj).addClass("select");
-        $("#findID").removeClass("select");
+        $(obj).addClass('select')
+        $('#findID').removeClass('select')
       }
       function onIdFind() {
-        var form = document.querySelector("form");
+        var form = document.querySelector('form')
 
         // required
         if (!form.checkValidity()) {
-          form.reportValidity();
-          return false;
+          form.reportValidity()
+          return false
         }
       }
     </script>
