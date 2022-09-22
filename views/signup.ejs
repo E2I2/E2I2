@@ -132,27 +132,6 @@
     </div>
     <script>
       function onSignup() {
-        // var form = document.querySelector("form");
-        // var genderCheck = document.querySelector("input[name=gender]:checked");
-        // var userInfo = {
-        //   mbti: form.mbti.value,
-        //   id: form.id.value,
-        //   pw: form.pw.value,
-        //   email: form.email.value,
-        //   name: form.name.value,
-        //   birth: form.birth.value,
-        //   nick: form.nick.value,
-        //   gender: genderCheck.value,
-        // };
-        // axios({
-        //   url: "/signup/post",
-        //   method: "post",
-        //   data: userInfo,
-        // }).then((response) => {
-        //   alert(response.data);
-        // });
-        // console.log(userInfo);
-
         // 유효성검사
         var mbti = document.querySelector("input[name=mbti]");
         var id = document.querySelector("input[name=id]");
@@ -237,6 +216,7 @@
           nick: form.nick.value,
           gender: genderCheck.value,
         };
+        console.log(userInfo);
         axios({
           url: "/signup/post",
           method: "post",
@@ -248,7 +228,6 @@
             window.location.replace("/signin");
           }
         });
-        console.log(userInfo);
       }
     </script>
   </body>

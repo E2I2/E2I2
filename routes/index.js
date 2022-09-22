@@ -6,8 +6,6 @@ var testcontroller = require("../controller/Ctest");
 const router = express.Router();
 
 router.get("/", controller.main);
-// 서버 테스트 페이지
-router.get("/test", testcontroller.test);
 
 router.get("/signup", controllerSign.signup);
 router.post("/signup/post", controllerSign.signup_post);
