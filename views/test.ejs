@@ -15,16 +15,39 @@
     function test() {
       axios({
         method: "get",
-        url: "http://localhost:8000/test",
+        url: "/test/test",
       })
         .then((data) => {
-          console.log("A");
-          console.log(data);
-          return data;
+          return data.data;
         })
         .then((data) => {
           console.log(data);
         });
     }
+    test();
+
+    function userinfo() {
+      axios({
+        method: "post",
+        url: "/test/user",
+        data: {
+          mbti: "enfp",
+          id: "qwe123",
+          pw: "qwe123",
+          email: "qwe11@google.com",
+          name: "이주영",
+          birth: "20220222",
+          nick: "하이",
+          gender: "남",
+        },
+      })
+        .then((rep) => {
+          return rep.data;
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    }
+    userinfo();
   </script>
 </html>
