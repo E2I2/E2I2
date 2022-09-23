@@ -70,6 +70,8 @@
           console.log(response.data);
           if (response.data == "로그인완료") {
             window.location.replace("/");
+          } else {
+            alert(response.data);
           }
         });
       }

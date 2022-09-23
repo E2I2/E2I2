@@ -42,7 +42,6 @@ label {
 .header {
   width: 100%;
   height: 80px;
-  background: #ccc;
 }
 .row {
   display: flex;
@@ -51,8 +50,8 @@ label {
   align-items: center;
 }
 .logo {
-  width: 48px;
-  margin: 26px 0;
+  width: 35px;
+  margin: 20px 0;
 }
 .logo img {
   width: 100%;
@@ -68,7 +67,7 @@ ul li a {
   display: block;
   color: var(--normal);
   font-weight: bold;
-  font-size: 17px;
+  font-size: 14px;
 }
 ul li a:hover{
     color: var(--main-color);
@@ -82,25 +81,24 @@ ul li a:hover{
 .content-row{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .content-title{
-  font-size: 50px;
+  font-size: 40px;
     padding: 77px 0;
 }
 .content-title-span{
-    display: none;
-    color: var(--main-color);
-    font-family: 'BMHANNAPro';
-    padding: 6px;
+  font-size: 3.15vw;
+  line-height: 4.92vw;
+  letter-spacing: -0.045em;
 }
 /* .content-right{
   width: 500px;
   background-color: #ccc;
 } */
 .main-img{
-    margin-top: 97px;
-    width: 750px;
+  margin-top: 157px;
+  width: 800px;
     /* background: #ccc; */
 }
 .main-img img{
@@ -109,11 +107,24 @@ ul li a:hover{
 .heart-message{
     width: 60px;
     position: absolute;
-    top: 136px;
-    right: 488px;
+    top: 177px;
+    right: 607px;
+    animation: up-down 1.4s infinite ease-in-out alternate;
 }
 .heart-message img{
   width: 100%;
+}
+.INFP-message{
+    position: absolute;
+    top: 298px;
+    right: 871px;
+    animation: up-down 1.4s infinite ease-in-out alternate;
+}
+.ENTP-message{
+    position: absolute;
+    top: 326px;
+    right: 377px;
+    animation: down-up 1.4s infinite ease-in-out alternate;
 }
 .button-main{
     padding: 1em 2em;
@@ -131,6 +142,24 @@ ul li a:hover{
 .button{
     display: block;
     font-weight: 700;
+}
+/*animation*/
+
+@keyframes up-down{
+  from{
+    transform: translatey(-15px);
+  }
+  to{
+    transform: translatey(0px);
+  }
+}
+@keyframes down-up{
+  from{
+    transform: translatey(0px);
+  }
+  to{
+    transform: translatey(-15px);
+  }
 }
 #content2{
     width: 100%;
@@ -206,12 +235,12 @@ ul li a:hover{
     padding:10px 0px 10px 0px;
   }
   .post-slider .post-wrapper .post{
-    width: 444px;
-    height: 408px;
+    width: 200px;
+    height: 350px;
     margin:0px 10px;
     display:inline-block;
-    background: #D9D9D9;
-    border-radius: 20px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px;
   }
   .post-slider .post-wrapper .post .post-info{
     font-size:15px;
@@ -307,3 +336,13 @@ video{
   width: 100%;
   object-fit: contain;
 }
+/*responsive*/
+@media screen and (min-width:500px) and (max-width:768px) {
+  
+}
+  @media screen and (min-width:769px) and (max-width:967px) {
+     
+  }
+    @media screen and (min-width:968px) and (max-width:1200px){
+     
+    }

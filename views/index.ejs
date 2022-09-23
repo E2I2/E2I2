@@ -44,8 +44,15 @@
           ></a>
           <nav class="nav">
             <ul>
-              <li><a href="/signin">로그인</a></li>
-              <li><a href="/signup">회원가입</a></li>
+              <%if ( !isLogin ) { %>
+                <li><a href="/signin">로그인</a></li>
+                <li><a href="/signup">회원가입</a></li>
+              <% } else { %>
+                <p><%=user%>님 환영합니다.</p>
+                <a href="logout">로그아웃</a>
+              <% } %>
+              <!-- <li><a href="/signin">로그인</a></li>
+              <li><a href="/signup">회원가입</a></li> -->
             </ul>
           </nav>
         </div>
@@ -56,9 +63,10 @@
   <div class="content-row">
     <div class="content-left">
       <h1 class="content-title">
-        나랑 딱 맞는<br />
-        [ <span class="content-title-span">MBTI</span> ]<br />
-        끼리끼리
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A, dicta.
+        <!-- 나랑 딱 맞는<br />
+         <span class="content-title-span">MBTI</span> <br />
+        끼리끼리 -->
       </h1>
       <a href="/signup" class="button-main">
         <button type="button">가입하기</button>
@@ -168,7 +176,7 @@
                         </a>
                       </h4>
                       <p class="post-mbti-detail">
-                        ENTP / 여
+                        INFP / 남
                       </p>
                     </div>
                  </div>
@@ -185,7 +193,24 @@
                         </a>
                       </h4>
                       <p class="post-mbti-detail">
-                        ENTP / 여
+                        INFJ / 여
+                      </p>
+                    </div>
+                 </div>
+              </div>
+              <div class="post">
+                <div class="post-item">
+                  <div class="post-img">
+                    <!-- <img src="./../static/img/logo.png" alt=""> -->
+                   </div>
+                    <div class="post-info">
+                      <h4 class="post-desc">
+                        <a href="#" class="post-subject"
+                          >저에게 딱 맞는 상대를 찾았어요!
+                        </a>
+                      </h4>
+                      <p class="post-mbti-detail">
+                        INFJ / 여
                       </p>
                     </div>
                  </div>
@@ -227,7 +252,7 @@
     <!--testmonial-->
     <script>
       $('.post-wrapper').slick({
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
