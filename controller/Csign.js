@@ -71,7 +71,7 @@ exports.profile = (req, res) => {
 };
 
 exports.profile_upload = (req, res) => {
-  res.send("업로드완");
+  res.send("업로드완료");
 };
 exports.matching = (req, res) => {
   res.render("matching");
