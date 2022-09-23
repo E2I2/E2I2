@@ -1,5 +1,6 @@
 const express = require("express");
 const axios = require("axios");
+const session = require("express-session");
 const app = express();
 const port = 8000;
 
@@ -8,6 +9,17 @@ app.use("/static", express.static("static"));
 app.use("/axios", express.static("node_modules/axios"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+// 세션
+app.use(
+  session({
+    secret: "가나다라",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 5 * 60 * 60 * 1000,
+    },
+  })
+);
 
 const router = require("./routes");
 app.use("/", router);
