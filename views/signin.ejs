@@ -54,6 +54,25 @@
           form.reportValidity();
           return false;
         }
+
+        // axios
+        var form = document.querySelector("form");
+        var data = {
+          id: form.id.value,
+          pw: form.pw.value,
+        };
+
+        console.log(data);
+        axios({
+          url: "/signin/post",
+          method: "post",
+          data: data,
+        }).then((response) => {
+          console.log(response.data);
+          if (response.data == "로그인완료") {
+            window.location.replace("/main");
+          }
+        });
       }
     </script>
   </body>

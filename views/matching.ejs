@@ -16,6 +16,11 @@
       integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
       crossorigin="anonymous"
     ></script>
+    <!-- icon -->
+    <script
+      src="https://kit.fontawesome.com/c44f54db1d.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- style -->
     <link rel="stylesheet" href="./../static/css/style.css" />
     <link rel="stylesheet" href="./../static/css/marching.css" />
@@ -23,8 +28,36 @@
   <body>
     <div class="containerMat">
       <div class="view">
-        <section class="img"></section>
-        <section class="profile"></section>
+        <section class="imgView">
+          <div class="img"></div>
+          <button type="button" onclick="" id="checkBtn">채팅하기</button>
+        </section>
+        <section class="profile">
+          <div class="title">
+            <span class="nick">일이삼사오육칠팔</span> 님을 소개합니다 😘
+          </div>
+          <div class="list">
+            <ul>
+              <li>
+                <i class="fa-solid fa-user-tag"></i> mbti <span>entp</span>
+              </li>
+              <li>
+                <i class="fa-brands fa-pagelines"></i> 나이 <span>23</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-briefcase"></i> 직업 <span>entp</span>
+              </li>
+              <li><i class="fa-solid fa-icons"></i> 취미 <span>entp</span></li>
+              <li><i class="fa-solid fa-star"></i> 특기 <span>entp</span></li>
+            </ul>
+            <div class="introduce">
+              <i class="fa-regular fa-rectangle-list"> 소개</i>
+              <textarea readonly>
+100자다100자다100자다100자다100자다100자다 100자다100자다100자다100자다100자다ㅍ 100자다100자다100자다100자다100자다100자다100자다100자다10</textarea
+              >
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   </body>
