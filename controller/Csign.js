@@ -56,3 +56,16 @@ exports.signin_post = (req, res) => {
 exports.find = (req, res) => {
   res.render("find");
 };
+
+// profile
+
+exports.profile = (req, res) => {
+  res.render("profile");
+};
+
+exports.profile_upload = (req, res) => {
+  res.send("업로드완");
+};
+exports.matching = (req, res) => {
+  res.render("matching");
+};
