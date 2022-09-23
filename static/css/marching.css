@@ -16,6 +16,9 @@
 .d-none {
   display: none;
 }
+.d-show {
+  display: block;
+}
 .containerMat .view {
   width: 60vw;
   height: 100%;
@@ -32,9 +35,9 @@
   position: relative;
 }
 .containerMat .view .matchingBox .profileList {
-  position: absolute;
+  /* position: absolute;
   left: 0;
-  top: 0;
+  top: 0; */
   width: 100%;
   height: 100%;
 }
