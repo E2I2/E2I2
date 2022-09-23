@@ -24,17 +24,16 @@ exports.signup_post = (req, res) => {
       ],
     },
   }).then((result) => {
-    console.log(result.id);
-    if (req.body.id == result.id) {
+    if (result == null) {
+      Userinfo.create(data).then(() => {
+        res.send("가입완료");
+      });
+    } else if (req.body.id == result.id) {
       res.send("같은 ID의 사용자가 있습니다.");
     } else if (req.body.email == result.email) {
       res.send("같은 email의 사용자가 있습니다.");
     } else if (req.body.nick == result.nick) {
       res.send("같은 닉네임 사용자가 있습니다.");
-    } else {
-      Userinfo.create(data).then(() => {
-        res.send("가입완료");
-      });
     }
   });
 };
