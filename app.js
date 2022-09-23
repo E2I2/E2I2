@@ -14,7 +14,7 @@ app.use(express.json());
 // 세션
 app.use(
   session({
-    secret: "가나다라",
+    secret: "1234",
     resave: false,
     saveUninitialized: true,
     cookie: {
