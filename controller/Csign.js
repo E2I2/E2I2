@@ -34,6 +34,10 @@ exports.signin = (req, res) => {
   res.render("signin");
 };
 
+exports.signin_post = (req, res) => {
+  res.send("로그인완료");
+};
+
 exports.find = (req, res) => {
   res.render("find");
 };
