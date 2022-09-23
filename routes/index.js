@@ -16,4 +16,5 @@ router.get("/profile", controllerSign.profile);
 router.post("/profile/uploadImg", controllerSign.profile_upload);
 router.get("/matching", controllerSign.matching);
 
-module.exports = router;
+module.exports = router
+
