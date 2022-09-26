@@ -31,9 +31,13 @@
   width: 100%;
   height: 100%;
 }
-.carousel-item img {
+.imgArea {
   width: 100%;
   height: 50%;
+}
+.carousel-item img {
+  width: 100%;
+  height: auto;
 }
 #carouselExampleControlsNoTouching button > span:first-child {
   margin-bottom: 3rem;
