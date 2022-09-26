@@ -1,4 +1,5 @@
 const session = require("express-session");
+const { DATE } = require("sequelize");
 const { Userinfo, Sequelize } = require("../model/main");
 
 exports.signup = (req, res) => {
@@ -44,7 +45,6 @@ exports.signin = (req, res) => {
 };
 
 exports.signin_post = (req, res) => {
-  console.log(req.body);
   Userinfo.findOne({
     where: {
       id: req.body.id,
@@ -52,11 +52,11 @@ exports.signin_post = (req, res) => {
     },
   }).then((result) => {
     if (result && req.body.sessions == "on") {
-      req.session.user = result.name;
+      req.session.user = [result.name, result.id];
       console.log(req.session);
       res.send("로그인완료");
     } else if (result && req.body.sessions == undefined) {
-      req.session.user = result.name;
+      req.session.user = [result.name, result.id];
       req.session.cookie.originalMaxAge = 2 * 60 * 60 * 1000;
       console.log(req.session);
       res.send("로그인완료");
@@ -73,7 +73,20 @@ exports.find = (req, res) => {
 // profile
 
 exports.profile = (req, res) => {
-  res.render("profile");
+  Userinfo.findOne({
+    where: {
+      id: req.session.user[1],
+      name: req.session.user[0],
+    },
+  }).then((result) => {
+    var date = new Date();
+    var year = date.getFullYear();
+    var resultbirth = result.birth;
+    var userbirth = resultbirth.substr(0, 4);
+    var age = year - userbirth + 1;
+    var mbti = result.mbti.toUpperCase();
+    res.render("profile", { nick: result.nick, mbti: mbti, age: age });
+  });
 };
 
 exports.profile_upload = (req, res) => {
