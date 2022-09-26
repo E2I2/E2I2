@@ -1,6 +1,7 @@
 var express = require('express')
 var controller = require('../controller/Cmain')
 var controllerSign = require('../controller/Csign')
+var controllerChat = require('../controller/Cchat')
 // var controllerProfile = require("../controller/Cprofile");
 
 const router = express.Router()
@@ -16,5 +17,6 @@ router.get('/find', controllerSign.find)
 router.get('/profile', controllerSign.profile)
 router.post('/profile/uploadImg', controllerSign.profile_upload)
 router.get('/matching', controllerSign.matching)
+router.get('/chatting', controllerChat.chat_main)
 
 module.exports = router
