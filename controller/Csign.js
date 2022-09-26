@@ -1,5 +1,5 @@
-const { Userinfo, Sequelize } = require("../model/main");
 const session = require("express-session");
+const { Userinfo, Sequelize } = require("../model/main");
 
 exports.signup = (req, res) => {
   res.render("signup");
@@ -44,17 +44,23 @@ exports.signin = (req, res) => {
 };
 
 exports.signin_post = (req, res) => {
+  console.log(req.body);
   Userinfo.findOne({
     where: {
       id: req.body.id,
       pw: req.body.pw,
     },
   }).then((result) => {
-    if (result) {
+    if (result && req.body.sessions == "on") {
       req.session.user = result.name;
       console.log(req.session);
       res.send("로그인완료");
-    } else {
+    } else if (result && req.body.sessions == undefined) {
+      req.session.user = result.name;
+      req.session.cookie.originalMaxAge = 2 * 60 * 60 * 1000;
+      console.log(req.session);
+      res.send("로그인완료");
+    } else if (!result) {
       res.send("ID와 PW를 확인하세요.");
     }
   });

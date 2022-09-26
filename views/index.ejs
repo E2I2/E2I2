@@ -35,38 +35,16 @@
     ></script>
   </head>
   <body>
-    <header class="header">
-      <div class="container">
-        <div class="row">
-          <a href="#"
-            ><h1 class="logo">
-              <img src="./../static/img/logo.png" alt="logo" /></h1
-          ></a>
-          <nav class="nav">
-            <ul>
-              <%if ( !isLogin ) { %>
-                <li><a href="/signin">로그인</a></li>
-                <li><a href="/signup">회원가입</a></li>
-              <% } else { %>
-                <p><%=user%>님 환영합니다.</p>
-                <a href="logout">로그아웃</a>
-              <% } %>
-              <!-- <li><a href="/signin">로그인</a></li>
-              <li><a href="/signup">회원가입</a></li> -->
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
+    <%-include("navbar.ejs")%>
     <section id="content1">
       <div class="container">
   <div class="content-row">
     <div class="content-left">
       <h1 class="content-title">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. A, dicta.
-        <!-- 나랑 딱 맞는<br />
+        <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. A, dicta. -->
+        나랑 딱 맞는<br />
          <span class="content-title-span">MBTI</span> <br />
-        끼리끼리 -->
+        끼리끼리
       </h1>
       <a href="/signup" class="button-main">
         <button type="button">가입하기</button>
@@ -91,32 +69,54 @@
     </section>
     <section id="content2">
       <div class="container">
-        <div class="content2-title-group">
-          <h1 class="content2-title">
-            지구상에 없던<br />
-            새로운 매칭
-          </h1>
-          <p class="content2-desc">
-            MBTI 결과에 따라 달라지는 스토리!<br />내가 선택한 mbti 를
-            확인하고,<br />
-            궁합에 따른 이성들과 매칭까지!
-          </p>
+        <div class="flex">
+          <div class="content2-title-group">
+            <span class="">MBTingI</span>
+            <h1 class="content2-title">
+              지구상에 없던<br />
+              새로운 매칭
+            </h1>
+            <p class="content2-desc">
+              MBTI 결과에 따라 달라지는 스토리!<br />내가 선택한 mbti 를
+              확인하고,<br />
+              궁합에 따른 이성들과 매칭까지!
+            </p>
+          </div>
+          <div class="content2-content-group">
+            <div class="box-img">
+              <!-- <img src="./../static/img/search.png" alt=""> -->
+            </div>
+          </div>
         </div>
       </div>
     </section>
     <section id="content3">
       <div class="container">
-        <div class="content3-title-group">
-          <h1 class="content3-title">
-            좋은사람들과<br />
-            엠비팅아이에서<br />
-            매칭해보세요!
-          </h1>
-          <p class="content3-desc">
-            MBTI 결과에 따라 달라지는 스토리!<br />내가 선택한 mbti 를
-            확인하고,<br />
-            궁합에 따른 이성들과 매칭까지!
-          </p>
+        <div class="flex">
+          <div class="content3-title-group">
+            <span class="">MBTingI</span>
+            <h1 class="content3-title">
+              좋은사람들과<br />
+              엠비팅아이에서<br />
+              매칭해보세요!
+            </h1>
+            <p class="content3-desc">
+              MBTI 결과에 따라 달라지는 스토리!<br />내가 선택한 mbti 를
+              확인하고,<br />
+              궁합에 따른 이성들과 매칭까지!
+            </p>
+          </div>
+          <div class="content3-content-group flex">
+            <div class="search-img">
+              <img src="./../static/img/search.png" alt="">
+            </div>
+            <div class="search-img">
+              <img src="./../static/img/emotions.png" alt="">
+            </div>
+            <div class="search-img">
+              <img src="./../static/img/faithful.png" alt="">
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -224,7 +224,7 @@
     <section id="content5">
       <div class="container">
         <h1 class="content5-title">
-          본인의 MBTI를 먼저 확인하세요
+          Please check your mbti
         </h1>
         <div class="content5-list">
           <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">
@@ -235,29 +235,41 @@
         </div>
       </div>
     </section>
-    <footer id="footer">
-      <div class="container">
-       <div class="footer-title">
-        <span class="footer-adress">회사정보</span>
-        <span class="footer-adress">소셜미디어</span>
-       </div>
-        <ul class="footer-detail">
-          <li>(주)엠비팅아이 서울특별시 마포구 염리동길 6 (마포구,스프레틱스)    대표자: E2I2</li>
-          <li>사업자등록번호: 119-86-44136     통신판매업신고번호: 제 2021-서울마포구-3643호</li>
-          <li>문의전화: 010-8689-5012     문의메일: dhrekdo5@kakao.com</li>
-          <li>©2022. MBTingI, Inc. All rights reserved.</li>
-        </ul>
-      </div>
-    </footer>
+    <%-include("footer.ejs")%>
     <!--testmonial-->
     <script>
       $('.post-wrapper').slick({
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 500,
+        autoplaySpeed: 2500,
         nextArrow: $('.next'),
         prevArrow: $('.prev'),
+
+        responsive: [
+          {
+            breakpoint: 970,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+            }
+          },
+          {
+            breakpoint: 560,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+            }
+          },
+          {
+            breakpoint: 370,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          }
+        ]
+
       })
     </script>
   </body>
