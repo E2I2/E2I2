@@ -90,7 +90,17 @@ exports.profile = (req, res) => {
 };
 
 exports.profile_upload = (req, res) => {
-  res.send("업로드완료");
+  console.log(req.body);
+  console.log(req.files);
+  Userinfo.findOne({
+    where: {
+      id: req.session.user[1],
+      name: req.session.user[0],
+    }
+  }).then((result)=>{
+    res.send("업로드완료");
+  })
+  
 };
 exports.matching = (req, res) => {
   res.render("matching");
