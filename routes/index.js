@@ -38,6 +38,7 @@ router.post("/find/pw", controllerSign.find_pw);
 router.get("/profile", controllerSign.profile);
 router.post('/profile/uploadImg', upload.single("userFileAxios"), controllerSign.profile_upload)
 router.get("/matching", controllerSign.matching);
+router.get("/chatting", controllerChat.chat_main);
 
 
 module.exports = router;
