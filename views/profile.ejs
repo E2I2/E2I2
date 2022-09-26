@@ -103,6 +103,7 @@
         const formData = new FormData();
         const file = document.getElementById("uploadImg");
         formData.append("userFileAxios", file.files[0]);
+        formData.append("job", form.job.value);
         var inputData = {
           job: form.job.value,
           hobby: form.hobby.value,
@@ -117,10 +118,7 @@
           },
           url: "/profile/uploadImg",
           method: "post",
-          data: (profileData = {
-            formData,
-            inputData,
-          }),
+          data: formData
         });
         console.log(profileData);
         // .then((response) => {

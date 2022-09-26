@@ -66,8 +66,17 @@ exports.signin_post = (req, res) => {
   });
 };
 
+// 아이디 비밀번호 찾기
 exports.find = (req, res) => {
   res.render("find");
+};
+
+exports.find_id = (req, res) => {
+  res.send("아이디찾기성공");
+};
+
+exports.find_pw = (req, res) => {
+  res.send("비밀번호찾기성공");
 };
 
 // profile
@@ -91,7 +100,10 @@ exports.profile = (req, res) => {
 
 exports.profile_upload = (req, res) => {
   console.log(req.body);
-  console.log(req.files);
+  console.log(req.file.filename);
+  
+
+
   Userinfo.findOne({
     where: {
       id: req.session.user[1],
