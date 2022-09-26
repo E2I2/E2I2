@@ -72,11 +72,34 @@ exports.find = (req, res) => {
 };
 
 exports.find_id = (req, res) => {
-  res.send("아이디찾기성공");
+  Userinfo.findOne({
+    where: {
+      email: req.body.email,
+      nick: req.body.nick,
+    },
+  }).then((result) => {
+    console.log(result);
+    if (result) {
+      res.send({ msg: "아이디찾기성공", id: result.id });
+    } else {
+      res.send({ msg: "아이디찾기실패" });
+    }
+  });
 };
 
 exports.find_pw = (req, res) => {
-  res.send("비밀번호찾기성공");
+  Userinfo.findOne({
+    where: {
+      id: req.body.id,
+      email: req.body.email,
+    },
+  }).then((result) => {
+    if (result) {
+      res.send({ msg: "비밀번호찾기성공", pw: result.pw });
+    } else {
+      res.send({ msg: "비밀번호찾기실패" });
+    }
+  });
 };
 
 // profile
