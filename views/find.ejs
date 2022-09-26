@@ -51,7 +51,12 @@
             <form id="idForm">
               <input type="email" name="email" placeholder="이메일" required />
               <input type="text" name="nick" placeholder="닉네임" required />
-              <button type="button" onclick="onIdFind()" class="btnStyle">
+              <button
+                type="button"
+                onclick="onIdFind()"
+                class="btnStyle"
+                id="idfind"
+              >
                 아이디찾기
               </button>
             </form>
@@ -63,7 +68,12 @@
             <form id="pwForm">
               <input type="text" name="id" placeholder="아이디" required />
               <input type="email" name="email" placeholder="이메일" required />
-              <button type="button" onclick="onPwFind()" class="btnStyle">
+              <button
+                type="button"
+                onclick="onPwFind()"
+                class="btnStyle"
+                id="pwfind"
+              >
                 비밀번호 찾기
               </button>
             </form>
@@ -114,7 +124,8 @@
             $(".resultId").prepend(`
               회원님의 아이디는 <span>${response.data.id}</span> 입니다.
             `);
-            $(".result a").removeClass("d-none");
+            $(".resultId a").removeClass("d-none");
+            $("#idfind").attr("disabled", true);
           } else if (response.data.msg == "아이디찾기실패") {
             alert("이메일 또는 닉네임 정보가 일치하지 않습니다.");
           }
@@ -144,7 +155,8 @@
             $(".resultPw").prepend(`
             회원님의 비밀번호는 <span>${response.data.pw}</span> 입니다.
             `);
-            $(".result a").removeClass("d-none");
+            $(".resultPw a").removeClass("d-none");
+            $("#pwfind").attr("disabled", true);
           } else if (response.data.msg == "비밀번호찾기실패") {
             alert("아이디 또는 이메일 정보가 일치하지 않습니다.");
           }
