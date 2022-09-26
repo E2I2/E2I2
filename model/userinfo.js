@@ -51,6 +51,10 @@ const userinfo = (Sequelize, DataTypes) => {
         type: DataTypes.STRING(10),
         allowNull: true,
       },
+      job : {
+        type: DataTypes.STRING(20),
+        allowNull: true,
+      }
     },
     {
       tableName: "userinfo",

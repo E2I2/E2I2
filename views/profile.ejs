@@ -78,7 +78,7 @@
           <input
             class="borderStyle"
             type="text"
-            name="hobby"
+            name="interest"
             placeholder="취미"
           />
           <input
@@ -89,7 +89,7 @@
           />
           <textarea
             type="text"
-            name="introduce"
+            name="userdesc"
             placeholder="내 소개"
           ></textarea>
 
@@ -104,11 +104,16 @@
         const file = document.getElementById("uploadImg");
         formData.append("userFileAxios", file.files[0]);
         formData.append("job", form.job.value);
+        formData.append("userdesc", form.userdesc.value);
+        formData.append("interest", form.interest.value);
+        formData.append("specialty", form.specialty.value);
+
+        
         var inputData = {
           job: form.job.value,
-          hobby: form.hobby.value,
-          age: form.specialty.value,
-          introduce: form.introduce.value,
+          interest: form.interest.value,
+          specialty: form.specialty.value,
+          userdesc: form.userdesc.value,
         };
         console.log(formData)
         console.log(inputData)
@@ -120,7 +125,6 @@
           method: "post",
           data: formData
         });
-        console.log(profileData);
         // .then((response) => {
         //   console.log(response.data);
         // });

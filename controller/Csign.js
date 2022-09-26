@@ -101,13 +101,19 @@ exports.profile = (req, res) => {
 exports.profile_upload = (req, res) => {
   console.log(req.body);
   console.log(req.file.filename);
-  
 
+  Userinfo.update({
 
-  Userinfo.findOne({
+    imgurl : './uploads/' + req.file.filename,
+    job : req.body.job,
+    userdesc : req.body.userdesc,
+    interest : req.body.interest,
+    specialty : req.body.specialty
+    
+  },
+  {
     where: {
-      id: req.session.user[1],
-      name: req.session.user[0],
+      id: req.session.user[1]
     }
   }).then((result)=>{
     res.send("업로드완료");
