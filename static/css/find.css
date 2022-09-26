@@ -57,7 +57,7 @@
 
 /* select area */
 .d-none {
-  display: none;
+  display: none !important;
 }
 .select {
   background-color: var(--main-color);
@@ -94,4 +94,18 @@ form input::placeholder {
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   border-radius: 0.3rem;
+}
+
+/* result */
+.find .result {
+  width: 60%;
+  margin: 1rem auto 0;
+  text-align: center;
+}
+.find .result a {
+  font-size: 0.8rem;
+  line-height: 2rem;
+}
+.find .result span {
+  color: var(--main-color);
 }
