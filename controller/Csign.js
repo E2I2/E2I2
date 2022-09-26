@@ -51,19 +51,16 @@ exports.signin_post = (req, res) => {
       pw: req.body.pw,
     },
   }).then((result) => {
-    console.log(req.body.sessions);
     if (result && req.body.sessions == "on") {
       req.session.user = result.name;
-      console.log("1");
       console.log(req.session);
       res.send("로그인완료");
     } else if (result && req.body.sessions == undefined) {
       req.session.user = result.name;
       req.session.cookie.originalMaxAge = 2 * 60 * 60 * 1000;
-      console.log("2");
       console.log(req.session);
       res.send("로그인완료");
-    } else if (result == false) {
+    } else if (!result) {
       res.send("ID와 PW를 확인하세요.");
     }
   });
