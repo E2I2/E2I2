@@ -13,10 +13,8 @@
     #4568dc
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.d-none {
-  display: none;
-}
-.containerMat .view {
+/* carousel */
+#carouselExampleControlsNoTouching {
   width: 60vw;
   height: 100%;
   margin: 0 auto;
@@ -25,16 +23,28 @@
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   position: relative;
 }
-.containerMat .view .matchingBox {
+.carousel-inner {
+  width: 100%;
+  height: 100%;
+}
+.carousel-item {
+  width: 100%;
+  height: 100%;
+}
+.carousel-item img {
+  width: 100%;
+  height: 50%;
+}
+#carouselExampleControlsNoTouching button > span:first-child {
+  margin-bottom: 3rem;
+}
+/* .containerMat .view .matchingBox {
   width: 100%;
   height: 100%;
   overflow: hidden;
   position: relative;
 }
 .containerMat .view .matchingBox .profileList {
-  position: absolute;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
 }
@@ -77,11 +87,6 @@
   margin: 0 auto;
   border-radius: 0.5rem;
   overflow: hidden;
-}
-/* .containerMat .imgView .mbti {
-  font-family: "Gugi", sans-serif;
-  font-weight: 900;
-  font-size: 2rem;
 } */
 .containerMat .profile {
   width: 100%;
@@ -111,6 +116,7 @@
   flex-direction: row;
   align-items: center;
   margin: 0 auto;
+  padding-left: 0;
 }
 .containerMat .profile .list ul li {
   border-bottom: 1px solid var(--main-color);
