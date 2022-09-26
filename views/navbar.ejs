@@ -79,6 +79,7 @@
         margin-right: 11px;
       }
       .user-alram {
+        display: none;
         position: relative;
         display: inline-block;
         background: url(./../static/img/user2.jpg);
@@ -88,15 +89,18 @@
         border-radius: 50%;
       }
       .new-alram {
+        display: none;
         text-align: center;
         color: #fff;
-        width: 28px;
-        height: 28px;
+        width: 20px;
+        height: 20px;
         background-color: #694dd6;
         position: absolute;
         top: -3px;
-        left: 253px;
+        left: 248px;
         border-radius: 50%;
+        font-size: 12px;
+        line-height: 17px;
       }
       @media screen and (min-width: 499px) and (max-width: 768px) {
         .main-header {
@@ -121,8 +125,8 @@
         <a href="/profile"><span class="user-name"><%=user%> 님</span></a>
         <span class="user-names"> 환영합니다.</span>
         <a href="logout" class="logout">로그아웃</a>
-        <a href="/profile"><span class="user-alram"></span></a>
-        <span class="new-alram">N</span>
+        <!-- <a href="/profile"><span class="user-alram"></span></a>
+        <span class="new-alram">N</span> -->
         <% } %>
       </ul>
     </header>
