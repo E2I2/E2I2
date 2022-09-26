@@ -1,4 +1,4 @@
-exports.matching = (req, res) => {
+exports.chat_main = (req, res) => {
     res.render("chatting");
   };
   

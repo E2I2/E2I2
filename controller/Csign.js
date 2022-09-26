@@ -99,7 +99,26 @@ exports.profile = (req, res) => {
 };
 
 exports.profile_upload = (req, res) => {
-  res.send("업로드완료");
+  console.log(req.body);
+  console.log(req.file.filename);
+
+  Userinfo.update({
+
+    imgurl : './uploads/' + req.file.filename,
+    job : req.body.job,
+    userdesc : req.body.userdesc,
+    interest : req.body.interest,
+    specialty : req.body.specialty
+    
+  },
+  {
+    where: {
+      id: req.session.user[1]
+    }
+  }).then((result)=>{
+    res.send("업로드완료");
+  })
+  
 };
 exports.matching = (req, res) => {
   res.render("matching");
