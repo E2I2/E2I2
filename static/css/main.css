@@ -181,6 +181,9 @@ ul li a:hover{
     /* color: var(--main-color); */
     margin-bottom: 15px;
 }
+.title-simple{
+  color: #654ECE;
+}
 #content2 .flex{
   display: flex;
   flex-direction: row;
@@ -272,8 +275,8 @@ ul li a:hover{
     height: 350px;
     margin:0px 10px;
     display:inline-block;
-    background: rgb(255, 255, 255);
-    box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px;
+    background: #FFFFFF;
+    box-shadow: 0px 0 12px rgb(70 96 135 / 25%);
   }
   .post-slider .post-wrapper .post .post-info{
     font-size:15px;
@@ -292,22 +295,31 @@ ul li a:hover{
     font-size: 37px;
   }
   .post-img{
-    width: 116px;
-    height: 116px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background-color: #000;
+    background-color: #694dd6;
     margin: 0 auto;
-    background: url(./../img/logo.png);
+    /* background: url(./../img/KEEPSMILING\ 1.png); */
+    background-size: cover;
+  }
+  .post-img img{
+    width: 100%;
   }
   .post-desc{
     text-align: center;
-    margin: 46px 0;
+    margin: 30px 0;
   }
   .post-item{
     padding-top: 40px;
   }
+  .ratings{
+    text-align: center;
+    color: #654ece;
+  }
   .post-mbti-detail{
     text-align: center;
+    margin-bottom: 21px;
   }
   #content5{
     width: 100%;
@@ -409,6 +421,9 @@ height: 90px;
 }
 .content3-desc{
   font-size: 14px;
+}
+.silder-title{
+  font-size: 22px;
 }
 }
   @media screen and (min-width:769px) and (max-width:967px) {
