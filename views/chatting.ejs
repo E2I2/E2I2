@@ -1,84 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/axios/dist/axios.min.js"></script>
-    <!-- <title>chatting</title> -->
-</head>
-<body>
-    <div><button>입장</button></div>
-    <form></form>
-    <div class="entry-box">
-        <input type="text" id="nickname" placeholder="닉네임"> 
-        <button type="button" onclick="entry();">입장</button>
-    </div>
-
-    <div class="chat-box">
-        <div id="chat-list" class="chat-list">
+    <link rel="stylesheet" href="../static/css/chatting.css" />
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- 이상 Jquery CDN -->
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+    <!-- 이상 소켓 cdn -->
+  </head>
+  <body>
+    <button type="button" onclick="entry()">입장하기</button>
+    <div class="wrap">
+      <div class="chatList">1</div>
+      <div class="chatBox" id="chatBox">2
+        <div class="sendBox">
+            <input class="msgBox" placeholder="전송할 내용을 입력해주세요" value="">
+            <button class="sendBtn" onclick="send()">전송</button>  
         </div>
-
-        <input type="text" id="message">
-        <button type="button" onclick="send();">전송</button>
+      </div>
     </div>
-
     <script>
-        var socket = io.connect();
-        var chatdata = 
-
-        axios({
-            url : "/chatting/get",
-            method :"get", 
-            data : {
-                
-            }
-        }) //대화내역 > DB
-        axios({
-            url : "/chatting/post",
-            method :"post", 
-            data : chatdata
-        }) //대화내역 > DB
-
-
-        var myNick; 
-
-        function entry(){
-            socket.emit("setNick", $("#nickname").val());
+      var socket = io.connect();
+      var sendNick;
+      console.log(socket);
+      function entry(){
+        var data = {
+          sendNick : `<%=sendNick%>`
         }
+        socket.emit("entry", data);
+        socketEvent();
+        console.log("entrySuccess");
+      }
 
-        function send(){
-            var data = {
-                myNick: myNick,
-                msg: document.getElementById("message").value
-            }
-            socket.emit("send", data);
+      function send() {
+        console.log($(".msgBox").val());
+        var data  = {
+            sendNick : `<%=sendNick%>`,
+            msg : $(".msgBox").val()
+        };
+        console.log(data.sendNick);
+        socket.emit("send", data);
 
-        }
+      }
 
-        function socketEvent(){
-            socket.on("newMessage", (data) => {
-                let chat_list = document.getElementById("chat-list");
-                let div = document.createElement("div"); 
-                let div_chat = document.createElement("div"); 
-
-                if ( myNick == data.nick ) div.classList.add("my-chat");
-                else div.classList.add("other-chat");
-
-                div_chat.textContent += data.nick + " : " +  data.msg;
-                
-                div.appendChild(div_chat);
-                chat_list.appendChild(div);
-            });
-
-            // 입장 공지
-            socket.on("notice", (msg) => {
-                $("#chat-list").append(`<div class="notice">${msg}</div>`);
-            });
+      function socketEvent() {
+        socket.on("newMessage", (data) => {
+          let chat_box = document.getElementById("chatBox");
+          let div = document.createElement("div");
+          let div_chat = document.createElement("div");
+          if (sendNick == data.sendNick) div.classList.add("my-chat");
+          else div.classList.add("other-chat");
+          console.log(data);
+          div_chat.textContent += data.sendNick + " : " + data.msg;
+          div.appendChild(div_chat);
+          chat_box.appendChild(div);
+        });
 
 
-        }
-        
-    </script>    
-</body>
+      } // 입장 공지
+
+    </script>
+  </body>
 </html>
