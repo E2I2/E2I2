@@ -35,14 +35,34 @@
 
         <form action="/upload" method="post" enctype="multipart/form-data">
           <div class="readDiv">
-            닉네임: <input type="text" name="nick" class="readOnly" readonly />
+            닉네임:
+            <input
+              value="<%=nick%>"
+              type="text"
+              name="nick"
+              class="readOnly"
+              readonly
+            />
           </div>
           <div class="readDiv">
-            MBTI: <input type="text" name="mbti" class="readOnly" readonly />
+            MBTI:
+            <input
+              value="<%=mbti%>"
+              type="text"
+              name="mbti"
+              class="readOnly"
+              readonly
+            />
           </div>
           <div class="readDiv">
             나이:
-            <input type="text" name="age" class="readOnly" readonly />
+            <input
+              value="<%=age%>"
+              type="text"
+              name="age"
+              class="readOnly"
+              readonly
+            />
           </div>
 
           <div class="profileDiv">
