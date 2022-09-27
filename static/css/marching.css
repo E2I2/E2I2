@@ -192,6 +192,36 @@
     #4568dc;
   transition: 3s smooth;
 }
+
+/* mbti 궁합 */
+.stamp {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  box-sizing: border-box;
+  background: url("../img/stamp.png") no-repeat;
+  background-size: cover;
+  background-color: #b16ab3c1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1rem;
+  align-items: center;
+  color: #fff;
+  transform: rotate(10deg);
+}
+.stamp > div:first-child {
+  font-weight: 600;
+}
+.stamp .rate {
+  opacity: 0.9;
+  font-size: 2rem;
+  font-family: "Rubik Dirt", cursive;
+  text-shadow: 1px 1px 3px var(--main-color);
+}
 /* mobile */
 
 @media (max-width: 576px) {
