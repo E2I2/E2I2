@@ -46,9 +46,15 @@
          <span class="content-title-span">MBTI</span> <br />
         끼리끼리
       </h1>
-      <a href="/signup" class="button-main">
-        <button type="button">가입하기</button>
-      </a>
+      <%if ( !isLogin ) { %>
+        <a href="/signup" class="button-main">
+          <button type="button">가입하기</button>
+        </a>
+        <% } else { %>
+        <a href="/signup" class="button-none">
+          <button type="button">가입하기</button>
+        </a>  
+        <% } %>
      </div>
      <div class="content-right">
       <div class="main-img">

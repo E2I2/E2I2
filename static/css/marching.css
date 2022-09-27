@@ -13,10 +13,34 @@
     #4568dc
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+.containerMat .header {
+  position: fixed;
+  background-color: transparent;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  z-index: 100;
+}
+.containerMat .header a {
+  width: 2rem;
+  height: fit-content;
+}
+.containerMat .header a img {
+  width: 100%;
+  height: 100%;
+}
+
 /* carousel */
 #carouselExampleControlsNoTouching {
+  border-radius: 1rem;
+  overflow: hidden;
   width: 50vw;
   max-width: 500px;
+  min-width: 450px;
   height: 100%;
   margin: 0 auto;
   background-color: #fff;
@@ -128,6 +152,9 @@
   color: var(--main-color);
   text-align: center;
 }
+.containerMat .profile .list ul li i {
+  font-size: 0.8rem;
+}
 .containerMat .profile .list ul li span {
   color: #000;
 }
@@ -163,4 +190,13 @@
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   border-radius: 0.3rem;
+}
+/* mobile */
+
+@media (max-width: 576px) {
+  #carouselExampleControlsNoTouching {
+    width: 100%;
+    height: 100vh;
+    min-width: 0;
+  }
 }
