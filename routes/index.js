@@ -42,7 +42,7 @@ router.post(
 );
 router.get("/matching", controllerSign.matching);
 router.get("/chatting", controllerChat.chat_main);
-router.get("/chatting/chatBox", controllerChat.chat_box);
+// router.get("/chatting/chatBox", controllerChat.chat_box);
 
 router.get("/myPage", controllerMy.mypage);
 router.get("/editProfile", controllerMy.editProfile);
