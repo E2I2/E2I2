@@ -117,7 +117,12 @@ exports.profile = (req, res) => {
     var userbirth = resultbirth.substr(0, 4);
     var age = year - userbirth + 1;
     var mbti = result.mbti.toUpperCase();
-    res.render("profile", { nick: result.nick, mbti: mbti, age: age });
+    res.render("profile", {
+      nick: result.nick,
+      mbti: mbti,
+      age: age,
+      msg: "업로드완료",
+    });
   });
 };
 
@@ -125,26 +130,22 @@ exports.profile_upload = (req, res) => {
   console.log(req.body);
   console.log(req.file.filename);
 
-  Userinfo.update({
-
-    imgurl : './uploads/' + req.file.filename,
-    job : req.body.job,
-    userdesc : req.body.userdesc,
-    interest : req.body.interest,
-    specialty : req.body.specialty
-    
-  },
-  {
-    where: {
-      id: req.session.user[1]
+  Userinfo.update(
+    {
+      imgurl: "./uploads/" + req.file.filename,
+      job: req.body.job,
+      userdesc: req.body.userdesc,
+      interest: req.body.interest,
+      specialty: req.body.specialty,
+    },
+    {
+      where: {
+        id: req.session.user[1],
+      },
     }
-  }).then((result)=>{
+  ).then((result) => {
     res.send("업로드완료");
-  })
-
-
-
-
+  });
 };
 exports.matching = (req, res) => {
   res.render("matching");
