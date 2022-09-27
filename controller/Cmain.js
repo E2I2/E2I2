@@ -20,7 +20,7 @@ exports.logout = (req, res) => {
   } else {
     res.send(
       `<script>
-      aleart("잘못된 접근입니다.");
+      alert("잘못된 접근입니다.");
       location.href="/";
       </script>`
     );
