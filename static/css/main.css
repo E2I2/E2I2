@@ -150,6 +150,9 @@ ul li a:hover{
     display: block;
     font-weight: 700;
 }
+.button-none {
+  display: none;
+}
 /*animation*/
 
 @keyframes up-down{
