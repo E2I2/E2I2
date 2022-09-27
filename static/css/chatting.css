@@ -57,3 +57,11 @@ body {
   color: #005397;
   font-size: 12px;
 }
+.d-none{
+  display: none;
+}
+.chat_room{
+  width : 90%;
+  height: 15%;
+  border: 1px solid black;
+}

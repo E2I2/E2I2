@@ -33,7 +33,7 @@ io.on("connection", function (socket) {
   console.log("Server Socket Connected", socket.id);
 
   socket.on("entry", (data) => {
-    console.log(data);
+    socket.emit("chat", data)
   });
 
   socket.on("send", (data) => {

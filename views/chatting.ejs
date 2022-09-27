@@ -20,11 +20,14 @@
     <!-- 이상 소켓 cdn -->
   </head>
   <body>
-    <button type="button" onclick="entry()">입장하기</button>
+    <button type="button" onclick="entry()">채팅모음</button>
+    <button type="button" onclick="chat()">누구와의채팅</button>
     <div class="wrap">
-      <div class="chatList">1</div>
-      <div class="chatBox" id="chatBox">
-        2
+      <div class="chatList d-none" id="chatList">
+        chatList
+      </div>
+      <div class="chatBox d-none" id="chatBox">
+        chatBox
         <div class="sendBox">
           <input
             class="msgBox"
@@ -40,12 +43,26 @@
       var sendNick;
       console.log(socket);
       function entry() {
+        $(".chatList").removeClass("d-none");
         var data = {
           sendNick: `<%=sendNick%>`,
         };
         socket.emit("entry", data);
         socketEvent();
         console.log("entrySuccess");
+      }
+
+      function chat() {
+        socket.on("chat", (data)=>{
+          let chat_list = document.getElementById("chatList");
+          let div = document.createElement("div");
+          let div_chatroom = document.createElement("div");
+          
+          div.classList.add("chat_room");
+          div_chatroom.textContent += data.sendNick + " & "
+        })
+
+
       }
 
       function send() {
