@@ -15,7 +15,6 @@ const upload = multer({
   filename : (req, file, done)=>{
     const ext = path.extname(file.originalname)
     const filename = path.basename(file.originalname,ext) + ext
-    // + '_' + Date.now() + ext
     done(null,filename)
   }
   }),
@@ -36,7 +35,7 @@ router.post("/find/id", controllerSign.find_id);
 router.post("/find/pw", controllerSign.find_pw);
 
 router.get("/profile", controllerSign.profile);
-router.post('/profile/uploadImg', upload.single("userFileAxios"), controllerSign.profile_upload)
+router.post('/profile/uploadImg', upload.single("userFileAxios"), controllerSign.profile_upload);
 router.get("/matching", controllerSign.matching);
 router.get("/chatting", controllerChat.chat_main);
 

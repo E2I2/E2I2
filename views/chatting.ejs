@@ -47,10 +47,12 @@
       }
 
       function socketEvent() {
-        socket.on("newMessage", (data) => {
+        socket.on("newMessage", (sendData) => {
           let chat_box = document.getElementById("chatBox");
           let div = document.createElement("div");
           let div_chat = document.createElement("div");
+          console.log(sendNick);
+          console.log(data.sendNick);
           if (sendNick == data.sendNick) div.classList.add("my-chat");
           else div.classList.add("other-chat");
           console.log(data);
