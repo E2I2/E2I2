@@ -1,9 +1,9 @@
-var express = require('express')
-var controller = require('../controller/Cmain')
-var controllerSign = require('../controller/Csign')
-var controllerChat = require('../controller/Cchat')
+var express = require("express");
+var controller = require("../controller/Cmain");
+var controllerSign = require("../controller/Csign");
+var controllerChat = require("../controller/Cchat");
+var controllerMy = require("../controller/Cmypage");
 // var controllerProfile = require("../controller/Cprofile");
-
 
 const multer = require("multer");
 const path = require("path");
@@ -18,8 +18,8 @@ const upload = multer({
     done(null,filename)
   }
   }),
-  limits: {fileSize : 5 * 1024 *1024 }
-})
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
 
 const router = express.Router();
 
@@ -35,9 +35,16 @@ router.post("/find/id", controllerSign.find_id);
 router.post("/find/pw", controllerSign.find_pw);
 
 router.get("/profile", controllerSign.profile);
-router.post('/profile/uploadImg', upload.single("userFileAxios"), controllerSign.profile_upload);
+router.post(
+  "/profile/uploadImg",
+  upload.single("userFileAxios"),
+  controllerSign.profile_upload
+);
 router.get("/matching", controllerSign.matching);
 router.get("/chatting", controllerChat.chat_main);
+router.get("/chatting/chatBox", controllerChat.chat_box);
 
+router.get("/myPage", controllerMy.mypage);
+router.get("/editProfile", controllerMy.editProfile);
 
 module.exports = router;

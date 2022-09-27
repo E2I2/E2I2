@@ -1,6 +1,7 @@
 const session = require("express-session");
 const { DATE } = require("sequelize");
 const { Userinfo, Sequelize } = require("../model/main");
+const { use } = require("../routes");
 
 exports.signup = (req, res) => {
   res.render("signup");
@@ -105,25 +106,35 @@ exports.find_pw = (req, res) => {
 // profile
 
 exports.profile = (req, res) => {
-  Userinfo.findOne({
-    where: {
-      id: req.session.user[1],
-      name: req.session.user[0],
-    },
-  }).then((result) => {
-    var date = new Date();
-    var year = date.getFullYear();
-    var resultbirth = result.birth;
-    var userbirth = resultbirth.substr(0, 4);
-    var age = year - userbirth + 1;
-    var mbti = result.mbti.toUpperCase();
-    res.render("profile", {
-      nick: result.nick,
-      mbti: mbti,
-      age: age,
-      msg: "업로드완료",
+  const user = req.session.user;
+  console.log(user);
+  if (user != undefined) {
+    Userinfo.findOne({
+      where: {
+        id: req.session.user[1],
+        name: req.session.user[0],
+      },
+    }).then((result) => {
+      var date = new Date();
+      var year = date.getFullYear();
+      var resultbirth = result.birth;
+      var userbirth = resultbirth.substr(0, 4);
+      var age = year - userbirth + 1;
+      var mbti = result.mbti.toUpperCase();
+      res.render("profile", {
+        nick: result.nick,
+        mbti: mbti,
+        age: age,
+      });
     });
-  });
+  } else {
+    res.send(
+      `<script>
+        alert("잘못된 접근입니다. 로그인 후 이용해주세요.");
+        location.href="/signin";
+        </script>`
+    );
+  }
 };
 
 exports.profile_upload = (req, res) => {
