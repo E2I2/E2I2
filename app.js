@@ -32,7 +32,9 @@ io.on("connection", function (socket) {
   // 최초 입장했을 때
   console.log("Server Socket Connected", socket.id);
 
-  socket.on("entry", (data) => {});
+  socket.on("entry", (data) => {
+    console.log(data);
+  });
 
   socket.on("send", (data) => {
     const sendData = {
