@@ -2,8 +2,6 @@ const express = require("express");
 const axios = require("axios");
 const session = require("express-session");
 const app = express();
-//multer
-
 
 const port = 8000;
 
@@ -19,7 +17,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      maxAge: 5 * 60 * 60 * 1000,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
     },
   })
 );
