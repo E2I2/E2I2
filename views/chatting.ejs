@@ -6,19 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../static/css/chatting.css" />
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
     <!-- 이상 Jquery CDN -->
-    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+      integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+      crossorigin="anonymous"
+    ></script>
     <!-- 이상 소켓 cdn -->
   </head>
   <body>
     <button type="button" onclick="entry()">입장하기</button>
     <div class="wrap">
       <div class="chatList">1</div>
-      <div class="chatBox" id="chatBox">2
+      <div class="chatBox" id="chatBox">
+        2
         <div class="sendBox">
-            <input class="msgBox" placeholder="전송할 내용을 입력해주세요" value="">
-            <button class="sendBtn" onclick="send()">전송</button>  
+          <input
+            class="msgBox"
+            placeholder="전송할 내용을 입력해주세요"
+            value=""
+          />
+          <button class="sendBtn" onclick="send()">전송</button>
         </div>
       </div>
     </div>
@@ -26,10 +39,10 @@
       var socket = io.connect();
       var sendNick;
       console.log(socket);
-      function entry(){
+      function entry() {
         var data = {
-          sendNick : `<%=sendNick%>`
-        }
+          sendNick: `<%=sendNick%>`,
+        };
         socket.emit("entry", data);
         socketEvent();
         console.log("entrySuccess");
@@ -37,13 +50,12 @@
 
       function send() {
         console.log($(".msgBox").val());
-        var data  = {
-            sendNick : `<%=sendNick%>`,
-            msg : $(".msgBox").val()
+        var data = {
+          sendNick: `<%=sendNick%>`,
+          msg: $(".msgBox").val(),
         };
         console.log(data.sendNick);
         socket.emit("send", data);
-
       }
 
       function socketEvent() {
@@ -58,10 +70,7 @@
           div.appendChild(div_chat);
           chat_box.appendChild(div);
         });
-
-
       } // 입장 공지
-
     </script>
   </body>
 </html>
