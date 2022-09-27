@@ -65,3 +65,7 @@ body {
   height: 15%;
   border: 1px solid black;
 }
+#sendNick{
+  font-size: larger;
+  height: auto;
+}

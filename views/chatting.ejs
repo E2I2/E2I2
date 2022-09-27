@@ -24,7 +24,20 @@
     <button type="button" onclick="chat()">누구와의채팅</button>
     <div class="wrap">
       <div class="chatList d-none" id="chatList">
-        chatList
+        chatList<br>
+        닉네임 : <input 
+        id="sendNick"
+        value="<%=sendNick%>" 
+        type="text" 
+        readonly
+        style="text-align: center;"
+        ><br>
+        <select>
+          <option><%=roomId%></option>
+          <option></option>
+          <option></option>
+          <option></option>
+        </select>
       </div>
       <div class="chatBox d-none" id="chatBox">
         chatBox
@@ -57,7 +70,7 @@
           let chat_list = document.getElementById("chatList");
           let div = document.createElement("div");
           let div_chatroom = document.createElement("div");
-          
+
           div.classList.add("chat_room");
           div_chatroom.textContent += data.sendNick + " & "
         })

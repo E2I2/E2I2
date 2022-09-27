@@ -9,6 +9,17 @@ exports.chat_main = (req, res) => {
   }).then((result) => {
     res.render("chatting", {
       sendNick: result.nick,
+      roomId : result.Chat_poarticipant.room_id
     });
   });
 };
+
+// exports.chat = (req, res)=>{
+//   Userinfo.findOne({
+//     where: {
+//       id: req.session.user[1].
+//     },
+//   }).then((result)=>{
+    
+//   })
+  
