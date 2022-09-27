@@ -22,16 +22,40 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   z-index: 100;
 }
-.containerMat .header a {
+.containerMat .header a.logo {
   width: 2rem;
   height: fit-content;
 }
-.containerMat .header a img {
+.containerMat .header img {
   width: 100%;
   height: 100%;
+}
+.containerMat .header .mypage {
+  position: relative;
+}
+.containerMat .header .mypage a {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: 2px 1px 2px #0000006b;
+  display: block;
+}
+.containerMat .header .mypage i {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100%;
+  background-color: #dc3545;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5rem;
+  box-shadow: 2px 1px 2px #0000006b;
 }
 
 /* carousel */
@@ -56,74 +80,29 @@
   width: 100%;
   height: 100%;
 }
-/* .imgArea {
-  width: 100%;
+.imgArea {
+  position: relative;
+  width: 95%;
   height: 50%;
-} */
+  margin: 1rem auto 1rem;
+  text-align: center;
+  background-color: #000;
+  border-radius: 0.5rem;
+}
 .carousel-item img {
-  width: 100%;
-  height: 50%;
+  width: inherit;
+  height: 100%;
 }
 #carouselExampleControlsNoTouching button > span:first-child {
   margin-bottom: 3rem;
 }
-/* .containerMat .view .matchingBox {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-.containerMat .view .matchingBox .profileList {
-  width: 100%;
-  height: 100%;
-}
-.containerMat .view .arrow {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 130%;
-  display: flex;
-  justify-content: space-between;
-  z-index: 1;
-}
-.containerMat .view .arrow button {
-  width: 4rem;
-  height: 4rem;
-  background-color: #89d8d3b0;
-  border-radius: 100%;
-  box-shadow: 2px 2px 3px rgba(39, 39, 39, 0.5);
-}
-.containerMat .view .arrow button i {
-  font-size: 2rem;
-  color: #fff;
-}
-.containerMat .imgView {
-  position: relative;
-  width: 100%;
-  height: 50%;
-  padding: 1rem 0;
-  box-sizing: border-box;
-}
-.containerMat .imgView .img {
-  width: 90%;
-  height: 100%;
-  box-shadow: inset 2px 2px 2px 0px rgba(39, 39, 39, 0.5);
-  background: url("../img/creator3.jpeg") no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-color: #fff;
-  margin: 0 auto;
-  border-radius: 0.5rem;
-  overflow: hidden;
-} */
 .containerMat .profile {
   width: 100%;
   height: 50%;
   background-color: #fff;
 }
 .containerMat .profile .title {
-  padding: 1rem;
+  padding: 0 1rem 0.5rem;
   text-align: center;
 }
 .containerMat .profile .title .nick {
@@ -132,31 +111,40 @@
 }
 .containerMat .profile .list {
   margin: 0 auto;
-  width: 80%;
-  height: 70%;
+  width: 95%;
+  height: 75%;
   border: 1px solid var(--main-color);
   border-radius: 0.5rem;
 }
 .containerMat .profile .list ul {
-  width: 90%;
+  width: 95%;
   height: 25%;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  align-items: center;
-  margin: 0 auto;
+  margin: 1rem auto 0.5rem;
   padding-left: 0;
 }
 .containerMat .profile .list ul li {
   border-bottom: 1px solid var(--main-color);
   color: var(--main-color);
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 .containerMat .profile .list ul li i {
   font-size: 0.8rem;
+  padding-bottom: 0.3rem;
 }
-.containerMat .profile .list ul li span {
+.containerMat .profile .list ul li i > span {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+.containerMat .profile .list ul li > span:last-child {
   color: #000;
+  font-size: 0.9rem;
+  width: 4.5rem;
 }
 .containerMat .profile .introduce {
   display: flex;
@@ -178,7 +166,7 @@
   padding: 0.5rem;
   box-sizing: border-box;
 }
-#checkBtn {
+#chatBtn {
   position: absolute;
   bottom: 1.5rem;
   left: 50%;
@@ -190,6 +178,19 @@
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   border-radius: 0.3rem;
+}
+#chatBtn:hover {
+  color: #fff;
+  background: linear-gradient(
+      180.9deg,
+      #b06ab3 -18.92%,
+      #4568dc 99.21%,
+      rgba(69, 104, 220, 0) 99.23%,
+      #6769cf 99.23%,
+      #6469d0 99.23%
+    ),
+    #4568dc;
+  transition: 3s smooth;
 }
 /* mobile */
 
