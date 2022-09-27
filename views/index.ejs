@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MBTingI</title>
+    <!--aos-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!--style css-->
     <link rel="stylesheet" href="./../static/css/main.css" />
     <link
@@ -47,9 +50,11 @@
         끼리끼리
       </h1>
       <%if ( !isLogin ) { %>
-        <a href="/signup" class="button-main">
-          <button type="button">가입하기</button>
-        </a>
+        <div class="trigger">
+          <a href="#" class="button-main">
+            <button type="button">가입하기</button>
+          </a>
+        </div>
         <% } else { %>
         <a href="/signup" class="button-none">
           <button type="button">가입하기</button>
@@ -76,7 +81,8 @@
     <section id="content2">
       <div class="container">
         <div class="flex">
-          <div class="content2-title-group">
+          <div class="content2-title-group" data-aos="fade-right"  data-aos-offset="300"
+          data-aos-easing="ease-in-sine">
             <span class="title-simple">MBTingI</span>
             <h1 class="content2-title">
               지구상에 없던<br />
@@ -88,7 +94,8 @@
               궁합에 따른 이성들과 매칭까지!
             </p>
           </div>
-          <div class="content2-content-group">
+          <div class="content2-content-group" data-aos="fade-left"  data-aos-offset="300"
+          data-aos-easing="ease-in-sine">
             <div class="box-img">
               <!-- <img src="./../static/img/search.png" alt=""> -->
             </div>
@@ -99,7 +106,8 @@
     <section id="content3">
       <div class="container">
         <div class="flex">
-          <div class="content3-title-group">
+          <div class="content3-title-group" data-aos="fade-left"  data-aos-offset="300"
+          data-aos-easing="ease-in-sine">
             <span class="title-simple">MBTingI</span>
             <h1 class="content3-title">
               좋은사람들과<br />
@@ -112,7 +120,8 @@
               궁합에 따른 이성들과 매칭까지!
             </p>
           </div>
-          <div class="content3-content-group flex">
+          <div class="content3-content-group flex"  data-aos="fade-right"  data-aos-offset="300"
+          data-aos-easing="ease-in-sine">
             <div class="search-img">
               <img src="./../static/img/search.png" alt="">
             </div>
@@ -295,7 +304,7 @@
         </div>
       </div>
     </section>
-    <section id="content5">
+    <section id="content5" class="trigger">
       <div class="container">
         <h1 class="content5-title">
           Please check your mbti
@@ -303,18 +312,41 @@
         <div class="content5-list">
           <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">
             <p class="list-item"><i class="fa-solid fa-link"></i>검사하러가기</p>
-            <span class="close-popup">
+            <!-- <span class="close-button">
               <i class="fa-solid fa-x"></i>
-            </span>
+            </span> -->
           </a>
           <!-- <p class="list-item">MBTingI를 테스트 해주세요!</p>
           <p class="list-item">자신에게 맞는 상대와 매칭 하세요</p> -->
         </div>
       </div>
     </section>
+    <div class="modal">
+      <div class="modal-content">
+          <span class="close-button">×</span>
+          <h1 class="modal-title">MBTI를 알고계시나요?</h1>
+          <p class="modal-desc">안녕하세요. MBTingI입니다.<br>
+            원활한 서비스 이용을 위해서
+            회원가입을 안하셨다면 회원가입을 해주시고, 
+            아래 사항에 따라 클릭해주세요.
+          </p>
+         <a href="/signin"><span class="YES"><button class="yes-button">네 (로그인 페이지로 이동)</button></span></a>
+        <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC"><span class="NO"><button class="no-button">아니요 (mbti 테스트로 이동)</button></span></a>
+      </div>
+      </div>
+    <!--modal test
+    <div class="trigger">모달테스트</div>
+<div class="modal">
+    <div class="modal-content">
+        <span class="close-button">×</span>
+        <h1>Hello, I am a modal!</h1>
+    </div>
+</div> -->
     <%-include("footer.ejs")%>
     <!--testmonial-->
     <script>
+         AOS.init();
+
       $('.post-wrapper').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -348,6 +380,24 @@
         ]
 
       })
+
+      /*modal*/
+      const modal = document.querySelector(".modal");
+      const trigger = document.querySelector(".trigger");
+      const closeButton = document.querySelector(".close-button");
+
+      function toggleModal(){
+        modal.classList.toggle("show-modal");
+      }
+      function windowOnClick(event){
+        if(event.target === modal ){
+          toggleModal();
+        }
+      }
+
+      trigger.addEventListener("click", toggleModal)
+      closeButton.addEventListener("click", toggleModal);
+      window.addEventListener("click", windowOnClick);
     </script>
   </body>
   <script></script>

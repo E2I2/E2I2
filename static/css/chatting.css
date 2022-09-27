@@ -28,28 +28,28 @@ body {
 }
 .sendBox {
   position: absolute;
-  height : 100px;
-  width : 100%;
-  bottom : 0;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
 }
 .msgBox {
-  padding : 0px 15px 0px 15px;
-  border : 1px solid black;
-  height : 98px;
-  width : 88%
+  padding: 0px 15px 0px 15px;
+  border: 1px solid black;
+  height: 98px;
+  width: 88%;
 }
 .sendBtn {
-  float : right;
-  width : 5%
+  float: right;
+  width: 5%;
 }
-.my-chat { 
-  text-align: right; 
+.my-chat {
+  text-align: right;
   margin-bottom: 5px;
 }
-.my-chat div { 
-  background-color: yellow; 
+.my-chat div {
+  background-color: yellow;
 }
-.other-chat div { 
+.other-chat div {
   background-color: white;
 }
 .notice {
