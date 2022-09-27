@@ -63,8 +63,9 @@
           let chat_box = document.getElementById("chatBox");
           let div = document.createElement("div");
           let div_chat = document.createElement("div");
-          if (sendNick == data.sendNick) div.classList.add("my-chat");
+          if (data.sendNick) div.classList.add("my-chat");
           else div.classList.add("other-chat");
+          console.log(sendNick);
           console.log(data);
           div_chat.textContent += data.sendNick + " : " + data.msg;
           div.appendChild(div_chat);
