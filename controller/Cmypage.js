@@ -1,6 +1,5 @@
 const session = require("express-session");
 const { Userinfo, Sequelize } = require("../model/main");
-const { use } = require("../routes");
 
 exports.mypage = (req, res) => {
   res.render("myPage");
