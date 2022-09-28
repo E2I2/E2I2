@@ -1,4 +1,4 @@
-const userinfo = (Sequelize, DataTypes) => {
+const Userinfo = (Sequelize, DataTypes) => {
   const model = Sequelize.define(
     "userinfo",
     {
@@ -51,10 +51,10 @@ const userinfo = (Sequelize, DataTypes) => {
         type: DataTypes.STRING(10),
         allowNull: true,
       },
-      job : {
+      job: {
         type: DataTypes.STRING(20),
         allowNull: true,
-      }
+      },
     },
     {
       tableName: "userinfo",
@@ -64,4 +64,4 @@ const userinfo = (Sequelize, DataTypes) => {
   );
   return model;
 };
-module.exports = userinfo;
+module.exports = Userinfo;

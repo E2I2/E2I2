@@ -1,7 +1,11 @@
-const session = require("express-session");
-const { DATE } = require("sequelize");
-const { Userinfo, Sequelize } = require("../model/main");
-const { use } = require("../routes");
+const {
+  Userinfo,
+  Sequelize,
+  Mbtibest,
+  Mbtigood,
+  Mbtisoso,
+  Mbtibad,
+} = require("../model/main");
 
 exports.signup = (req, res) => {
   res.render("signup");
@@ -57,7 +61,7 @@ exports.signin_post = (req, res) => {
       console.log(req.session);
       res.send("로그인완료");
     } else if (result && req.body.sessions == undefined) {
-      req.session.user = [result.name, result.id];
+      req.session.user = [result.name, result.id, result.mbti, result.gender];
       req.session.cookie.originalMaxAge = 2 * 60 * 60 * 1000;
       console.log(req.session);
       res.send("로그인완료");
@@ -158,6 +162,132 @@ exports.profile_upload = (req, res) => {
     res.send("업로드완료");
   });
 };
+
 exports.matching = (req, res) => {
-  res.render("matching");
+  const mbti_list = {};
+  const user_list = {};
+  const user = req.session.user;
+
+  if (user != undefined && user[3] == "남") {
+    Mbtibest.findAll({
+      where: {
+        mbti: user[2],
+      },
+    }).then((result) => {
+      mbti_list["best"] = result.map((el) => el.best);
+    });
+    Mbtigood.findAll({
+      where: {
+        mbti: user[2],
+      },
+    }).then((result) => {
+      mbti_list["good"] = result.map((el) => el.good);
+    });
+    Mbtisoso.findAll({
+      where: {
+        mbti: user[2],
+      },
+    }).then((result) => {
+      mbti_list["soso"] = result.map((el) => el.soso);
+      console.log("mbti_list", mbti_list);
+    });
+    Userinfo.findAll({
+      where: {
+        id: !user[1],
+        gender: "여",
+      },
+    }).then((result) => {
+      user_list["img"] = result.map((el) => el.imgurl);
+      user_list["name"] = result.map((el) => el.name);
+      user_list["mbti"] = result.map((el) => el.mbti);
+      user_list["age"] = result.map((el) => {
+        var date = new Date();
+        var year = date.getFullYear();
+        var resultbirth = el.birth;
+        var userbirth = resultbirth.substr(0, 4);
+        var age = year - userbirth + 1;
+        return age;
+      });
+      user_list["job"] = result.map((el) => el.job);
+      user_list["interest"] = result.map((el) => el.interest);
+      user_list["specialty"] = result.map((el) => el.specialty);
+      user_list["userdesc"] = result.map((el) => el.userdesc);
+      console.log("user_list", user_list);
+
+      // 유저의 정보 수 만큼 랜덤 숫자가 담긴 배열을 생성
+      let randomArray = [];
+      while (randomArray.length < user_list.name.length) {
+        random = Math.floor(Math.random() * user_list.name.length);
+        if (randomArray.indexOf(random) === -1) {
+          randomArray.push(random);
+          console.log(randomArray);
+        }
+      }
+      res.render("matching", { user_list, mbti_list, randomArray });
+    });
+  } else if (user != undefined && user[3] == "여") {
+    Mbtibest.findAll({
+      where: {
+        mbti: user[2],
+      },
+    }).then((result) => {
+      mbti_list["best"] = result.map((el) => el.best);
+    });
+    Mbtigood.findAll({
+      where: {
+        mbti: user[2],
+      },
+    }).then((result) => {
+      mbti_list["good"] = result.map((el) => el.good);
+    });
+    Mbtisoso.findAll({
+      where: {
+        mbti: user[2],
+      },
+    }).then((result) => {
+      mbti_list["soso"] = result.map((el) => el.soso);
+      console.log("mbti_list", mbti_list);
+    });
+    Userinfo.findAll({
+      where: {
+        id: !user[1],
+        gender: "남",
+      },
+    }).then((result) => {
+      user_list["img"] = result.map((el) => el.imgurl);
+      user_list["name"] = result.map((el) => el.name);
+      user_list["mbti"] = result.map((el) => el.mbti);
+      user_list["age"] = result.map((el) => {
+        var date = new Date();
+        var year = date.getFullYear();
+        var resultbirth = el.birth;
+        var userbirth = resultbirth.substr(0, 4);
+        var age = year - userbirth + 1;
+        return age;
+      });
+      user_list["job"] = result.map((el) => el.job);
+      user_list["interest"] = result.map((el) => el.interest);
+      user_list["specialty"] = result.map((el) => el.specialty);
+      user_list["userdesc"] = result.map((el) => el.userdesc);
+      console.log("user_list", user_list);
+
+      let randomArray = [];
+      while (randomArray.length < user_list.name.length) {
+        random = Math.floor(Math.random() * user_list.name.length);
+        if (randomArray.indexOf(random) === -1) {
+          randomArray.push(random);
+          console.log(randomArray);
+        }
+      }
+      res.render("matching", { user_list, mbti_list, randomArray });
+    });
+  } else if (user == undefined) {
+    console.log("3.undefined");
+    res.send(
+      `<script>
+        alert("잘못된 접근입니다. 로그인 후 이용해주세요.");
+        location.href="/signin";
+        </script>`
+    );
+  }
 };
