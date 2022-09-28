@@ -9,6 +9,7 @@ const port = 8000;
 
 app.set("view engine", "ejs");
 app.use("/static", express.static("static"));
+app.use("/uploads", express.static("uploads"));
 app.use("/axios", express.static("node_modules/axios"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
