@@ -46,5 +46,10 @@ router.get("/chatting", controllerChat.chat_main);
 
 router.get("/myPage", controllerMy.mypage);
 router.get("/editProfile", controllerMy.editProfile);
+router.post(
+  "/editProfile/editUpload",
+  upload.single("editFileAxios"),
+  controllerMy.editProfile_upload
+);
 
 module.exports = router;

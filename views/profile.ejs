@@ -33,7 +33,8 @@
       <div class="profile">
         <a class="logo" href="/"><img src="./../static/img/logo.png" /></a>
 
-        <form action="/upload" method="post" enctype="multipart/form-data">
+        <!-- <form action="/upload" method="post" enctype="multipart/form-data"> -->
+        <form enctype="multipart/form-data">
           <div class="readDiv">
             닉네임:
             <input
@@ -117,14 +118,14 @@
         formData.append("interest", form.interest.value);
         formData.append("specialty", form.specialty.value);
 
-        var inputData = {
-          job: form.job.value,
-          interest: form.interest.value,
-          specialty: form.specialty.value,
-          userdesc: form.userdesc.value,
-        };
+        // var inputData = {
+        //   job: form.job.value,
+        //   interest: form.interest.value,
+        //   specialty: form.specialty.value,
+        //   userdesc: form.userdesc.value,
+        // };
         console.log(formData);
-        console.log(inputData);
+        // console.log(inputData);
         axios({
           headers: {
             "Content-Type": "multipart/form-data",
