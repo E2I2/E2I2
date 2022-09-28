@@ -14,7 +14,7 @@ exports.editProfile = (req, res) => {
         name: req.session.user[0],
       },
     }).then((result) => {
-      var img = result.imgurl.substring(9);
+      var img = result.imgurl;
       var job = result.job;
       var interest = result.interest;
       var specialty = result.specialty;
@@ -38,23 +38,41 @@ exports.editProfile = (req, res) => {
 };
 
 exports.editProfile_upload = (req, res) => {
-  console.log("edit_profileInput", req.body);
-  console.log("edit_Filename:", req.file.filename);
-
-  Userinfo.update(
-    {
-      imgurl: "/uploads/" + req.file.filename,
-      job: req.body.job,
-      interest: req.body.interest,
-      specialty: req.body.specialty,
-      userdesc: req.body.userdesc,
-    },
-    {
-      where: {
-        id: req.session.user[1],
+  console.log("edit_profileInput", req.body.editFileAxios);
+  if (req.body.editFileAxios != "undefined") {
+    Userinfo.update(
+      {
+        imgurl: "/uploads/" + req.file.filename,
+        job: req.body.job,
+        interest: req.body.interest,
+        specialty: req.body.specialty,
+        userdesc: req.body.userdesc,
       },
-    }
-  ).then((result) => {
-    res.send("프로필수정완료");
-  });
+      {
+        where: {
+          id: req.session.user[1],
+        },
+      }
+    ).then((result) => {
+      console.log("1", result);
+      res.send("프로필수정완료");
+    });
+  } else {
+    Userinfo.update(
+      {
+        job: req.body.job,
+        interest: req.body.interest,
+        specialty: req.body.specialty,
+        userdesc: req.body.userdesc,
+      },
+      {
+        where: {
+          id: req.session.user[1],
+        },
+      }
+    ).then((result) => {
+      console.log("2", result);
+      res.send("프로필수정완료");
+    });
+  }
 };

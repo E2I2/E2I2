@@ -36,8 +36,20 @@
 
         <form enctype="multipart/form-data">
           <div class="profileDiv">
+            <div>
+              <img
+                src="<%=img%>"
+                id="editImg"
+                style="width: 100px; height: 100px"
+              />
+            </div>
             <label>프로필사진:</label>
-            <input type="file" name="editFile" id="editUploadImg" />
+            <input
+              type="file"
+              name="editFile"
+              id="editUploadImg"
+              onchange="test()"
+            />
           </div>
           <input
             class="borderStyle"
@@ -69,8 +81,8 @@
             placeholder="내 소개 (100자 이내)"
             maxlength="100"
           >
-<%=desc%>
-          </textarea>
+<%=desc%></textarea
+          >
 
           <button type="button" onclick="onEditProfile()" id="modiBtn">
             수정하기
@@ -79,6 +91,13 @@
       </div>
     </div>
     <script>
+      function test() {
+        const file = document.getElementById("editUploadImg");
+        const img = file.files[0];
+        const editImg = document.querySelector("#editImg");
+        editImg.src = URL.createObjectURL(img);
+      }
+
       function onEditProfile() {
         var form = document.querySelector("form");
         const formData = new FormData();
@@ -88,9 +107,6 @@
         formData.append("interest", form.interest.value);
         formData.append("specialty", form.specialty.value);
         formData.append("userdesc", form.userdesc.value);
-        if (file.value == "") {
-          alert("프로필사진은 필수로 등록해주세요.");
-        }
         axios({
           headers: {
             "Content-Type": "multipart/form-data",
