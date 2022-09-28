@@ -140,7 +140,7 @@ exports.profile = (req, res) => {
 exports.profile_upload = (req, res) => {
   Userinfo.update(
     {
-      imgurl: "./uploads/" + req.file.filename,
+      imgurl: "/uploads/" + req.file.filename,
       job: req.body.job,
       userdesc: req.body.userdesc,
       interest: req.body.interest,
