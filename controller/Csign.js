@@ -58,12 +58,10 @@ exports.signin_post = (req, res) => {
   }).then((result) => {
     if (result && req.body.sessions == "on") {
       req.session.user = [result.name, result.id];
-      console.log(req.session);
       res.send("로그인완료");
     } else if (result && req.body.sessions == undefined) {
       req.session.user = [result.name, result.id, result.mbti, result.gender];
       req.session.cookie.originalMaxAge = 2 * 60 * 60 * 1000;
-      console.log(req.session);
       res.send("로그인완료");
     } else if (!result) {
       res.send("ID와 PW를 확인하세요.");
@@ -83,7 +81,6 @@ exports.find_id = (req, res) => {
       nick: req.body.nick,
     },
   }).then((result) => {
-    console.log(result);
     if (result) {
       res.send({ msg: "아이디찾기성공", id: result.id });
     } else {
@@ -111,7 +108,6 @@ exports.find_pw = (req, res) => {
 
 exports.profile = (req, res) => {
   const user = req.session.user;
-  console.log(user);
   if (user != undefined) {
     Userinfo.findOne({
       where: {
@@ -142,9 +138,6 @@ exports.profile = (req, res) => {
 };
 
 exports.profile_upload = (req, res) => {
-  console.log(req.body);
-  console.log(req.file.filename);
-
   Userinfo.update(
     {
       imgurl: "./uploads/" + req.file.filename,
@@ -189,7 +182,6 @@ exports.matching = (req, res) => {
       },
     }).then((result) => {
       mbti_list["soso"] = result.map((el) => el.soso);
-      console.log("mbti_list", mbti_list);
     });
     Userinfo.findAll({
       where: {
@@ -212,7 +204,6 @@ exports.matching = (req, res) => {
       user_list["interest"] = result.map((el) => el.interest);
       user_list["specialty"] = result.map((el) => el.specialty);
       user_list["userdesc"] = result.map((el) => el.userdesc);
-      console.log("user_list", user_list);
 
       // 유저의 정보 수 만큼 랜덤 숫자가 담긴 배열을 생성
       let randomArray = [];
@@ -220,7 +211,6 @@ exports.matching = (req, res) => {
         random = Math.floor(Math.random() * user_list.name.length);
         if (randomArray.indexOf(random) === -1) {
           randomArray.push(random);
-          console.log(randomArray);
         }
       }
       res.render("matching", { user_list, mbti_list, randomArray });
@@ -246,7 +236,6 @@ exports.matching = (req, res) => {
       },
     }).then((result) => {
       mbti_list["soso"] = result.map((el) => el.soso);
-      console.log("mbti_list", mbti_list);
     });
     Userinfo.findAll({
       where: {
@@ -269,20 +258,17 @@ exports.matching = (req, res) => {
       user_list["interest"] = result.map((el) => el.interest);
       user_list["specialty"] = result.map((el) => el.specialty);
       user_list["userdesc"] = result.map((el) => el.userdesc);
-      console.log("user_list", user_list);
 
       let randomArray = [];
       while (randomArray.length < user_list.name.length) {
         random = Math.floor(Math.random() * user_list.name.length);
         if (randomArray.indexOf(random) === -1) {
           randomArray.push(random);
-          console.log(randomArray);
         }
       }
       res.render("matching", { user_list, mbti_list, randomArray });
     });
   } else if (user == undefined) {
-    console.log("3.undefined");
     res.send(
       `<script>
         alert("잘못된 접근입니다. 로그인 후 이용해주세요.");
