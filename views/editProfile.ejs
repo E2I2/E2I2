@@ -28,6 +28,75 @@
     ></script>
   </head>
   <body>
-    <div class="containerEditProfile"><%-include("mypageAside.ejs")%></div>
+    <%-include("mypageAside.ejs")%>
+    <div class="containerEditProfile">
+      <h2>나의 프로필 수정</h2>
+      <div class="edit_profile">
+        <a class="logo" href="/"><img src="./../static/img/logo.png" /></a>
+
+        <form enctype="multipart/form-data">
+          <div class="profileDiv">
+            <label>프로필사진:</label>
+            <input type="file" name="editFile" id="editUploadImg" />
+          </div>
+          <input
+            class="borderStyle"
+            type="text"
+            name="job"
+            placeholder="직업 (10자 이내)"
+            maxlength="10"
+          />
+          <input
+            class="borderStyle"
+            type="text"
+            name="interest"
+            placeholder="취미 (10자 이내)"
+            maxlength="10"
+          />
+          <input
+            class="borderStyle"
+            type="text"
+            name="specialty"
+            placeholder="특기 (10자 이내)"
+            maxlength="10"
+          />
+          <textarea
+            type="text"
+            name="userdesc"
+            placeholder="내 소개 (100자 이내)"
+            maxlength="100"
+          ></textarea>
+
+          <button type="button" onclick="onEditProfile()" id="modiBtn">
+            수정하기
+          </button>
+        </form>
+      </div>
+    </div>
+    <script>
+      function onEditProfile() {
+        var form = document.querySelector("form");
+
+        const formData = new FormData();
+        const file = document.getElementById("editUploadImg");
+        formData.append("editFileAxios", file.files[0]);
+        formData.append("job", form.job.value);
+        formData.append("interest", form.interest.value);
+        formData.append("specialty", form.specialty.value);
+        formData.append("userdesc", form.userdesc.value);
+
+        console.log(formData);
+        axios({
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          url: "/editProfile/editUpload",
+          method: "post",
+          data: formData,
+        }).then((response) => {
+          console.log(response.data);
+        });
+      }
+    </script>
   </body>
 </html>
