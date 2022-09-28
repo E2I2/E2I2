@@ -32,7 +32,7 @@ io.on("connection", function (socket) {
   // 최초 입장했을 때
   console.log("Server Socket Connected", socket.id);
 
-  socket.on("entry", (data) => {
+  socket.on("chatEntry", (data) => {
     socket.emit("chat", data)
   });
 

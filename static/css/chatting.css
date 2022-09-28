@@ -69,3 +69,9 @@ body {
   font-size: larger;
   height: auto;
 }
+.sendBtn{
+  margin-top: 40px;
+  margin-right: 10px;
+  font-size: larger;
+  width: auto;
+}

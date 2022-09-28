@@ -60,7 +60,10 @@
                 <div>MBTI 궁합</div>
                 <div class="rate">BEST!</div>
               </div>
-              <button type="button" onclick="" id="chatBtn">채팅하기</button>
+              <a href="/chatting">
+                <button type="button" onclick="" id="chatBtn">채팅하기</button>  
+              </a>
+              
             </div>
 
             <div class="profile">
@@ -142,7 +145,7 @@
           <div class="carousel-item">
             <div class="imgArea">
               <img src="../static/img/creator5.jpeg" class="" alt="..." />
-              <button type="button" onclick="" id="chatBtn">채팅하기</button>
+              <button type="button" onclick="chatEntry()" id="chatBtn">채팅하기</button>
             </div>
 
             <div class="profile">
@@ -201,5 +204,11 @@
         </button>
       </div>
     </div>
+    <script>
+      function chatEntry(){
+        window.location.replace("/chatting");      
+      }
+        
+    </script>
   </body>
 </html>
