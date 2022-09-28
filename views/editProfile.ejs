@@ -69,7 +69,7 @@
             placeholder="내 소개 (100자 이내)"
             maxlength="100"
           >
-          <%=desc%>
+<%=desc%>
           </textarea>
 
           <button type="button" onclick="onEditProfile()" id="modiBtn">
@@ -81,7 +81,6 @@
     <script>
       function onEditProfile() {
         var form = document.querySelector("form");
-
         const formData = new FormData();
         const file = document.getElementById("editUploadImg");
         formData.append("editFileAxios", file.files[0]);
@@ -89,8 +88,9 @@
         formData.append("interest", form.interest.value);
         formData.append("specialty", form.specialty.value);
         formData.append("userdesc", form.userdesc.value);
-
-        console.log(formData);
+        if (file.value == "") {
+          alert("프로필사진은 필수로 등록해주세요.");
+        }
         axios({
           headers: {
             "Content-Type": "multipart/form-data",

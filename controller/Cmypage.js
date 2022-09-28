@@ -14,9 +14,7 @@ exports.editProfile = (req, res) => {
         name: req.session.user[0],
       },
     }).then((result) => {
-      console.log(result.imgurl);
-      console.log(result.userdesc);
-      var img = result.imgurl;
+      var img = result.imgurl.substring(9);
       var job = result.job;
       var interest = result.interest;
       var specialty = result.specialty;
