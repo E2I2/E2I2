@@ -213,7 +213,17 @@ exports.matching = (req, res) => {
       user_list["specialty"] = result.map((el) => el.specialty);
       user_list["userdesc"] = result.map((el) => el.userdesc);
       console.log("user_list", user_list);
-      res.render("matching", { user_list, mbti_list });
+
+      // 유저의 정보 수 만큼 랜덤 숫자가 담긴 배열을 생성
+      let randomArray = [];
+      while (randomArray.length < user_list.name.length) {
+        random = Math.floor(Math.random() * user_list.name.length);
+        if (randomArray.indexOf(random) === -1) {
+          randomArray.push(random);
+          console.log(randomArray);
+        }
+      }
+      res.render("matching", { user_list, mbti_list, randomArray });
     });
   } else if (user != undefined && user[3] == "여") {
     Mbtibest.findAll({
@@ -260,7 +270,16 @@ exports.matching = (req, res) => {
       user_list["specialty"] = result.map((el) => el.specialty);
       user_list["userdesc"] = result.map((el) => el.userdesc);
       console.log("user_list", user_list);
-      res.render("matching", { user_list, mbti_list });
+
+      let randomArray = [];
+      while (randomArray.length < user_list.name.length) {
+        random = Math.floor(Math.random() * user_list.name.length);
+        if (randomArray.indexOf(random) === -1) {
+          randomArray.push(random);
+          console.log(randomArray);
+        }
+      }
+      res.render("matching", { user_list, mbti_list, randomArray });
     });
   } else if (user == undefined) {
     console.log("3.undefined");
