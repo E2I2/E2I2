@@ -109,6 +109,7 @@
         var form = document.querySelector("form");
         const formData = new FormData();
         const file = document.getElementById("editUploadImg");
+        console.log(file.value);
         formData.append("editFileAxios", file.files[0]);
         formData.append("job", form.job.value);
         formData.append("interest", form.interest.value);

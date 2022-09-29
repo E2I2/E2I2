@@ -72,7 +72,7 @@
 .edit_profile .profileDiv input {
   width: 60%;
 }
-#uploadImg[type="file"]::file-selector-button {
+#editUploadImg[type="file"]::file-selector-button {
   background-color: #89d8d3;
   background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
