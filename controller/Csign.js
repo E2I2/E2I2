@@ -57,7 +57,7 @@ exports.signin_post = (req, res) => {
     },
   }).then((result) => {
     if (result && req.body.sessions == "on") {
-      req.session.user = [result.name, result.id];
+      req.session.user = [result.name, result.id, result.mbti, result.gender];
       res.send("로그인완료");
     } else if (result && req.body.sessions == undefined) {
       req.session.user = [result.name, result.id, result.mbti, result.gender];
@@ -190,7 +190,7 @@ exports.matching = (req, res) => {
       },
     }).then((result) => {
       user_list["img"] = result.map((el) => el.imgurl);
-      user_list["name"] = result.map((el) => el.name);
+      user_list["nick"] = result.map((el) => el.nick);
       user_list["mbti"] = result.map((el) => el.mbti);
       user_list["age"] = result.map((el) => {
         var date = new Date();
@@ -207,8 +207,8 @@ exports.matching = (req, res) => {
 
       // 유저의 정보 수 만큼 랜덤 숫자가 담긴 배열을 생성
       let randomArray = [];
-      while (randomArray.length < user_list.name.length) {
-        random = Math.floor(Math.random() * user_list.name.length);
+      while (randomArray.length < user_list.nick.length) {
+        random = Math.floor(Math.random() * user_list.nick.length);
         if (randomArray.indexOf(random) === -1) {
           randomArray.push(random);
         }
@@ -244,7 +244,7 @@ exports.matching = (req, res) => {
       },
     }).then((result) => {
       user_list["img"] = result.map((el) => el.imgurl);
-      user_list["name"] = result.map((el) => el.name);
+      user_list["nick"] = result.map((el) => el.nick);
       user_list["mbti"] = result.map((el) => el.mbti);
       user_list["age"] = result.map((el) => {
         var date = new Date();
@@ -260,8 +260,8 @@ exports.matching = (req, res) => {
       user_list["userdesc"] = result.map((el) => el.userdesc);
 
       let randomArray = [];
-      while (randomArray.length < user_list.name.length) {
-        random = Math.floor(Math.random() * user_list.name.length);
+      while (randomArray.length < user_list.nick.length) {
+        random = Math.floor(Math.random() * user_list.nick.length);
         if (randomArray.indexOf(random) === -1) {
           randomArray.push(random);
         }

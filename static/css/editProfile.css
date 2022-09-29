@@ -65,6 +65,16 @@
 .edit_profile .profileDiv {
   width: 60%;
 }
+.edit_profile .profileDiv .imgDiv {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.edit_profile .profileDiv .imgDiv #editImg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
 .edit_profile .profileDiv label {
   font-size: 0.9rem;
   color: var(--main-color);

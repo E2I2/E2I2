@@ -53,17 +53,22 @@
         data-bs-touch="false"
       >
         <div class="carousel-inner">
-          <% for(let i=0; i<user_list.name.length; i++) { %>
+          <% for(let i=0; i<user_list.nick.length; i++) { %>
           <% random = randomArray[i]%>
           <div class="carousel-item <%=i%>">
             <div class="imgArea">
               <img src="<%=user_list.img[random]%>" alt="..." />
+
+              <div class="stamp">
+                <div>MBTI 궁합</div>
+                <div class="rate">BEST!</div>
+              </div>
               <button type="button" onclick="chatEntry()" id="chatBtn">채팅하기</button>
             </div>
 
             <div class="profile">
               <div class="title">
-                <span class="nick"><%=user_list.name[random]%></span> 
+                <span class="nick"><%=user_list.nick[random]%></span> 
                 님을 소개합니다😘
               </div>
               <div class="list">

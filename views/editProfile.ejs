@@ -36,26 +36,15 @@
 
         <form enctype="multipart/form-data">
           <div class="profileDiv">
-            <div
-              class="imgDiv"
-              style="
-                display: flex;
-                justify-content: center;
-                margin-bottom: 20px;
-              "
-            >
-              <img
-                src="<%=img%>"
-                id="editImg"
-                style="width: 100px; height: 100px; border-radius: 50px"
-              />
+            <div class="imgDiv">
+              <img src="<%=img%>" id="editImg" />
             </div>
             <label>프로필사진:</label>
             <input
               type="file"
               name="editFile"
               id="editUploadImg"
-              onchange="test()"
+              onchange="imgChange()"
             />
           </div>
           <input
@@ -98,7 +87,7 @@
       </div>
     </div>
     <script>
-      function test() {
+      function imgChange() {
         const file = document.getElementById("editUploadImg");
         const img = file.files[0];
         const editImg = document.querySelector("#editImg");
