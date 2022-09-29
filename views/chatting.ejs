@@ -7,8 +7,13 @@
     <script src="/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../static/css/chatting.css" />
     <script
-      src="https://code.jquery.com/jquery-3.6.1.min.js"
-      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
       crossorigin="anonymous"
     ></script>
     <!-- 이상 Jquery CDN -->
@@ -21,33 +26,25 @@
     <script>
       $(document).ready(
         function(){
-          var data = {
-          sendNick: `<%=sendNick%>`,
-        };
-        socket.emit("chatEntry", data);
+        socket.emit('room', `room${'<%=params%>'}`)
         socketEvent();
         console.log("entrySuccess");
+        socket.emit('debug',1)
       })
     </script>
   </head>
-  <body>
-    <!-- <button type="button" onclick="chat()">누구와의채팅</button> -->
-    
+  <body>   
     <div class="wrap">
       <div class="chatList" id="chatList">
         chatList<br>
         myNick : <input 
         id="sendNick"
-        value="<%=sendNick%>" 
+        value="<%=sendNick%>"
         type="text" 
         readonly
         style="text-align: center;"
         ><br>
-        <div class="room_list"><a href="/chatting/1">room1</a></div>
-        <!-- <div class="room_list"><a href="/chatting/2">room2</a></div>
-        <div class="room_list"><a href="/chatting/3">room3</a></div>
-        <div class="room_list"><a href="/chatting/4">room4</a></div> -->
-
+        <!-- <div class="room_list"><a href="/chatting/1">test</a></div> -->
         
       </div>
       <div class="chatBox" id="chatBox">
@@ -55,38 +52,33 @@
         <div class="sendBox">
           <input
             class="msgBox"
+            id="msgBox"
             placeholder="전송할 내용을 입력해주세요"
             value=""
           />
-          <button class="sendBtn" onclick="send()">전송</button>
+          <button class="sendBtn" id="sendBtn" onclick="send()">전송</button>
         </div>
       </div>
     </div>
     <script>
       var socket = io.connect();
-      var sendNick;
-      let params = (new URL(document.location)).searchParams;
-      console.log('params', '<%=params%>')
-      socket.emit('create', `room${'<%=params%>'}`);    
 
       console.log(socket);
 
-      // function chat() {
-      //   socket.on("chat", (data)=>{
-      //     console.log(data);
-      //     let chat_list = document.getElementById("chatList");
-      //     let div = document.createElement("div");
-      //     let div_chatroom = document.createElement("div");
+        socket.on("chat", (data)=>{
+          console.log(data);
+          let chat_list = document.getElementById("chatList");
+          let div = document.createElement("div");
+          let div_chatroom = document.createElement("div");
 
-      //     div.classList.add("chat_room");
-      //     div_chatroom.textContent += data.sendNick + " & "
-      //   })
-      // }
+          div.classList.add("chat_room");
+          div_chatroom.textContent += data.sendNick + " & " + data.recNick
+        })
 
       function send() {
         console.log($(".msgBox").val());
         var data = {
-          sendNick: `<%=sendNick%>`,
+          sendNick : `<%=sendNick%>`,
           msg: $(".msgBox").val(),
         };
         console.log(data.sendNick);
@@ -98,15 +90,28 @@
           let chat_box = document.getElementById("chatBox");
           let div = document.createElement("div");
           let div_chat = document.createElement("div");
-          if (data.sendNick) div.classList.add("my-chat");
-          else div.classList.add("other-chat");
-          console.log(sendNick);
-          // console.log(data);
+
+          if (data.sendNick == `<%=sendNick%>`) div.classList.add("my-chat");
+          else if (data.sendNick != `<%=sendNick%>`) div.classList.add("other-chat");
           div_chat.textContent += data.sendNick + " : " + data.msg;
           div.appendChild(div_chat);
           chat_box.appendChild(div);
         });
       } // 입장 공지
+      var sendMsg = document.getElementById("msgBox");
+
+      sendMsg.addEventListener("keyup", function (event) {
+        if(event.keyCode === 13 ){
+          event.preventDefault();
+          document.getElementById("sendBtn").click();
+          sendMsg.value = null;
+        }
+        // else if (event.keyCode === 13 && sendMsg.value == null){
+        //   alert("전송할 내용을 입력해주세요");
+        // } 
+      });
+
+
     </script>
   </body>
 </html>

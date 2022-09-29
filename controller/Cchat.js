@@ -7,15 +7,12 @@ exports.chat_main = (req, res) => {
       id: req.session.user[1],
     }
   }).then((result) => {
+    console.log(result);
     res.render("chatting", {
       sendNick: result.nick,
       params: req.params.id
     });
-    // res.render("chatting/:id", {
-    //   sendNick: result.nick,
-    //   params:req.params.id
-    // });
-    // console.log(sendNick);
+
     console.log(req.params.id)
     console.log(result.data);
   });

@@ -49,6 +49,10 @@ body {
 .my-chat div {
   background-color: yellow;
 }
+.other-chat {
+  text-align: left;
+  margin-bottom: 5px;
+}
 .other-chat div {
   background-color: white;
 }

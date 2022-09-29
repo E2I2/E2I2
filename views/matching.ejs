@@ -37,6 +37,15 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+    <!-- socket -->
+    <script
+      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+      integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+      crossorigin="anonymous"
+    ></script>
+    <!-- axios -->
+    <script src="/axios/dist/axios.min.js"></script>
+
   </head>
   <body>
     <div class="containerMat">
@@ -63,7 +72,7 @@
                 <div>MBTI 궁합</div>
                 <div class="rate">BEST!</div>
               </div>
-              <button type="button" onclick="chatEntry()" id="chatBtn">채팅하기</button>
+              <button type="button" onclick="chatEntry('<%=user_list.nick[random]%>')" id="chatBtn">채팅하기</button>
             </div>
 
             <div class="profile">
@@ -128,13 +137,28 @@
     </div>
 
     <script>
+      // var socket = io.connect();
+
       var lengthFirst = document.getElementsByClassName('carousel-item');
       // console.log(lengthFirst[0])
       $(lengthFirst[0]).addClass('active');
 
-      function chatEntry(){
-        window.location.replace("/chatting/1");
-        // socket.emit('create', 'room1');    
+      function chatEntry(nick){
+        console.log(nick);
+        var data = {
+          recNick : nick
+        }
+        axios({
+          url : "/chatting",
+          method: "post",
+          data : data
+        }).then((response)=>{
+          console.log(response.data);});
+        //   window.location.replace("/chatting");
+
+        // })`
+        window.location.replace("/chatting");
+
       }
     </script>
   </body>
