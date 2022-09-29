@@ -140,6 +140,19 @@
           balloon_Moving(); });
         });
       }
+
+
+      // stamp color
+      var classRate = document.getElementsByClassName('rate');
+      for(var i = 0; i <classRate.length; i ++){
+        if(classRate[i].innerText == "GOOD!"){
+          classRate[i].parentElement.style.backgroundColor = 'rgb(160 103 207)';
+        }else if(classRate[i].innerText == "BEST!!"){
+          classRate[i].parentElement.style.backgroundColor = 'hwb(328deg 27% 8% / 77%)';
+        }else if(classRate[i].innerText == "SOSO"){
+          classRate[i].parentElement.style.backgroundColor = '#ffc107bf';
+        }
+      }
     </script>
   </body>
 </html>
