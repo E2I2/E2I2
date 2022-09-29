@@ -33,6 +33,11 @@ io.on("connection", function (socket) {
   // 최초 입장했을 때
   console.log("Server Socket Connected", socket.id);
 
+  
+  socket.on('create', (data)=> {
+    console.log(data)
+    socket.join(data, console.log(socket.adapter.rooms));
+  })
   socket.on("chatEntry", (data) => {
     socket.emit("chat", data)
   });

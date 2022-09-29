@@ -9,11 +9,14 @@ exports.chat_main = (req, res) => {
   }).then((result) => {
     res.render("chatting", {
       sendNick: result.nick,
-      // roomId : result.Chat_poarticipant.room_id
+      params: req.params.id
     });
+    // res.render("chatting/:id", {
+    //   sendNick: result.nick,
+    //   params:req.params.id
+    // });
+    // console.log(sendNick);
+    console.log(req.params.id)
     console.log(result.data);
   });
 };
-
-
-  

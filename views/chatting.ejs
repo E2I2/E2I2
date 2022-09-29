@@ -18,20 +18,37 @@
       crossorigin="anonymous"
     ></script>
     <!-- 이상 소켓 cdn -->
+    <script>
+      $(document).ready(
+        function(){
+          var data = {
+          sendNick: `<%=sendNick%>`,
+        };
+        socket.emit("chatEntry", data);
+        socketEvent();
+        console.log("entrySuccess");
+      })
+    </script>
   </head>
   <body>
-    <button type="button" onclick="entry()">채팅모음</button>
-    <button type="button" onclick="chat()">누구와의채팅</button>
+    <!-- <button type="button" onclick="chat()">누구와의채팅</button> -->
+    
     <div class="wrap">
       <div class="chatList" id="chatList">
         chatList<br>
-        닉네임 : <input 
+        myNick : <input 
         id="sendNick"
         value="<%=sendNick%>" 
         type="text" 
         readonly
         style="text-align: center;"
         ><br>
+        <div class="room_list"><a href="/chatting/1">room1</a></div>
+        <div class="room_list"><a href="/chatting/2">room2</a></div>
+        <div class="room_list"><a href="/chatting/3">room3</a></div>
+        <div class="room_list"><a href="/chatting/4">room4</a></div>
+
+        
       </div>
       <div class="chatBox" id="chatBox">
         chatBox
@@ -48,29 +65,23 @@
     <script>
       var socket = io.connect();
       var sendNick;
+      let params = (new URL(document.location)).searchParams;
+      console.log('params', '<%=params%>')
+      socket.emit('create', `room${'<%=params%>'}`);    
+
       console.log(socket);
-      function entry(){
-        // $(".chatList").removeClass("d-none");
-        var data = {
-          sendNick: `<%=sendNick%>`,
-        };
-        socket.emit("chatEntry", data);
-        socketEvent();
-        console.log("entrySuccess");
-      }
 
-      function chat() {
-        socket.on("chat", (data)=>{
-          let chat_list = document.getElementById("chatList");
-          let div = document.createElement("div");
-          let div_chatroom = document.createElement("div");
+      // function chat() {
+      //   socket.on("chat", (data)=>{
+      //     console.log(data);
+      //     let chat_list = document.getElementById("chatList");
+      //     let div = document.createElement("div");
+      //     let div_chatroom = document.createElement("div");
 
-          div.classList.add("chat_room");
-          div_chatroom.textContent += data.sendNick + " & "
-        })
-
-
-      }
+      //     div.classList.add("chat_room");
+      //     div_chatroom.textContent += data.sendNick + " & "
+      //   })
+      // }
 
       function send() {
         console.log($(".msgBox").val());
@@ -83,14 +94,14 @@
       }
 
       function socketEvent() {
-        socket.on("newMessage", (sendData) => {
+        socket.on("newMessage", (data) => {
           let chat_box = document.getElementById("chatBox");
           let div = document.createElement("div");
           let div_chat = document.createElement("div");
           if (data.sendNick) div.classList.add("my-chat");
           else div.classList.add("other-chat");
           console.log(sendNick);
-          console.log(data);
+          // console.log(data);
           div_chat.textContent += data.sendNick + " : " + data.msg;
           div.appendChild(div_chat);
           chat_box.appendChild(div);

@@ -75,3 +75,9 @@ body {
   font-size: larger;
   width: auto;
 }
+.room_list{
+  width : 80%;
+  height: 15%;
+  border: 1px solid black;
+  font-size: larger;
+}
