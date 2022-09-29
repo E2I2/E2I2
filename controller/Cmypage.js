@@ -54,7 +54,6 @@ exports.editProfile_upload = (req, res) => {
         },
       }
     ).then((result) => {
-      console.log("1", result);
       res.send("프로필수정완료");
     });
   } else {
@@ -71,7 +70,6 @@ exports.editProfile_upload = (req, res) => {
         },
       }
     ).then((result) => {
-      console.log("2", result);
       res.send("프로필수정완료");
     });
   }
