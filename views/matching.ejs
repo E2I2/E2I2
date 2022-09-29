@@ -53,60 +53,9 @@
         data-bs-touch="false"
       >
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="imgArea">
-              <img src="<%=user_list.img[random]%>" class="" alt="..." />
-              <div class="stamp">
-                <div>MBTI 궁합</div>
-                <div class="rate">BEST!</div>
-              </div>
-              <!-- <a href="/chatting:id"> -->
-                <button type="button" onclick="chatEntry()" id="chatBtn">채팅하기</button>  
-              <!-- </a> -->
-              
-            </div>
-
-            <div class="profile">
-              <div class="title">
-                <span class="nick"><%=user_list.name[random]%></span> 님을 소개합니다
-                😘
-              </div>
-              <div class="list">
-                <ul>
-                  <li>
-                    <i class="fa-solid fa-user-tag"><span> mbti</span></i>
-                    <span><%=user_list.mbti[random]%></span>
-                  </li>
-                  <li>
-                    <i class="fa-brands fa-pagelines"><span> 나이</span></i>
-                    <span><%=user_list.age[random]%></span>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-briefcase"><span> 직업</span></i>
-                    <span><%=user_list.job[random]%></span>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-icons"><span> 취미</span></i>
-                    <span><%=user_list.interest[random]%></span>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-star"><span> 특기</span></i>
-                    <span><%=user_list.specialty[random]%></span>
-                  </li>
-                </ul>
-                <div class="introduce">
-                  <i class="fa-regular fa-rectangle-list"> 소개</i>
-                  <textarea readonly>
-                    <%=user_list.userdesc[random]%>
-                  </textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <% for(let i=0; i<user_list.name.length; i++) { %>
           <% random = randomArray[i]%>
-          <div class="carousel-item">
+          <div class="carousel-item <%=i%>">
             <div class="imgArea">
               <img src="<%=user_list.img[random]%>" alt="..." />
               <button type="button" onclick="chatEntry()" id="chatBtn">채팅하기</button>
@@ -114,8 +63,8 @@
 
             <div class="profile">
               <div class="title">
-                <span class="nick"><%=user_list.name[random]%></span> 님을 소개합니다
-                😘
+                <span class="nick"><%=user_list.name[random]%></span> 
+                님을 소개합니다😘
               </div>
               <div class="list">
                 <ul>
@@ -150,47 +99,6 @@
             </div>
           </div>
           <% } %>
-
-          <!-- <div class="carousel-item">
-            <div class="imgArea">
-              <img src="../static/img/creator5.jpeg" class="" alt="..." />
-              <button type="button" onclick="chatEntry()" id="chatBtn">채팅하기</button>
-            </div>
-
-            <div class="profile">
-              <div class="title">
-                <span class="nick">1</span> 님을 소개합니다 😘
-              </div>
-              <div class="list">
-                <ul>
-                  <li>
-                    <i class="fa-solid fa-user-tag"><span> mbti</span></i>
-                    <span>entp</span>
-                  </li>
-                  <li>
-                    <i class="fa-brands fa-pagelines"><span> 나이</span></i>
-                    <span>23</span>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-briefcase"><span> 직업</span></i>
-                    <span>가나다라마바사아자차</span>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-icons"><span> 취미</span></i>
-                    <span>가나다라마바사아자차</span>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-star"><span> 특기</span></i>
-                    <span>가나다라마바사아자차</span>
-                  </li>
-                </ul>
-                <div class="introduce">
-                  <i class="fa-regular fa-rectangle-list"> 소개</i>
-                  <textarea readonly></textarea>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
 
         <button
@@ -213,12 +121,11 @@
         </button>
       </div>
     </div>
+
     <script>
-      function chatEntry(){
-        window.location.replace("/chatting/1");
-        // socket.emit('create', 'room1');    
-      }
-        
+      var lengthFirst = document.getElementsByClassName('carousel-item');
+      // console.log(lengthFirst[0])
+      $(lengthFirst[0]).addClass('active');
     </script>
   </body>
 </html>

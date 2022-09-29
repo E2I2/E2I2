@@ -93,15 +93,16 @@
   border: 0;
   padding: 0.3rem;
 }
-/* #uploadImg {
-  display: none;
-} */
 textarea {
   width: 60%;
   height: 3rem;
   padding: 0.5rem;
   border: 1px solid var(--main-color);
   resize: none;
+  border-radius: 0.3rem;
+}
+textarea::placeholder {
+  color: var(--main-color);
 }
 button {
   display: block;

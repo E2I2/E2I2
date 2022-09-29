@@ -28,6 +28,105 @@
     ></script>
   </head>
   <body>
-    <div class="containerEditProfile"><%-include("mypageAside.ejs")%></div>
+    <%-include("mypageAside.ejs")%>
+    <div class="containerEditProfile">
+      <h2>나의 프로필 수정</h2>
+      <div class="edit_profile">
+        <a class="logo" href="/"><img src="./../static/img/logo.png" /></a>
+
+        <form enctype="multipart/form-data">
+          <div class="profileDiv">
+            <div
+              class="imgDiv"
+              style="
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+              "
+            >
+              <img
+                src="<%=img%>"
+                id="editImg"
+                style="width: 100px; height: 100px; border-radius: 50px"
+              />
+            </div>
+            <label>프로필사진:</label>
+            <input
+              type="file"
+              name="editFile"
+              id="editUploadImg"
+              onchange="test()"
+            />
+          </div>
+          <input
+            class="borderStyle"
+            type="text"
+            name="job"
+            placeholder="직업 (10자 이내)"
+            maxlength="10"
+            value="<%=job%>"
+          />
+          <input
+            class="borderStyle"
+            type="text"
+            name="interest"
+            placeholder="취미 (10자 이내)"
+            maxlength="10"
+            value="<%=interest%>"
+          />
+          <input
+            class="borderStyle"
+            type="text"
+            name="specialty"
+            placeholder="특기 (10자 이내)"
+            maxlength="10"
+            value="<%=specialty%>"
+          />
+          <textarea
+            type="text"
+            name="userdesc"
+            placeholder="내 소개 (100자 이내)"
+            maxlength="100"
+          >
+<%=desc%></textarea
+          >
+
+          <button type="button" onclick="onEditProfile()" id="modiBtn">
+            수정하기
+          </button>
+        </form>
+      </div>
+    </div>
+    <script>
+      function test() {
+        const file = document.getElementById("editUploadImg");
+        const img = file.files[0];
+        const editImg = document.querySelector("#editImg");
+        editImg.src = URL.createObjectURL(img);
+      }
+
+      function onEditProfile() {
+        var form = document.querySelector("form");
+        const formData = new FormData();
+        const file = document.getElementById("editUploadImg");
+        console.log(file.value);
+        formData.append("editFileAxios", file.files[0]);
+        formData.append("job", form.job.value);
+        formData.append("interest", form.interest.value);
+        formData.append("specialty", form.specialty.value);
+        formData.append("userdesc", form.userdesc.value);
+        axios({
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          url: "/editProfile/editUpload",
+          method: "post",
+          data: formData,
+        }).then((response) => {
+          alert(response.data);
+          window.location.replace("/myPage");
+        });
+      }
+    </script>
   </body>
 </html>
