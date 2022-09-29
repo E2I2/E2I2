@@ -126,6 +126,11 @@
       var lengthFirst = document.getElementsByClassName('carousel-item');
       // console.log(lengthFirst[0])
       $(lengthFirst[0]).addClass('active');
+
+      function chatEntry(){
+        window.location.replace("/chatting/1");
+        // socket.emit('create', 'room1');    
+      }
     </script>
   </body>
 </html>

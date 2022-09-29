@@ -80,4 +80,6 @@ body {
   height: 15%;
   border: 1px solid black;
   font-size: larger;
+  margin : 10% 0 0 10%;
+  text-align: center;
 }
