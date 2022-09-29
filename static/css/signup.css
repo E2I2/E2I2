@@ -17,13 +17,13 @@
 .containerSignup h2 {
   text-align: center;
   color: #fff;
-  padding-top: 1rem;
+  padding-top: 0.1rem;
 }
 .signup {
   width: 50vw;
   max-width: 470px;
   min-width: 350px;
-  height: 85vh;
+  height: 90vh;
   background-color: rgba(255, 255, 255);
   position: absolute;
   left: 50%;
@@ -36,11 +36,11 @@
 }
 .signup .logo {
   display: block;
-  margin: 1rem auto 0;
+  margin: 0.5rem auto 0;
   text-align: center;
 }
 .signup .logo img {
-  width: 3rem;
+  width: 2.8rem;
   height: auto;
 }
 .signup form {
@@ -48,7 +48,7 @@
   flex-direction: column;
   align-items: center;
   height: 85%;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .signup form a {
   font-size: 0.8rem;
@@ -56,12 +56,21 @@
 .signup form a:hover {
   color: var(--sub-color);
 }
+.signup form .inputList {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.signup form .inputList input {
+  width: 100%;
+}
 .signup form input {
   background-color: transparent;
   border: 1px solid var(--main-color);
   width: 60%;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  box-sizing: border-box;
 }
 .signup form input::placeholder {
   color: var(--main-color);
@@ -94,6 +103,22 @@
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   border-radius: 0.3rem;
+}
+/* 유효성검사 */
+.signup form div {
+  width: 100%;
+}
+.signup form div span {
+  font-size: 0.5rem;
+  height: 1rem;
+  color: red;
+  text-indent: 0.5rem;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* mobile */

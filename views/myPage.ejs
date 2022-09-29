@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 계정</title>
+    <!-- axios -->
+    <script src="/axios/dist/axios.min.js"></script>
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+      crossorigin="anonymous"
+    ></script>
+    <!-- style -->
+    <link rel="stylesheet" href="./../static/css/style.css" />
+    <link rel="stylesheet" href="./../static/css/profile.css" />
+    <link rel="stylesheet" href="./../static/css/myPage.css" />
+    <!-- icon -->
+    <script
+      src="https://kit.fontawesome.com/c44f54db1d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div><%-include("mypageAside.ejs")%></div>
+    <div class="containerProfile">
+      <h2>나의 계정 수정</h2>
+      <div class="Myprofile">
+        <a class="logo" href="/"><img src="./../static/img/logo.png" /></a>
+
+        <form method="post">
+          <div class="readDiv">
+            <!-- 닉네임: -->
+            <input
+              class="borderStyle"
+              type="text"
+              name="nick"
+              placeholder="닉네임 (한글 2~8자리)"
+              class="readOnly"
+              maxlength="10"
+            />
+          </div>
+          <div class="readDiv">
+            <!-- 이메일: -->
+            <input
+              class="borderStyle"
+              type="text"
+              name="email"
+              class="readOnly"
+              placeholder="이메일"
+            />
+          </div>
+          <div class="readDiv">
+            <!-- 비밀번호: -->
+            <input
+              class="borderStyle"
+              type="text"
+              name="pw"
+              class="readOnly"
+              placeholder="비밀번호(소문자 영문+숫자)"
+            />
+          </div>
+          <button type="button" class="button-update" onclick="update()">
+            수정
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function update() {
+        const form = document.querySelector('form')
+        var data = {
+          nick: form.nick.value,
+          email: form.email.value,
+          pw: form.pw.value,
+        }
+        console.log(data)
+        axios({
+          url: '/myPage',
+          method: 'post',
+          data: data,
+        }).then((response) => {
+          console.log(response.data)
+        })
+      }
+    </script>
+  </body>
+</html>
