@@ -99,6 +99,24 @@ ul li a:hover{
   letter-spacing: -0.045em;
   color: #694dd6;
 }
+/*영상 집어넣기*/
+.jb-box{
+  width: 100%;
+  /* height: 800px; */
+  overflow: hidden;
+  margin: 0px auto;
+  position: relative;
+  min-width: 100%;
+  min-height: auto;
+  background-size: cover;
+  padding-bottom: 0px;
+  background-color: #ccc;
+}
+video{
+  width: 100%;
+  object-fit: contain;
+}
+
 /* .content-right{
   width: 500px;
   background-color: #ccc;
@@ -134,7 +152,7 @@ ul li a:hover{
     right: 377px;
     animation: down-up 1.4s infinite ease-in-out alternate;
 }
-.button-main{
+.button-main, .button-matching{
     padding: 1em 2em;
     cursor: pointer;
     background-color: #89d8d3;
@@ -219,7 +237,7 @@ ul li a:hover{
     margin-bottom: 15px;
 }
 .search-img{
-  width: 120px;
+  width: 160px;
   height: 158px;
   /* border-radius: 50%;
   background: url(./../img/faithful.png); */
@@ -227,7 +245,7 @@ ul li a:hover{
 .search-img img{
   width: 100%;
   padding: 16px;
-  border: 2px solid #694dd6;
+  /* border: 2px solid #694dd6; */
   border-radius: 50%;
 }
 #content4{
@@ -256,7 +274,7 @@ ul li a:hover{
   }
   .post-slider .next{
     position:absolute;
-    top:50%;
+    top:60%;
     right:30px;
     font-size:2em;
     color:#694dd6;
@@ -264,7 +282,7 @@ ul li a:hover{
   }
   .post-slider .prev{
     position:absolute;
-    top:50%;
+    top:60%;
     left:30px;
     font-size:2em;
     color:#694dd6;
@@ -316,6 +334,8 @@ ul li a:hover{
   .post-desc{
     text-align: center;
     margin: 30px 0;
+    max-height: 43.2px;
+    text-overflow: ellipsis;
   }
   .post-item{
     padding-top: 40px;
@@ -537,6 +557,9 @@ height: 90px;
   visibility: visible;
   transform: scale(1.0);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.close-modal{
+  display: none;
 }
 .modal-title{
   padding-bottom: 58px;

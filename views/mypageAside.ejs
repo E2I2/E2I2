@@ -94,7 +94,7 @@
       <a class="logo" href="/"><img src="../static/img/logo.png" /></a>
       <div class="menuList">
         <ul>
-          <li><a href="#">나의 계정</a></li>
+          <li><a href="/myPage">나의 계정</a></li>
           <li><a href="/editProfile">나의 프로필</a></li>
           <li><a href="#">채팅 리스트</a></li>
           <li><a href="#">로그아웃</a></li>
@@ -104,29 +104,29 @@
 
     <script>
       function onAuto() {
-        var button = $("#autoBtn i");
-        var close = $("#autoBtn i").hasClass("fa-bars");
-        var open = $("#autoBtn i").hasClass("fa-chevron-right");
+        var button = $('#autoBtn i')
+        var close = $('#autoBtn i').hasClass('fa-bars')
+        var open = $('#autoBtn i').hasClass('fa-chevron-right')
 
         if (open) {
-          console.log("open");
-          button.addClass("fa-bars");
-          button.removeClass("fa-chevron-right");
-          $("aside").animate(
+          console.log('open')
+          button.addClass('fa-bars')
+          button.removeClass('fa-chevron-right')
+          $('aside').animate(
             {
-              right: "-280px",
+              right: '-280px',
             },
             1000
-          );
+          )
         } else {
-          button.addClass("fa-chevron-right");
-          button.removeClass("fa-bars");
-          $("aside").animate(
+          button.addClass('fa-chevron-right')
+          button.removeClass('fa-bars')
+          $('aside').animate(
             {
-              right: "0",
+              right: '0',
             },
             1000
-          );
+          )
         }
       }
     </script>
