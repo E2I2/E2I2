@@ -277,8 +277,19 @@ exports.matching = (req, res) => {
         if (randomArray.indexOf(random) === -1) {
           randomArray.push(random);
         }
+      } // 생성된 배열을 이용해 mbti 궁합 배열을 생성
+      let mbtiArray = [];
+      for (let i = 0; i < randomArray.length; i++) {
+        let mbtiUpper = user_list.mbti[i].toUpperCase();
+        if (mbti_list.best.indexOf(mbtiUpper) != -1) {
+          mbtiArray.push("BEST!!");
+        } else if (mbti_list.good.indexOf(mbtiUpper) != -1) {
+          mbtiArray.push("GOOD!");
+        } else if (mbti_list.soso.indexOf(mbtiUpper) != -1) {
+          mbtiArray.push("SOSO");
+        }
       }
-      res.render("matching", { user_list, mbti_list, randomArray });
+      res.render("matching", { user_list, mbti_list, randomArray, mbtiArray });
     });
   } else if (user == undefined) {
     res.send(
