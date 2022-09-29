@@ -52,12 +52,14 @@
       <%if ( !isLogin ) { %>
         <div class="trigger">
           <a href="#" class="button-main">
-            <button type="button">가입하기</button>
+            <button type="button" id="modal-button">가입하기</button>
           </a>
         </div>
-      <% } else { %>
-        <a href="/matching" class="button-main">
-          <button type="button">매칭하기</button>
+
+        <% } else { %>
+        <a href="/matching" class="button-matching">
+          <button type="button" class="stop-modal">매칭하기</button>
+
         </a>  
       <% } %>
      </div>
@@ -97,7 +99,7 @@
           <div class="content2-content-group" data-aos="fade-left"  data-aos-offset="300"
           data-aos-easing="ease-in-sine">
             <div class="box-img">
-              <!-- <img src="./../static/img/search.png" alt=""> -->
+            <img src="./../static/img/love-mattching.png" alt="">
             </div>
           </div>
         </div>
@@ -110,8 +112,7 @@
           data-aos-easing="ease-in-sine">
             <span class="title-simple">MBTingI</span>
             <h1 class="content3-title">
-              좋은사람들과<br />
-              엠비팅아이에서<br />
+              좋은사람들과<br /이에서<br />
               매칭해보세요!
             </h1>
             <p class="content3-desc">
@@ -330,7 +331,7 @@
             회원가입을 안하셨다면 회원가입을 해주시고, 
             아래 사항에 따라 클릭해주세요.
           </p>
-         <a href="/signin"><span class="YES"><button class="yes-button">네 (로그인 페이지로 이동)</button></span></a>
+         <a href="/signup"><span class="YES"><button class="yes-button">네 (회원가입 페이지로 이동)</button></span></a>
         <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC"><span class="NO"><button class="no-button">아니요 (mbti 테스트로 이동)</button></span></a>
       </div>
       </div>
@@ -385,18 +386,27 @@
       const modal = document.querySelector(".modal");
       const trigger = document.querySelector(".trigger");
       const closeButton = document.querySelector(".close-button");
+      const stopModal = document.querySelector(".stopModal");
 
       function toggleModal(){
         modal.classList.toggle("show-modal");
       }
+      
+      $(".stopModal").click(function(event){
+        event.stopPropagation();
+        alert("test");
+      })
+
       function windowOnClick(event){
         if(event.target === modal ){
           toggleModal();
         }
       }
-
-      trigger.addEventListener("click", toggleModal)
-      closeButton.addEventListener("click", toggleModal);
+      
+      if( trigger ) {
+        trigger.addEventListener("click", toggleModal);
+        closeButton.addEventListener("click", toggleModal);
+      } 
       window.addEventListener("click", windowOnClick);
     </script>
   </body>

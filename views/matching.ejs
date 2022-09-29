@@ -52,8 +52,8 @@
       <div class="header">
         <a href="/" class="logo"><img src="../static/img/logo_w.png" /></a>
         <div class="mypage">
-          <a href="#"><img src="../static/img/creator4.jpeg" /></a>
-          <i class="fa-solid fa-bell"></i>
+          <a href="/myPage"><img src="../static/img/creator4.jpeg" /></a>
+          <i class="fa-solid fa-envelope"></i>
         </div>
       </div>
       <div
@@ -70,7 +70,7 @@
 
               <div class="stamp">
                 <div>MBTI 궁합</div>
-                <div class="rate">BEST!</div>
+                <div class="rate"><%=mbtiArray[random]%></div>
               </div>
               <button type="button" onclick="chatEntry('<%=user_list.nick[random]%>')" id="chatBtn">채팅하기</button>
             </div>
@@ -78,15 +78,15 @@
             <div class="profile">
               <div class="title">
                 <span class="nick"><%=user_list.nick[random]%></span> 
-                님을 소개합니다😘
+                님을 소개합니다 <i class="fa-brands fa-gratipay"></i>
               </div>
               <div class="list">
                 <ul>
-                  <li>
+                  <li class="space">
                     <i class="fa-solid fa-user-tag"><span> mbti</span></i>
                     <span><%=user_list.mbti[random]%></span>
                   </li>
-                  <li>
+                  <li class="space">
                     <i class="fa-brands fa-pagelines"><span> 나이</span></i>
                     <span><%=user_list.age[random]%></span>
                   </li>
@@ -137,28 +137,31 @@
     </div>
 
     <script>
-      // var socket = io.connect();
-
+      // carousel active
       var lengthFirst = document.getElementsByClassName('carousel-item');
-      // console.log(lengthFirst[0])
       $(lengthFirst[0]).addClass('active');
 
-      function chatEntry(nick){
-        console.log(nick);
-        var data = {
-          recNick : nick
+      // message animate
+      balloon_Moving();
+      function balloon_Moving(){
+        $('.mypage i').animate({ marginTop: "0.3rem" }, 1200, "", function () {
+          $(this).animate({ marginTop: "0px" }, 1200, "", function () { 
+          //자기 호출
+          balloon_Moving(); });
+        });
+      }
+
+
+      // stamp color
+      var classRate = document.getElementsByClassName('rate');
+      for(var i = 0; i <classRate.length; i ++){
+        if(classRate[i].innerText == "GOOD!"){
+          classRate[i].parentElement.style.backgroundColor = 'rgb(160 103 207)';
+        }else if(classRate[i].innerText == "BEST!!"){
+          classRate[i].parentElement.style.backgroundColor = 'hwb(328deg 27% 8% / 77%)';
+        }else if(classRate[i].innerText == "SOSO"){
+          classRate[i].parentElement.style.backgroundColor = '#ffc107bf';
         }
-        axios({
-          url : "/chatting",
-          method: "post",
-          data : data
-        }).then((response)=>{
-          console.log(response.data);});
-        //   window.location.replace("/chatting");
-
-        // })`
-        window.location.replace("/chatting");
-
       }
     </script>
   </body>
