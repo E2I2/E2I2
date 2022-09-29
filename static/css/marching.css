@@ -152,6 +152,8 @@
   color: #000;
   font-size: 0.9rem;
   width: 4.5rem;
+  margin-top: auto;
+  padding-bottom: 0.5rem;
 }
 .containerMat .profile .introduce {
   display: flex;
