@@ -144,55 +144,6 @@
       //   // }
       // }
 
-      function onAuto() {
-
-        var button = $('#autoBtn i')
-        var close = $('#autoBtn i').hasClass('fa-bars')
-        var open = $('#autoBtn i').hasClass('fa-chevron-right')
-
-        if (open) {
-          console.log('open')
-          button.addClass('fa-bars')
-          button.removeClass('fa-chevron-right')
-          $('aside').animate(
-
-        var width = document.documentElement.clientWidth;
-        console.log(width);
-
-        var button = $("#autoBtn i");
-        var close = $("#autoBtn i").hasClass("fa-bars");
-        var open = $("#autoBtn i").hasClass("fa-chevron-right");
-
-        if (open) {
-          button.addClass("fa-bars");
-          button.removeClass("fa-chevron-right");
-          $("aside").animate(
-
-            {
-              right: '-280px',
-            },
-            1000
-          )
-        } else {
-
-          button.addClass('fa-chevron-right')
-          button.removeClass('fa-bars')
-          $('aside').animate(
-
-          // console.log("else", open);
-
-          button.addClass("fa-chevron-right");
-          button.removeClass("fa-bars");
-          $("aside").animate(
-
-            {
-              right: '0',
-            },
-            1000
-          )
-        }
-      }
-
       // on mobile size aside hide
       // window.addEventListener(
       //   "resize",
