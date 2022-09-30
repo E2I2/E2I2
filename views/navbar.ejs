@@ -139,11 +139,9 @@
       function loginImg() {
         var userAlram = document.querySelector(".user-alram");
         var url = "<%=img%>";
-        console.log(url);
-        if (isLogin) {
-          userAlram.style.background = `url(${url})`;
-        }
+        userAlram.style.background = `url(${url})`;
       }
+      loginImg();
     </script>
   </body>
 </html>

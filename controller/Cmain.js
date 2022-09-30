@@ -3,7 +3,7 @@ exports.main = (req, res) => {
   if (user != undefined) {
     res.render("index", { isLogin: true, user: user[0], img: user[4] });
   } else {
-    res.render("index", { isLogin: false });
+    res.render("index", { isLogin: false, img: "" });
   }
 };
 
