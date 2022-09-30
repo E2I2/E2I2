@@ -1,3 +1,5 @@
+const { Userinfo, Sequelize } = require("../model/main");
+
 exports.main = (req, res) => {
   const user = req.session.user;
   if (user != undefined) {
@@ -5,6 +7,12 @@ exports.main = (req, res) => {
   } else {
     res.render("index", { isLogin: false, user: "", img: "" });
   }
+};
+
+exports.mainImg = (req, res) => {
+  Userinfo.findAll().then((result) => {
+    console.log(result);
+  });
 };
 
 exports.logout = (req, res) => {

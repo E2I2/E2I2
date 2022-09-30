@@ -43,6 +43,7 @@
               name="mbti"
               placeholder="나의 MBTI 변경"
               maxlength="4"
+              value="<%=mbti%>"
             />
             <span></span>
           </div>
@@ -65,6 +66,7 @@
               pattern="\d*"
               maxlength="8"
               placeholder="생년월일 변경 *예) 20221010"
+              value="<%=birth%>"
             />
             <span></span>
           </div>
@@ -178,8 +180,6 @@
           pw: form.pw.value,
           pwConfirm: form.pwConfirm.value,
         };
-        console.log(data);
-
         axios({
           url: "/myPage/editUpload",
           method: "post",
