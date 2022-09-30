@@ -126,15 +126,47 @@
         <span class="user-names"> 환영합니다.</span>
         <a href="logout" class="logout">로그아웃</a>
         <a href="/myPage"><span class="user-alram"></span></a>
-        <span class="new-alram">N</span>
+        <!-- <span class="new-alram">N</span> -->
         <% } %>
       </ul>
+      <div class="popup-menu">
+        <div class="bg"></div>
+        <div class="top-menu">
+          <ul class="popup-sub-menu">
+            <li><a href="javascript:void(0)">로그인</a></li>
+            <li><a href="javascript:void(0)">회원가입</a></li>
+          </ul>
+          <ul class="popup-main-menu">
+            <li><a href="javascript:void(0)">About</a></li>
+            <li><a href="javascript:void(0)">About</a></li>
+            <li><a href="javascript:void(0)">About</a></li>
+            <li><a href="javascript:void(0)">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="navbar__button">
+        <input id="toggle-button" type="checkbox" />
+        <label class="line" for="toggle-button">
+          <div class="top"></div>
+          <div class="middle"></div>
+          <div class="bottom"></div>
+        </label>
+      </div>
     </header>
     <script type="text/javascript">
       window.addEventListener("scroll", function () {
         const header = document.querySelector("header");
         header.classList.toggle("sticky", window.scrollY > 0);
       });
+
+      function loginImg() {
+        var userAlram = document.querySelector(".user-alram");
+        var url = "<%=img%>";
+        console.log(url);
+        if (isLogin) {
+          userAlram.style.background = `url(${url})`;
+        }
+      }
     </script>
   </body>
 </html>
