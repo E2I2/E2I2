@@ -112,7 +112,7 @@
           data-aos-easing="ease-in-sine">
             <span class="title-simple">MBTingI</span>
             <h1 class="content3-title">
-              좋은사람들과<br /이에서<br />
+              좋은사람들과<br />
               매칭해보세요!
             </h1>
             <p class="content3-desc">
@@ -149,7 +149,7 @@
               <div class="post">
              <div class="post-item">
               <div class="post-img">
-                <!-- <img src="./../static/img/logo.png" alt=""> -->
+                <img src="<%=userinfo[0].imgurl%>" alt="">
                </div>
                 <div class="post-info">
                   <h4 class="post-desc">
@@ -158,7 +158,7 @@
                     </a>
                   </h4>
                   <p class="post-mbti-detail">
-                    ENTP / 여
+                    <%=userinfo[0].mbti%> / <%=userinfo[0].gender%>
                   </p>
                   <div class="ratings">
                     <span class="rating">
@@ -183,7 +183,7 @@
               <div class="post">
                 <div class="post-item">
                   <div class="post-img">
-                    <!-- <img src="./../static/img/logo.png" alt=""> -->
+                    <img src="<%=userinfo[1].imgurl%>" alt="">
                    </div>
                     <div class="post-info">
                       <h4 class="post-desc">
@@ -192,7 +192,7 @@
                         </a>
                       </h4>
                       <p class="post-mbti-detail">
-                        INFJ / 여
+                        <%=userinfo[1].mbti%> / <%=userinfo[1].gender%>
                       </p>
                       <div class="ratings">
                         <span class="rating">
@@ -208,7 +208,7 @@
               <div class="post">
                 <div class="post-item">
                   <div class="post-img">
-                    <!-- <img src="./../static/img/logo.png" alt=""> -->
+                    <img src="<%=userinfo[2].imgurl%>" alt="">
                    </div>
                     <div class="post-info">
                       <h4 class="post-desc">
@@ -217,7 +217,7 @@
                         </a>
                       </h4>
                       <p class="post-mbti-detail">
-                        INFP / 남
+                        <%=userinfo[2].mbti%> / <%=userinfo[2].gender%>
                       </p>
                        <div class="ratings">
                     <span class="rating">
@@ -239,7 +239,7 @@
               <div class="post">
                 <div class="post-item">
                   <div class="post-img">
-                    <!-- <img src="./../static/img/logo.png" alt=""> -->
+                    <img src="<%=userinfo[3].imgurl%>" alt="">
                    </div>
                     <div class="post-info">
                       <h4 class="post-desc">
@@ -249,7 +249,7 @@
                         </a>
                       </h4>
                       <p class="post-mbti-detail">
-                        INTJ / 남
+                        <%=userinfo[3].mbti%> / <%=userinfo[3].gender%>
                       </p>
                        <div class="ratings">
                     <span class="rating">
@@ -274,7 +274,7 @@
               <div class="post">
                 <div class="post-item">
                   <div class="post-img">
-                    <!-- <img src="./../static/img/logo.png" alt=""> -->
+                    <img src="<%=userinfo[4].imgurl%>" alt="">
                    </div>
                     <div class="post-info">
                       <h4 class="post-desc">
@@ -283,7 +283,7 @@
                         </a>
                       </h4>
                       <p class="post-mbti-detail">
-                        ENTP / 남
+                        <%=userinfo[4].mbti%> / <%=userinfo[4].gender%>
                       </p>
                        <div class="ratings">
                     <span class="rating">
@@ -408,15 +408,6 @@
         closeButton.addEventListener("click", toggleModal);
       } 
       window.addEventListener("click", windowOnClick);
-
-      function review() {
-        axios({
-          url: "/mainImg",
-          method: "post",
-        }).then((response) => {
-          console.log(response)
-        });
-      }
     </script>
   </body>
   <script></script>
