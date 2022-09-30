@@ -66,24 +66,33 @@
 
       console.log(socket);
 
-        socket.on("chat", (data)=>{
-          console.log(data);
-          let chat_list = document.getElementById("chatList");
-          let div = document.createElement("div");
-          let div_chatroom = document.createElement("div");
-
-          div.classList.add("chat_room");
-          div_chatroom.textContent += data.sendNick + " & " + data.recNick
-        })
-
-
       function send() {
+        console.log(sessionStorage.getItem('id'))
         console.log($(".msgBox").val());
+        var today = new Date();
+        var theDate = today.toLocaleDateString();
+        var hours = today.getHours();
+        var minutes = today.getMinutes();
+        var time = theDate + hours + ':' + minutes;
+
         var data = {
+          roomid :  'room<%=room_id%>',
           sendNick : `<%=me%>`,
           msg: $(".msgBox").val(),
+          sendTime: time
         };
-        console.log(data.sendNick);
+        console.log("<%=room_id%>");
+        axios({
+          url: "/chatting/DBMessage",
+          method: "post",
+          data: {
+            room_id : "<%=room_id%>",
+            other_id: "<%=rec%>",
+            content:`[ ${data.sendNick} ], [ ${data.msg} ], [ ${data.sendTime} ]//`
+          }
+        }).then((result)=>{
+          console.log(result)
+        })
         socket.emit("send", data);
       }
 
@@ -100,6 +109,7 @@
           chat_box.appendChild(div);
         });
       } // 입장 공지
+
       var sendMsg = document.getElementById("msgBox");
 
       sendMsg.addEventListener("keyup", function (event) {
@@ -108,11 +118,7 @@
           document.getElementById("sendBtn").click();
           sendMsg.value = null;
         }
-        // else if (event.keyCode === 13 && sendMsg.value == null){
-        //   alert("전송할 내용을 입력해주세요");
-        // } 
       });
-
 
     </script>
   </body>

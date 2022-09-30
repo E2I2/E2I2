@@ -12,27 +12,56 @@ exports.chat_main = async (req, res) => {
     console.log(newRoom);
     await Chat_participant.create({room_id: newRoom.room_id, user_id: req.session.user[1]})
     await Chat_participant.create({room_id: newRoom.room_id, user_id: req.params.id})
+
     data.room_id = newRoom.room_id;
   } else { 
+    console.log(room[0].room_id);
     data.room_id = room[0].room_id;
   }
-
   var me = await Userinfo.findOne({
     where: {
       id: req.session.user[1],
     }
   })
-
   data.me = await me.nick;
-
   var rec = Userinfo.findOne({
     where: {
       id: req.params.id,
     }
   })
-
   data.rec = rec.nick;
 
   res.render("chatting", data);
 
 };
+
+exports.saveDB = (req, res)=>{
+  console.log(req.body)
+  Chat_room.update({
+    
+    content : Sequelize.fn('CONCAT', Sequelize.col("chat_room.content"), req.body.content)
+  },{
+    where : {
+      room_id: req.body.room_id
+    }
+  }
+  ).then(result=> {
+    console.log(result)
+    res.send("true")
+  })
+}
+//DB > chatting : 'content'
+
+exports.getDB = (req, res)=>{
+  var getDB = Chat_room.findOne({
+    where : {
+      room_id: req.body.room_id
+    }
+  })
+  data.getDB = getDB.content
+
+  .then((result)=>{
+    console.log(result);
+    res.render("chatting",data.getDB);
+  })
+}

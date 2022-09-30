@@ -43,11 +43,11 @@ router.post(
   upload.single("userFileAxios"),
   controllerSign.profile_upload
 )
-router.get('/matching', controllerSign.matching)
-// router.get('/chatting/:id', controllerChat.chat_main)
-router.get('/chatting/:id', controllerChat.chat_main)
-router.post("/chatting",controllerSign.matching_entry)
-
+router.get('/matching', controllerSign.matching);
+router.get('/chatting/:id', controllerChat.chat_main);
+router.post("/chatting", controllerSign.matching_entry);
+router.post("/chatting/DBMessage", controllerChat.saveDB);
+router.post("/chatting/DBcontent", controllerChat.getDB);
 router.get("/myPage", controllerMy.mypage);
 router.post("/myPage/editUpload", controllerMy.mypage_upload);
 router.get("/editProfile", controllerMy.editProfile);

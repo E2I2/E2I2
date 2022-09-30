@@ -43,12 +43,17 @@ io.on("connection", function (socket) {
     socket.join(data);
   });
 
+
+
   socket.on("send", (data) => {
     const sendData = {
       sendNick: data.sendNick,
       msg: data.msg,
+      sendTime : data.time
+
     };
-    io.emit("newMessage", sendData);
+    io.to(data.roomid).emit("newMessage", sendData);
+    // io.to(data.roomid).emit("DBMessage", sendData);
   });
 });
 
