@@ -45,6 +45,7 @@
               placeholder="닉네임 (한글 2~8자리)"
               class="readOnly"
               maxlength="10"
+              value="<%=nick%>"
             />
           </div>
           <div class="readDiv">
@@ -55,6 +56,7 @@
               name="email"
               class="readOnly"
               placeholder="이메일"
+              value="<%=email%>"
             />
           </div>
           <div class="readDiv">
@@ -65,6 +67,7 @@
               name="pw"
               class="readOnly"
               placeholder="비밀번호(소문자 영문+숫자)"
+              value="<%=pw%>"
             />
           </div>
           <button type="button" class="button-update" onclick="update()">
@@ -76,20 +79,21 @@
 
     <script>
       function update() {
-        const form = document.querySelector('form')
+        const form = document.querySelector("form");
         var data = {
           nick: form.nick.value,
           email: form.email.value,
           pw: form.pw.value,
-        }
-        console.log(data)
+        };
+        console.log(data);
         axios({
-          url: '/myPage',
-          method: 'post',
+          url: "/myPage/editUpload",
+          method: "post",
           data: data,
         }).then((response) => {
-          console.log(response.data)
-        })
+          alert(response.data);
+          window.location.replace("/myPage");
+        });
       }
     </script>
   </body>

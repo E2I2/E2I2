@@ -57,10 +57,22 @@ exports.signin_post = (req, res) => {
     },
   }).then((result) => {
     if (result && req.body.sessions == "on") {
-      req.session.user = [result.name, result.id, result.mbti, result.gender];
+      req.session.user = [
+        result.name,
+        result.id,
+        result.mbti,
+        result.gender,
+        result.imgurl,
+      ];
       res.send("로그인완료");
     } else if (result && req.body.sessions == undefined) {
-      req.session.user = [result.name, result.id, result.mbti, result.gender];
+      req.session.user = [
+        result.name,
+        result.id,
+        result.mbti,
+        result.gender,
+        result.imgurl,
+      ];
       req.session.cookie.originalMaxAge = 2 * 60 * 60 * 1000;
       res.send("로그인완료");
     } else if (!result) {
@@ -189,6 +201,7 @@ exports.matching = (req, res) => {
         gender: "여",
       },
     }).then((result) => {
+      user_list["id"] = result.map((el) => el.id);
       user_list["img"] = result.map((el) => el.imgurl);
       user_list["nick"] = result.map((el) => el.nick);
       user_list["mbti"] = result.map((el) => el.mbti);
@@ -255,6 +268,7 @@ exports.matching = (req, res) => {
         gender: "남",
       },
     }).then((result) => {
+      user_list["id"] = result.map((el) => el.id);
       user_list["img"] = result.map((el) => el.imgurl);
       user_list["nick"] = result.map((el) => el.nick);
       user_list["mbti"] = result.map((el) => el.mbti);
