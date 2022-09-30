@@ -79,7 +79,6 @@
         margin-right: 11px;
       }
       .user-alram {
-        display: none;
         position: relative;
         display: inline-block;
         background: url(./../static/img/user2.jpg);
@@ -102,6 +101,7 @@
         font-size: 12px;
         line-height: 17px;
       }
+
       @media screen and (min-width: 499px) and (max-width: 768px) {
         .main-header {
           padding: 10px 24px;
@@ -139,9 +139,11 @@
       function loginImg() {
         var userAlram = document.querySelector(".user-alram");
         var url = "<%=img%>";
-        userAlram.style.background = `url(${url})`;
+        console.log(url);
+        if (isLogin) {
+          userAlram.style.background = `url(${url})`;
+        }
       }
-      loginImg();
     </script>
   </body>
 </html>

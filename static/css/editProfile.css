@@ -59,6 +59,10 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
+.uploadLabel {
+  width: 100%;
+  height: 100%;
+}
 .edit_profile form input::placeholder {
   color: var(--main-color);
 }
@@ -85,6 +89,7 @@
   color: var(--main-color);
 }
 .edit_profile .profileDiv input {
+  cursor: pointer;
   width: 60%;
 }
 #editUploadImg[type="file"]::file-selector-button {
