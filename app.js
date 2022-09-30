@@ -43,19 +43,6 @@ io.on("connection", function (socket) {
     socket.join(data);
   });
 
-  // socket.on("join room", (data)=>{
-  //   var sendNick = getUserBySocketId(socket.id);
-
-  // });
-
-
-
-
-
-
-  // , console.log(socket.adapter.rooms)
-
-
   socket.on("send", (data) => {
     const sendData = {
       sendNick: data.sendNick,
