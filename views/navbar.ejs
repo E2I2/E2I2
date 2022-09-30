@@ -79,7 +79,6 @@
         margin-right: 11px;
       }
       .user-alram {
-        display: none;
         position: relative;
         display: inline-block;
         background: url(./../static/img/user2.jpg);
@@ -102,6 +101,7 @@
         font-size: 12px;
         line-height: 17px;
       }
+
       @media screen and (min-width: 499px) and (max-width: 768px) {
         .main-header {
           padding: 10px 24px;
@@ -126,38 +126,23 @@
         <span class="user-names"> 환영합니다.</span>
         <a href="logout" class="logout">로그아웃</a>
         <a href="/myPage"><span class="user-alram"></span></a>
-        <!-- <span class="new-alram">N</span> -->
+        <span class="new-alram">N</span>
         <% } %>
       </ul>
-      <div class="popup-menu">
-        <div class="bg"></div>
-        <div class="top-menu">
-          <ul class="popup-sub-menu">
-            <li><a href="javascript:void(0)">로그인</a></li>
-            <li><a href="javascript:void(0)">회원가입</a></li>
-          </ul>
-          <ul class="popup-main-menu">
-            <li><a href="javascript:void(0)">About</a></li>
-            <li><a href="javascript:void(0)">About</a></li>
-            <li><a href="javascript:void(0)">About</a></li>
-            <li><a href="javascript:void(0)">About</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="navbar__button">
-        <input id="toggle-button" type="checkbox" />
-        <label class="line" for="toggle-button">
-          <div class="top"></div>
-          <div class="middle"></div>
-          <div class="bottom"></div>
-        </label>
-      </div>
     </header>
     <script type="text/javascript">
-      window.addEventListener("scroll", function () {
-        const header = document.querySelector("header");
-        header.classList.toggle("sticky", window.scrollY > 0);
-      });
+      window.addEventListener('scroll', function () {
+        const header = document.querySelector('header')
+        header.classList.toggle('sticky', window.scrollY > 0)
+      })
+
+      // const toggleBtn = document.querySelector('#toggle-button')
+      // const menu = document.querySelector('.popup-menu')
+
+      // // 반응형 웹 햄버거 메뉴 클릭 시 메뉴 펼침, 숨김 처리
+      // toggleBtn.addEventListener('click', () => {
+      //   menu.classList.toggle('active')
+      // })
     </script>
   </body>
 </html>
