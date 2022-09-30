@@ -11,11 +11,15 @@ exports.mypage = (req, res) => {
         name: req.session.user[0],
       },
     }).then((result) => {
+      var mbti = result.mbti;
       var nick = result.nick;
+      var birth = result.birth;
       var email = result.email;
       var pw = result.pw;
       res.render("myPage", {
+        mbti: mbti,
         nick: nick,
+        birth: birth,
         email: email,
         pw: pw,
       });
@@ -33,7 +37,9 @@ exports.mypage = (req, res) => {
 exports.mypage_upload = (req, res) => {
   Userinfo.update(
     {
+      mbti: req.body.mbti,
       nick: req.body.nick,
+      birth: req.body.birth,
       email: req.body.email,
       pw: req.body.pw,
     },

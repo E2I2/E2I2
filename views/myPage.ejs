@@ -20,7 +20,6 @@
     ></script>
     <!-- style -->
     <link rel="stylesheet" href="./../static/css/style.css" />
-    <link rel="stylesheet" href="./../static/css/profile.css" />
     <link rel="stylesheet" href="./../static/css/myPage.css" />
     <!-- icon -->
     <script
@@ -30,74 +29,166 @@
   </head>
   <body>
     <div><%-include("mypageAside.ejs")%></div>
-    <div class="containerProfile">
+    <div class="containerMypage">
       <h2>나의 계정 수정</h2>
-      <div class="Myprofile">
+      <div class="Mypage">
         <a class="logo" href="/"><img src="./../static/img/logo.png" /></a>
 
         <form method="post">
-          <div class="readDiv">
+          <div class="inputList">
+            <!-- mbti: -->
+            <input
+              class="borderStyle"
+              type="text"
+              name="mbti"
+              placeholder="나의 MBTI 변경"
+              maxlength="4"
+              value="<%=mbti%>"
+            />
+            <span></span>
+          </div>
+          <div class="inputList">
             <!-- 닉네임: -->
             <input
               class="borderStyle"
               type="text"
               name="nick"
-              placeholder="닉네임 (한글 2~8자리)"
-              class="readOnly"
+              placeholder="닉네임 (한글 2~8자리) 변경"
               maxlength="10"
               value="<%=nick%>"
             />
+            <span></span>
           </div>
-          <div class="readDiv">
+          <div class="inputList">
+            <input
+              type="text"
+              name="birth"
+              pattern="\d*"
+              maxlength="8"
+              placeholder="생년월일 변경 *예) 20221010"
+              value="<%=birth%>"
+            />
+            <span></span>
+          </div>
+          <div class="inputList">
             <!-- 이메일: -->
             <input
               class="borderStyle"
-              type="text"
+              type="email"
               name="email"
-              class="readOnly"
-              placeholder="이메일"
+              placeholder="이메일 변경"
               value="<%=email%>"
             />
+            <span></span>
           </div>
-          <div class="readDiv">
+          <div class="title">비밀번호 변경</div>
+          <div class="inputList">
+            <div>비밀번호</div>
             <!-- 비밀번호: -->
             <input
               class="borderStyle"
               type="password"
               name="pw"
-              class="readOnly"
-              placeholder="비밀번호(소문자 영문+숫자)"
+              placeholder="변경할 비밀번호(소문자 영문+숫자)"
               value="<%=pw%>"
+              autocomplete="off"
             />
+            <span></span>
           </div>
-          <button type="button" class="button-update" onclick="update()">
-            수정
-          </button>
+          <div class="inputList">
+            <div>비밀번호 확인</div>
+            <!-- 비밀번호: -->
+            <input
+              class="borderStyle"
+              type="password"
+              name="pwConfirm"
+              placeholder="비밀번호 확인"
+              value="<%=pw%>"
+              autocomplete="off"
+            />
+            <span></span>
+          </div>
+          <button type="button" id="MypageBtn" onclick="update()">수정</button>
         </form>
       </div>
     </div>
 
     <script>
       function update() {
+        // 유효성검사
+        var mbti = document.querySelector("input[name=mbti]");
+        var nick = document.querySelector("input[name=nick]");
+        var birth = document.querySelector("input[name=birth]");
+        var email = document.querySelector("input[name=email]");
+        var pw = document.querySelector("input[name=pw]");
+        var pwConfirm = document.querySelector("input[name=pwConfirm]");
+
+        var mbtiRegExp = /^[e|i]+[s|n]+[t|f]+[j|p]+/;
+        var nickRegExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,8}$/;
+        var emailRegExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+        var birthRegExp = /^[0-9]{8}$/;
+        var pwRegExp = /^[a-z0-9]{4,15}$/;
+
+        if (!mbtiRegExp.test(mbti.value)) {
+          $(mbti).next().text("mbti가 올바르지 않습니다!");
+          return false;
+        } else {
+          $(mbti).next().text("");
+        }
+
+        if (!nickRegExp.test(nick.value)) {
+          $(nick).next().text("한글로 2~8자리로 입력해야합니다!");
+          return false;
+        } else {
+          $(nick).next().text("");
+        }
+
+        if (!birthRegExp.test(birth.value)) {
+          $(birth).next().text("숫자로 8자리만 가능합니다!");
+          return false;
+        } else {
+          $(birth).next().text("");
+        }
+
+        if (!emailRegExp.test(email.value)) {
+          $(email).next().text("이메일형식이 올바르지 않습니다!");
+          return false;
+        } else {
+          $(email).next().text("");
+        }
+
+        if (!pwRegExp.test(pw.value)) {
+          $(pw).next().text("영문 소문자와 숫자 4~15자리로 입력해야합니다!");
+          return false;
+        } else {
+          $(pw).next().text("");
+        }
+
+        if (pw.value !== pwConfirm.value) {
+          $(pwConfirm).next().text("비밀번호가 일치하지 않습니다!");
+          return false;
+        } else {
+          $(pwConfirm).next().text("");
+        }
+
         const form = document.querySelector("form");
         var data = {
+          mbti: form.mbti.value,
           nick: form.nick.value,
+          birth: form.birth.value,
           email: form.email.value,
           pw: form.pw.value,
+          pwConfirm: form.pwConfirm.value,
         };
-        var pw = "<%=pw%>";
-        if (data.pw == pw) {
-          axios({
-            url: "/myPage/editUpload",
-            method: "post",
-            data: data,
-          }).then((response) => {
-            alert(response.data);
-            window.location.replace("/myPage");
-          });
-        } else {
-          alert("비밀번호를 확인해주세요");
-        }
+        axios({
+          url: "/myPage/editUpload",
+          method: "post",
+          data: data,
+        }).then((response) => {
+          if (response.data == "계정수정완료") {
+            alert("계정정보 수정 완료");
+          }
+        });
       }
     </script>
   </body>

@@ -140,9 +140,7 @@
         var userAlram = document.querySelector(".user-alram");
         var user = "<%=user%>";
         var url = "<%=img%>";
-        if (!user) {
-          userAlram.style.background = "";
-        } else {
+        if (user) {
           userAlram.style.background = `url(${url})`;
         }
       }
