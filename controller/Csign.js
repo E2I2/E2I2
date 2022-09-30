@@ -238,7 +238,13 @@ exports.matching = (req, res) => {
           mbtiArray.push("SOSO");
         }
       }
-      res.render("matching", { user_list, mbti_list, randomArray, mbtiArray });
+      res.render("matching", {
+        user,
+        user_list,
+        mbti_list,
+        randomArray,
+        mbtiArray,
+      });
     });
   } else if (user != undefined && user[3] == "여") {
     Mbtibest.findAll({
@@ -303,7 +309,13 @@ exports.matching = (req, res) => {
           mbtiArray.push("SOSO");
         }
       }
-      res.render("matching", { user_list, mbti_list, randomArray, mbtiArray });
+      res.render("matching", {
+        user,
+        user_list,
+        mbti_list,
+        randomArray,
+        mbtiArray,
+      });
     });
   } else if (user == undefined) {
     res.send(
