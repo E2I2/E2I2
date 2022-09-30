@@ -136,13 +136,14 @@
         header.classList.toggle('sticky', window.scrollY > 0)
       })
 
-      // const toggleBtn = document.querySelector('#toggle-button')
-      // const menu = document.querySelector('.popup-menu')
-
-      // // 반응형 웹 햄버거 메뉴 클릭 시 메뉴 펼침, 숨김 처리
-      // toggleBtn.addEventListener('click', () => {
-      //   menu.classList.toggle('active')
-      // })
+      function loginImg() {
+        var userAlram = document.querySelector('.user-alram')
+        var url = '<%=img%>'
+        console.log(url)
+        if (isLogin) {
+          userAlram.style.background = `url(${url})`
+        }
+      }
     </script>
   </body>
 </html>

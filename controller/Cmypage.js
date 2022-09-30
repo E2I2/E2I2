@@ -43,7 +43,7 @@ exports.mypage_upload = (req, res) => {
       },
     }
   ).then((result) => {
-    res.send("프로필수정완료");
+    res.send("계정수정완료");
   });
 };
 
