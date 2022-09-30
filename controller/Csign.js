@@ -301,6 +301,6 @@ exports.matching = (req, res) => {
   }
 };
 exports.matching_entry = (req, res)=>{
-  console.log(req.body.nick);
+  console.log("req.body.nick", req.body.nick);
   res.render("chatting", {nick : req.body.nick});
 }

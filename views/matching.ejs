@@ -163,6 +163,23 @@
           classRate[i].parentElement.style.backgroundColor = '#ffc107bf';
         }
       }
+      function chatEntry(nick){
+        console.log(nick);
+        var data = {
+          recNick : nick
+        }
+        axios({
+          url : "/chatting",
+          method: "post",
+          data : data
+        }).then((response)=>{
+          console.log(response.data);});
+        //   window.location.replace("/chatting");
+
+        // })`
+        window.location.replace("/chatting/"+response.data);
+
+        }
     </script>
   </body>
 </html>

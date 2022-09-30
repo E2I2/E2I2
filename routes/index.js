@@ -42,7 +42,9 @@ router.post(
   controllerSign.profile_upload
 )
 router.get('/matching', controllerSign.matching)
+// router.get('/chatting/:id', controllerChat.chat_main)
 router.get('/chatting', controllerChat.chat_main)
+router.post("/chatting",controllerSign.matching_entry)
 
 router.get('/myPage', controllerMy.mypage)
 router.get('/editProfile', controllerMy.editProfile)

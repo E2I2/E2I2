@@ -39,9 +39,21 @@ io.on("connection", function (socket) {
   socket.on('debug',msg=>{console.log(socket.adapter.rooms)
   })
   socket.on('room', (data)=> {
-    console.log(data)
-    socket.join(data, console.log(socket.adapter.rooms));
+    console.log(data);
+    socket.join(data);
   });
+
+  // socket.on("join room", (data)=>{
+  //   var sendNick = getUserBySocketId(socket.id);
+
+  // });
+
+
+
+
+
+
+  // , console.log(socket.adapter.rooms)
 
 
   socket.on("send", (data) => {
