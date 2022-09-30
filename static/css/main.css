@@ -405,31 +405,15 @@ text-align: center;
 .footer-title{
   padding: 48px 0;
 }
-/*mobile-toggle*/
-.main-header .popup-menu{
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-.main-header .popup-menu .bg{
-  background-color: rgb(98, 88, 88);
-  position: absolute;
-  top: 89px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.main-header .popup-menu .top-menu{
-  width: 100%;
-  position: absolute;
-  top: 110px;
-  left: 10px;
-}
 
 /*responsive*/
 @media screen and (min-width:375px) and (max-width:499px) {
+  .main-header .navbar .navbar__button {
+    display: flex;
+  }
+  .main-header .navbar .popup-menu.active {
+    display: flex;
+  }
   
 }
 @media screen and (min-width:500px) and (max-width:768px) {
