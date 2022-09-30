@@ -129,23 +129,26 @@
         }
       }
 
-      // var windowW = document.documentElement.clientWidth;
-      // if (windowW < 567) {
-      //   $("aside").css("right", "-280px");
-      // }
+      var delay = 300;
+      var timer = null;
+      window.addEventListener(
+        "resize",
+        function () {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            if (window.innerWidth < 576) {
+              $("#autoBtn").click();
+            }
+          }, delay);
+        },
+        false
+      );
 
-      //on mobile size aside hide
-      // window.addEventListener(
-      //   "resize",
-      //   function (event) {
-      //     var width = document.documentElement.clientWidth;
-      //     console.log(width);
-      //     if(width < 567){
-      //       $('aside').css
-      //     }
-      //   },
-      //   true
-      // );
+      var width = window.innerWidth;
+      // console.log(width);
+      if (width < 576) {
+        $("#autoBtn").click();
+      }
     </script>
   </body>
 </html>
