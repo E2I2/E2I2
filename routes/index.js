@@ -43,7 +43,10 @@ router.post(
   controllerSign.profile_upload
 );
 router.get("/matching", controllerSign.matching);
+
 router.get("/chatting", controllerChat.chat_main);
+// chat page
+router.get("/chat", controllerChat.chat);
 
 router.get("/myPage", controllerMy.mypage);
 router.post("/myPage/editUpload", controllerMy.mypage_upload);
