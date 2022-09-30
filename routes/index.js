@@ -26,7 +26,6 @@ const upload = multer({
 const router = express.Router();
 
 router.get("/", controller.main);
-router.post("/mainImg", controller.mainImg);
 
 router.get("/signup", controllerSign.signup);
 router.post("/signup/post", controllerSign.signup_post);

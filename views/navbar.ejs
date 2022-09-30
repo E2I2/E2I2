@@ -75,20 +75,23 @@
         font-weight: bold;
         margin-right: 5px;
       }
+      .logout {
+        margin-right: 5px;
+      }
       .user-names {
         margin-right: 11px;
       }
       .user-alram {
         position: relative;
         display: inline-block;
-        background: url(./../static/img/user2.jpg);
+        background: url('<%=img%>');
         background-size: cover;
         width: 54px;
         height: 54px;
         border-radius: 50%;
       }
       .new-alram {
-        display: block;
+        display: none;
         text-align: center;
         color: #fff;
         width: 20px;
@@ -131,20 +134,20 @@
       </ul>
     </header>
     <script type="text/javascript">
-      window.addEventListener("scroll", function () {
-        const header = document.querySelector("header");
-        header.classList.toggle("sticky", window.scrollY > 0);
-      });
+      window.addEventListener('scroll', function () {
+        const header = document.querySelector('header')
+        header.classList.toggle('sticky', window.scrollY > 0)
+      })
 
       function loginImg() {
-        var userAlram = document.querySelector(".user-alram");
-        var user = "<%=user%>";
-        var url = "<%=img%>";
+        var userAlram = document.querySelector('.user-alram')
+        var user = '<%=user%>'
+        var url = '<%=img%>'
         if (user) {
-          userAlram.style.background = `url(${url})`;
+          userAlram.style.background = `url(${url})`
         }
       }
-      loginImg();
+      // loginImg()
     </script>
   </body>
 </html>
