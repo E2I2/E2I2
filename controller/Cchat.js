@@ -12,3 +12,8 @@ exports.chat_main = (req, res) => {
     });
   });
 };
+
+// chat page
+exports.chat = (req, res) => {
+  res.render("chat");
+};
