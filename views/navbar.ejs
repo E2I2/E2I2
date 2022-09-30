@@ -135,6 +135,18 @@
         const header = document.querySelector('header')
         header.classList.toggle('sticky', window.scrollY > 0)
       })
+
+      function loginImg() {
+        var userAlram = document.querySelector('.user-alram')
+        var user = '<%=user%>'
+        var url = '<%=img%>'
+        if (!user) {
+          userAlram.style.background = ''
+        } else {
+          userAlram.style.background = `url(${url})`
+        }
+      }
+      loginImg()
     </script>
   </body>
 </html>
