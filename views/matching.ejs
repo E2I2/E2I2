@@ -72,7 +72,7 @@
                 <div>MBTI 궁합</div>
                 <div class="rate"><%=mbtiArray[random]%></div>
               </div>
-              <button type="button" onclick="chatEntry('<%=user_list.nick[random]%>')" id="chatBtn">채팅하기</button>
+              <button type="button" onclick="chatEntry('<%=user_list.id[random]%>')" id="chatBtn">채팅하기</button>
             </div>
 
             <div class="profile">
@@ -163,22 +163,10 @@
           classRate[i].parentElement.style.backgroundColor = '#ffc107bf';
         }
       }
-      function chatEntry(nick){
-        console.log(nick);
-        var data = {
-          recNick : nick
-        }
-        axios({
-          url : "/chatting",
-          method: "post",
-          data : data
-        }).then((response)=>{
-          console.log(response.data);});
-        //   window.location.replace("/chatting");
+      function chatEntry(id){
 
-        // })`
-        window.location.replace("/chatting/"+response.data);
-
+        window.location = "/chatting/"+id;
+        // console.log(id)
         }
     </script>
   </body>
