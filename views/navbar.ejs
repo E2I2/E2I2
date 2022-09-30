@@ -79,7 +79,6 @@
         margin-right: 11px;
       }
       .user-alram {
-        display: none;
         position: relative;
         display: inline-block;
         background: url(./../static/img/user2.jpg);
@@ -102,6 +101,7 @@
         font-size: 12px;
         line-height: 17px;
       }
+
       @media screen and (min-width: 499px) and (max-width: 768px) {
         .main-header {
           padding: 10px 24px;
@@ -135,6 +135,18 @@
         const header = document.querySelector("header");
         header.classList.toggle("sticky", window.scrollY > 0);
       });
+
+      function loginImg() {
+        var userAlram = document.querySelector(".user-alram");
+        var user = "<%=user%>";
+        var url = "<%=img%>";
+        if (!user) {
+          userAlram.style.background = "";
+        } else {
+          userAlram.style.background = `url(${url})`;
+        }
+      }
+      loginImg();
     </script>
   </body>
 </html>

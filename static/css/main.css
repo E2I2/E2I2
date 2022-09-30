@@ -25,6 +25,7 @@ button {
   background-color: transparent;
   border: 0;
   cursor: pointer;
+  font-size: 16px;
   /* color: #fff; */
 }
 :root {
@@ -406,6 +407,15 @@ text-align: center;
 }
 
 /*responsive*/
+@media screen and (min-width:375px) and (max-width:499px) {
+  .main-header .navbar .navbar__button {
+    display: flex;
+  }
+  .main-header .navbar .popup-menu.active {
+    display: flex;
+  }
+  
+}
 @media screen and (min-width:500px) and (max-width:768px) {
   .ENTP-message, .INFP-message{
     display: none;
@@ -449,18 +459,18 @@ height: 90px;
   margin-top: 157px;
   width: 467px;
 }
-.content2-desc{
-  font-size: 14px;
+.content2-title-group .content2-desc p{
+  font-size: 26px;
 }
-.content2-title{
-  font-size: 22px;
+.content2-title-group .content2-title h1{
+  font-size: 40px;
   margin-bottom: 15px;
 }
-.content3-title{
-  font-size: 22px;
+.content3-title-group .content3-title h1{
+  font-size: 40px;
 }
-.content3-desc{
-  font-size: 14px;
+.content3-title-group .content3-desc p{
+  font-size: 26px;
 }
 .silder-title{
   font-size: 22px;
