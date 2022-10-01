@@ -45,9 +45,11 @@ body {
 .my-chat {
   text-align: right;
   margin-bottom: 5px;
+  width: auto;
 }
 .my-chat div {
   background-color: yellow;
+  width: auto !important;
 }
 .other-chat {
   text-align: left;
@@ -55,6 +57,7 @@ body {
 }
 .other-chat div {
   background-color: white;
+  width: auto !important;
 }
 .notice {
   text-align: center;

@@ -26,7 +26,6 @@
     <script>
       $(document).ready(
         function(){
-          console.log()
         socket.emit('room',"room<%=room_id%>");
         socketEvent();
         console.log("entrySuccess");
@@ -45,7 +44,6 @@
         readonly
         style="text-align: center;"
         ><br>
-        <!-- <div class="room_list"><a href="/chatting/1">test</a></div> -->
         
       </div>
       <div class="chatBox" id="chatBox">
@@ -88,7 +86,8 @@
           data: {
             room_id : "<%=room_id%>",
             other_id: "<%=rec%>",
-            content:`[ ${data.sendNick} ], [ ${data.msg} ], [ ${data.sendTime} ]//`
+            content:`[ ${data.sendNick} ], [ ${data.msg} ], [ ${data.sendTime} ]//`,
+            timestamp : data.sendTime
           }
         }).then((result)=>{
           console.log(result)

@@ -6,29 +6,33 @@ exports.chat_main = async (req, res) => {
 
   var data = {};
   var room = await sequelize.query(sql,  { type: Sequelize.QueryTypes.SELECT });
-  console.log(room, room.length);
+  console.log("room, room.length");
   if (room.length == 0){
     var newRoom = await Chat_room.create({room_title: `${req.session.user[1]}+${req.params.id}`});
-    console.log(newRoom);
+    console.log("newRoom", newRoom);
     await Chat_participant.create({room_id: newRoom.room_id, user_id: req.session.user[1]})
     await Chat_participant.create({room_id: newRoom.room_id, user_id: req.params.id})
 
     data.room_id = newRoom.room_id;
   } else { 
-    console.log(room[0].room_id);
+    console.log("room[0].room_id");
     data.room_id = room[0].room_id;
   }
+
   var me = await Userinfo.findOne({
     where: {
       id: req.session.user[1],
     }
   })
+
   data.me = await me.nick;
+
   var rec = Userinfo.findOne({
     where: {
       id: req.params.id,
     }
   })
+  
   data.rec = rec.nick;
 
   res.render("chatting", data);
@@ -36,10 +40,10 @@ exports.chat_main = async (req, res) => {
 };
 
 exports.saveDB = (req, res)=>{
-  console.log(req.body)
+  console.log("req.body")
   Chat_room.update({
-    
-    content : Sequelize.fn('CONCAT', Sequelize.col("chat_room.content"), req.body.content)
+    content : Sequelize.fn('CONCAT', Sequelize.col("chat_room.content"), req.body.content),
+    timestamp : req.body.timestamp
   },{
     where : {
       room_id: req.body.room_id
@@ -50,7 +54,7 @@ exports.saveDB = (req, res)=>{
     res.send("true")
   })
 }
-//DB > chatting : 'content'
+//DB > chatting : 'content' 대화 로그 저장
 
 exports.getDB = (req, res)=>{
   var getDB = Chat_room.findOne({
@@ -61,7 +65,7 @@ exports.getDB = (req, res)=>{
   data.getDB = getDB.content
 
   .then((result)=>{
-    console.log(result);
+    console.log("result");
     res.render("chatting",data.getDB);
   })
 }

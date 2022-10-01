@@ -3,7 +3,6 @@ var controller = require("../controller/Cmain");
 var controllerSign = require("../controller/Csign");
 var controllerChat = require("../controller/Cchat");
 var controllerMy = require("../controller/Cmypage");
-// var controllerProfile = require("../controller/Cprofile");
 
 const multer = require("multer");
 const path = require("path");
@@ -48,6 +47,7 @@ router.post("/chatting", controllerSign.matching_entry);
 router.post("/chatting/DBMessage", controllerChat.saveDB);
 router.post("/chatting/DBcontent", controllerChat.getDB);
 router.get("/myPage", controllerMy.mypage);
+router.get("/chatlist", controllerMy.mypage_chatList);
 router.post("/myPage/editUpload", controllerMy.mypage_upload);
 router.get("/editProfile", controllerMy.editProfile);
 router.post(

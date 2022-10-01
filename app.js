@@ -39,7 +39,7 @@ io.on("connection", function (socket) {
   socket.on('debug',msg=>{console.log(socket.adapter.rooms)
   })
   socket.on('room', (data)=> {
-    console.log(data);
+    console.log("data", data);
     socket.join(data);
   });
 
