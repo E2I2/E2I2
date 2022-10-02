@@ -98,8 +98,11 @@ exports.getDB = (req, res) => {
       room_id: req.body.room_id,
     },
   }).then((result) => {
-    console.log(result.dataValues.content);
-    res.send(result.dataValues.content.split("//"));
+    console.log(result.dataValues);
+    if (result.dataValues.content == null) {
+    } else {
+      res.send(result.dataValues.content.split("//"));
+    }
   });
 };
 
