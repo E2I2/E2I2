@@ -37,6 +37,15 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+    <!-- socket -->
+    <script
+      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+      integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+      crossorigin="anonymous"
+    ></script>
+    <!-- axios -->
+    <script src="/axios/dist/axios.min.js"></script>
+
   </head>
   <body>
     <div class="containerMat">
@@ -58,11 +67,12 @@
           <div class="carousel-item <%=i%>">
             <div class="imgArea">
               <img src="<%=user_list.img[random]%>" alt="..." />
+
               <div class="stamp">
                 <div>MBTI 궁합</div>
                 <div class="rate"><%=mbtiArray[random]%></div>
               </div>
-              <button type="button" onclick="" id="chatBtn">채팅하기</button>
+              <button type="button" onclick="chatEntry('<%=user_list.id[random]%>')" id="chatBtn">채팅하기</button>
             </div>
 
             <div class="profile">
@@ -150,6 +160,11 @@
           classRate[i].parentElement.style.backgroundColor = '#ffc107bf';
         }
       }
+      function chatEntry(id){
+
+        window.location = "/chatting/"+id;
+        // console.log(id)
+        }
     </script>
   </body>
 </html>

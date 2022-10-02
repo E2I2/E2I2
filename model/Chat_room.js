@@ -11,6 +11,13 @@ const Chat_room = (Sequelize, DataTypes) => {
             room_title : {
                 type : DataTypes.STRING(100),
                 allowNull : false
+            },
+            content :{
+                type: DataTypes.TEXT('long'),
+
+            },
+            content_timestamp : {
+                type : DataTypes.DATE
             }
         },
         {

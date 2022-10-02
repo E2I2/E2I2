@@ -1,5 +1,5 @@
 const session = require("express-session");
-const { Userinfo, Sequelize } = require("../model/main");
+const { Userinfo, Sequelize, Chat_room, Chat_participant } = require("../model/main");
 
 exports.mypage = (req, res) => {
   const user = req.session.user;

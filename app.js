@@ -32,15 +32,24 @@ app.use("/", router);
 io.on("connection", function (socket) {
   // 최초 입장했을 때
   console.log("Server Socket Connected", socket.id);
+  
+  socket.on('room', (data)=> {
+    console.log("data", data);
+    socket.join(data);
+  });
 
-  socket.on("entry", (data) => {});
+  socket.on("chatlistUp", (data) => {
+    socket.emit("chatlistUpdate", data)
+  });
 
   socket.on("send", (data) => {
     const sendData = {
       sendNick: data.sendNick,
       msg: data.msg,
+      sendTime : data.time
     };
-    socket.emit("newMessage", sendData);
+
+    io.to(data.roomid).emit("newMessage", sendData);
   });
 });
 
