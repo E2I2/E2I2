@@ -88,7 +88,7 @@ exports.editProfile = (req, res) => {
 
 exports.editProfile_upload = (req, res) => {
   console.log("edit_profileInput", req.body.editFileAxios);
-  if (req.body.editFileAxios != "undefined") {
+  if (req.body.editFile != "undefined") {
     Userinfo.update(
       {
         imgurl: "/uploads/" + req.file.filename,
