@@ -23,7 +23,16 @@
     ></script>
     <!-- style -->
     <link rel="stylesheet" href="./../static/css/style.css" />
-    <link rel="stylesheet" href="./../static/css/chat.css" />
+    <link rel="stylesheet" href="./../static/css/chatlist.css" />
+    <!-- socket-->
+    <script
+      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+      integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {});
+    </script>
   </head>
   <body>
     <aside class="asideChat">
@@ -34,17 +43,23 @@
       <div class="chatList">
         <hr />
         <h3><i class="fa-solid fa-comment"></i> 채팅 리스트</h3>
-        <ul>
-          <li><a href="#">채팅방목록1</a></li>
-          <li><a href="#">채팅방목록2</a></li>
-          <li><a href="#">채팅방목록3</a></li>
-        </ul>
+        <ul id="chatList"></ul>
       </div>
     </aside>
     <div class="containerChat">
       <div class="chatView">채팅뷰</div>
     </div>
     <script>
+      console.log("room_id : " + "<%=data[0].room_id%>");
+      console.log("user_id : " + "<%=data[0].user_id%>");
+
+      var socket = io.connect();
+
+      socket.on("chatlistUpdate", (data) => {
+        var chatListUl = document.getElementById("chatList");
+        var chatListLi = chatListUl.appndChild();
+      }); //data: room_id
+
       function onAuto() {
         var button = $("#autoBtn i");
         var close = $("#autoBtn i").hasClass("fa-comments");

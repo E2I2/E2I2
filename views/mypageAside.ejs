@@ -96,7 +96,7 @@
         <ul>
           <li><a href="/myPage">나의 계정</a></li>
           <li><a href="/editProfile">나의 프로필</a></li>
-          <li><a href="#">채팅 리스트</a></li>
+          <li><a href="/chatlist">채팅 리스트</a></li>
           <li><a href="/logout">로그아웃</a></li>
         </ul>
       </div>
@@ -129,23 +129,26 @@
         }
       }
 
-      // var windowW = document.documentElement.clientWidth;
-      // if (windowW < 567) {
-      //   $("aside").css("right", "-280px");
-      // }
+      var delay = 300;
+      var timer = null;
+      window.addEventListener(
+        "resize",
+        function () {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            if (window.innerWidth < 576) {
+              $("#autoBtn").click();
+            }
+          }, delay);
+        },
+        false
+      );
 
-      //on mobile size aside hide
-      // window.addEventListener(
-      //   "resize",
-      //   function (event) {
-      //     var width = document.documentElement.clientWidth;
-      //     console.log(width);
-      //     if(width < 567){
-      //       $('aside').css
-      //     }
-      //   },
-      //   true
-      // );
+      var width = window.innerWidth;
+      // console.log(width);
+      if (width < 576) {
+        $("#autoBtn").click();
+      }
     </script>
   </body>
 </html>

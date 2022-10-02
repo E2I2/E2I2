@@ -3,7 +3,6 @@ var controller = require("../controller/Cmain");
 var controllerSign = require("../controller/Csign");
 var controllerChat = require("../controller/Cchat");
 var controllerMy = require("../controller/Cmypage");
-// var controllerProfile = require("../controller/Cprofile");
 
 const multer = require("multer");
 const path = require("path");
@@ -43,12 +42,12 @@ router.post(
   controllerSign.profile_upload
 );
 router.get("/matching", controllerSign.matching);
-
-router.get("/chatting", controllerChat.chat_main);
-// chat page
-router.get("/chat", controllerChat.chat);
-
+router.get("/chatting/:id", controllerChat.chat_main);
+router.post("/chatting", controllerSign.matching_entry);
+router.post("/chatting/DBMessage", controllerChat.saveDB);
+router.post("/chatting/getDBMessage", controllerChat.getDB);
 router.get("/myPage", controllerMy.mypage);
+router.get("/chatlist", controllerChat.chatList);
 router.post("/myPage/editUpload", controllerMy.mypage_upload);
 router.get("/editProfile", controllerMy.editProfile);
 router.post(

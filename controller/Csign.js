@@ -343,3 +343,7 @@ exports.matching = async (req, res) => {
     );
   }
 };
+exports.matching_entry = (req, res)=>{
+  console.log("req.body.recID", req.body.recID);
+  res.render(req.body.recID);
+}
