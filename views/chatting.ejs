@@ -24,30 +24,28 @@
     ></script>
     <!-- 이상 소켓 cdn -->
     <script>
-      $(document).ready(
-        function(){
-        socket.emit('room',"room<%=room_id%>");
+      $(document).ready(function () {
+        socket.emit("room", "room<%=room_id%>");
         socketEvent();
         console.log("entrySuccess");
-        socket.emit('debug',1)
-      })
+        socket.emit("chatlistUp", "room<%=room_id%>");
+      });
     </script>
   </head>
-  <body>   
+  <body>
     <div class="wrap">
       <div class="chatList" id="chatList">
-        chatList<br>
-        myNick : <input 
-        id="sendNick"
-        value="<%=me%>"
-        type="text" 
-        readonly
-        style="text-align: center;"
-        ><br>
-        
+        <br />
+        <input
+          id="sendNick"
+          value="MyNick : <%=me%>"
+          type="text"
+          readonly
+          style="text-align: center"
+        /><br />
       </div>
-      <div class="chatBox" id="chatBox">
-        chatBox
+      <div class="chatd">
+        <div class="chatBox" id="chatBox"></div>
         <div class="sendBox">
           <input
             class="msgBox"
@@ -61,64 +59,113 @@
     </div>
     <script>
       var socket = io.connect();
+      let myName = "[ ";
+      myName += "<%=me%>";
+      myName += " ]";
+      console.log(myName);
 
       console.log(socket);
+      axios({
+        url: "/chatting/getDBMessage",
+        method: "post",
+        data: {
+          room_id: "<%=room_id%>",
+        },
+      }).then(
+        (result) => {
+          console.log(result.data);
+          console.log(result.data[0].split(",")[0]);
+          for (let i = 0; i < result.data.length - 1; i++)
+            if (result.data[i].split(",")[0] == myName) {
+              $("#chatBox").append(
+                `<div class="my-chat">오른쪽${
+                  result.data[i].split(",")[2]
+                }</div><div class="my-chat">오른쪽${
+                  result.data[i].split(",")[1]
+                }</div>`
+              );
+            } else {
+              $("#chatBox").append(
+                `<div class="other-chat">왼쪽${
+                  result.data[i].split(",")[1]
+                }</div><div class="other-chat">왼쪽${
+                  result.data[i].split(",")[2]
+                }</div>`
+              );
+            }
+        }
+
+        // for (let i of result.data) {
+        //   if (i.split(",")[0] == myName) {
+        //     $("#chatBox").append(`<div>오른쪽${i.split(",")[1]}</div>`);
+        //   } else {
+        //     $("#chatBox").append(`<div>왼쪽${i.split(",")[1]}</div>`);
+        //   }
+        // }
+        // }
+      );
 
       function send() {
-        console.log(sessionStorage.getItem('id'))
         console.log($(".msgBox").val());
         var today = new Date();
         var theDate = today.toLocaleDateString();
         var hours = today.getHours();
         var minutes = today.getMinutes();
-        var time = theDate + hours + ':' + minutes;
+        var time = theDate + hours + ":" + minutes;
 
         var data = {
-          roomid :  'room<%=room_id%>',
-          sendNick : `<%=me%>`,
+          roomid: "room<%=room_id%>",
+          sendNick: `<%=me%>`,
           msg: $(".msgBox").val(),
-          sendTime: time
+          sendTime: time,
         };
         console.log("<%=room_id%>");
         axios({
           url: "/chatting/DBMessage",
           method: "post",
           data: {
-            room_id : "<%=room_id%>",
+            room_id: "<%=room_id%>",
             other_id: "<%=rec%>",
-            content:`[ ${data.sendNick} ], [ ${data.msg} ], [ ${data.sendTime} ]//`,
-            timestamp : data.sendTime
-          }
-        }).then((result)=>{
-          console.log(result)
-        })
+            content: `[ ${data.sendNick} ], [ ${data.msg} ], [ ${data.sendTime} ]//`,
+            timestamp: data.sendTime,
+          },
+        }).then((result) => {
+          console.log(result);
+        });
         socket.emit("send", data);
       }
 
       function socketEvent() {
+        var today = new Date();
+        var theDate = today.toLocaleDateString();
+        var hours = today.getHours();
+        var minutes = today.getMinutes();
+        var time = theDate + hours + ":" + minutes;
         socket.on("newMessage", (data) => {
           let chat_box = document.getElementById("chatBox");
           let div = document.createElement("div");
           let div_chat = document.createElement("div");
+          let div_clock = document.createElement("div");
 
           if (data.sendNick == `<%=me%>`) div.classList.add("my-chat");
           else if (data.sendNick != `<%=me%>`) div.classList.add("other-chat");
-          div_chat.textContent += data.sendNick + " : " + data.msg;
+          div_chat.textContent = data.sendNick + " : " + data.msg;
+          div_clock.textContent = hours + ":" + minutes;
           div.appendChild(div_chat);
           chat_box.appendChild(div);
+          chat_box.appendChild(div_clock);
         });
       } // 입장 공지
 
       var sendMsg = document.getElementById("msgBox");
 
       sendMsg.addEventListener("keyup", function (event) {
-        if(event.keyCode === 13 ){
+        if (event.keyCode === 13) {
           event.preventDefault();
           document.getElementById("sendBtn").click();
           sendMsg.value = null;
         }
       });
-
     </script>
   </body>
 </html>

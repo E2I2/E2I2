@@ -40,14 +40,14 @@ router.post(
   "/profile/uploadImg",
   upload.single("userFileAxios"),
   controllerSign.profile_upload
-)
-router.get('/matching', controllerSign.matching);
-router.get('/chatting/:id', controllerChat.chat_main);
+);
+router.get("/matching", controllerSign.matching);
+router.get("/chatting/:id", controllerChat.chat_main);
 router.post("/chatting", controllerSign.matching_entry);
 router.post("/chatting/DBMessage", controllerChat.saveDB);
-router.post("/chatting/DBcontent", controllerChat.getDB);
+router.post("/chatting/getDBMessage", controllerChat.getDB);
 router.get("/myPage", controllerMy.mypage);
-router.get("/chatlist", controllerMy.mypage_chatList);
+router.get("/chatlist", controllerChat.chatList);
 router.post("/myPage/editUpload", controllerMy.mypage_upload);
 router.get("/editProfile", controllerMy.editProfile);
 router.post(

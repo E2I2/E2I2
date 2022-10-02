@@ -1,5 +1,5 @@
 const session = require("express-session");
-const { Userinfo, Sequelize, Chat_room } = require("../model/main");
+const { Userinfo, Sequelize, Chat_room, Chat_participant } = require("../model/main");
 
 exports.mypage = (req, res) => {
   const user = req.session.user;
@@ -52,19 +52,6 @@ exports.mypage_upload = (req, res) => {
     res.send("계정수정완료");
   });
 };
-
-exports.mypage_chatList = (req, res)=> {
-  Chat_room.findOne({
-    where: {
-      id: req.session.user[1]
-    }
-  }).then((res)=>{
-    res.render("chatlist")
-  });
-
-  
-}
-
 
 exports.editProfile = (req, res) => {
   const user = req.session.user;

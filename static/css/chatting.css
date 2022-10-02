@@ -18,19 +18,26 @@ body {
   height: 90%;
   flex: 3;
 }
+.chatd {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  flex: 7;
+}
 .chatBox {
   background-color: skyblue;
   border: 1px solid black;
   width: 100%;
-  height: 90%;
-  flex: 7;
+  height: 70%;
   position: relative;
+  overflow: auto;
+  flex: 9;
 }
 .sendBox {
-  position: absolute;
+  display: flex;
   height: 100px;
   width: 100%;
-  bottom: 0;
 }
 .msgBox {
   padding: 0px 15px 0px 15px;
@@ -49,44 +56,45 @@ body {
 }
 .my-chat div {
   background-color: yellow;
-  width: auto !important;
+  width: auto;
 }
 .other-chat {
   text-align: left;
   margin-bottom: 5px;
+  width: auto;
 }
 .other-chat div {
   background-color: white;
-  width: auto !important;
+  width: auto;
 }
 .notice {
   text-align: center;
   color: #005397;
   font-size: 12px;
 }
-.d-none{
+.d-none {
   display: none;
 }
-.chat_room{
-  width : 90%;
+.chat_room {
+  width: 90%;
   height: 15%;
   border: 1px solid black;
 }
-#sendNick{
+#sendNick {
   font-size: larger;
   height: auto;
 }
-.sendBtn{
+.sendBtn {
   margin-top: 40px;
   margin-right: 10px;
   font-size: larger;
   width: auto;
 }
-.room_list{
-  width : 80%;
+.room_list {
+  width: 80%;
   height: 15%;
   border: 1px solid black;
   font-size: larger;
-  margin : 10% 0 0 10%;
+  margin: 10% 0 0 10%;
   text-align: center;
 }
