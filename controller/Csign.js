@@ -168,37 +168,45 @@ exports.profile_upload = (req, res) => {
   });
 };
 
-exports.matching = (req, res) => {
+exports.matching = async (req, res) => {
   const mbti_list = {};
   const user_list = {};
   const user = req.session.user;
-
+  // 남성인 유저가 로그인 하면 여성 유저 정보를 보여줌
   if (user != undefined && user[3] == "남") {
-    Mbtibest.findAll({
+    await Mbtibest.findAll({
       where: {
         mbti: user[2],
       },
     }).then((result) => {
       mbti_list["best"] = result.map((el) => el.best);
     });
-    Mbtigood.findAll({
+    await Mbtigood.findAll({
       where: {
         mbti: user[2],
       },
     }).then((result) => {
       mbti_list["good"] = result.map((el) => el.good);
     });
-    Mbtisoso.findAll({
+    await Mbtisoso.findAll({
       where: {
         mbti: user[2],
       },
     }).then((result) => {
       mbti_list["soso"] = result.map((el) => el.soso);
     });
+    // ...(전개 연산자)을 이용해 배열을 합쳐준다.
+    const mbti_listA = [
+      ...mbti_list.best,
+      ...mbti_list.good,
+      ...mbti_list.soso,
+    ];
+
     Userinfo.findAll({
       where: {
         id: !user[1],
         gender: "여",
+        mbti: mbti_listA,
       },
     }).then((result) => {
       user_list["id"] = result.map((el) => el.id);
@@ -217,7 +225,6 @@ exports.matching = (req, res) => {
       user_list["interest"] = result.map((el) => el.interest);
       user_list["specialty"] = result.map((el) => el.specialty);
       user_list["userdesc"] = result.map((el) => el.userdesc);
-
       // 유저의 정보 수 만큼 랜덤 숫자가 담긴 배열을 생성
       let randomArray = [];
       while (randomArray.length < user_list.nick.length) {
@@ -246,32 +253,41 @@ exports.matching = (req, res) => {
         mbtiArray,
       });
     });
+    // 여성인 유저가 로그인 하면 남성 유저 정보를 보여줌
   } else if (user != undefined && user[3] == "여") {
-    Mbtibest.findAll({
+    await Mbtibest.findAll({
       where: {
         mbti: user[2],
       },
     }).then((result) => {
       mbti_list["best"] = result.map((el) => el.best);
     });
-    Mbtigood.findAll({
+    await Mbtigood.findAll({
       where: {
         mbti: user[2],
       },
     }).then((result) => {
       mbti_list["good"] = result.map((el) => el.good);
     });
-    Mbtisoso.findAll({
+    await Mbtisoso.findAll({
       where: {
         mbti: user[2],
       },
     }).then((result) => {
       mbti_list["soso"] = result.map((el) => el.soso);
     });
-    Userinfo.findAll({
+    // ...(전개 연산자)을 이용해 배열을 합쳐준다.
+    const mbti_listA = [
+      ...mbti_list.best,
+      ...mbti_list.good,
+      ...mbti_list.soso,
+    ];
+
+    await Userinfo.findAll({
       where: {
         id: !user[1],
         gender: "남",
+        mbti: mbti_listA,
       },
     }).then((result) => {
       user_list["id"] = result.map((el) => el.id);
@@ -290,14 +306,15 @@ exports.matching = (req, res) => {
       user_list["interest"] = result.map((el) => el.interest);
       user_list["specialty"] = result.map((el) => el.specialty);
       user_list["userdesc"] = result.map((el) => el.userdesc);
-
+      // 유저의 정보 수 만큼 랜덤 숫자가 담긴 배열을 생성
       let randomArray = [];
       while (randomArray.length < user_list.nick.length) {
         random = Math.floor(Math.random() * user_list.nick.length);
         if (randomArray.indexOf(random) === -1) {
           randomArray.push(random);
         }
-      } // 생성된 배열을 이용해 mbti 궁합 배열을 생성
+      }
+      // 생성된 배열을 이용해 mbti 궁합 배열을 생성
       let mbtiArray = [];
       for (let i = 0; i < randomArray.length; i++) {
         let mbtiUpper = user_list.mbti[i].toUpperCase();
