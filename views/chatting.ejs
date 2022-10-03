@@ -123,7 +123,7 @@
           console.log(result);
         });
         socket.emit("send", data);
-        socket.emit("alert", { msg: "알림" });
+        socket.emit("alert", { msg: "알림", roomid: data.roomid });
       }
 
       function socketEvent() {
@@ -163,7 +163,7 @@
       // 알림
       function msgAlert() {
         socket.on("alertData", (data) => {
-          console.log("data", data);
+          console.log("alertData", data);
         });
       }
     </script>

@@ -54,6 +54,7 @@ io.on("connection", function (socket) {
 
   socket.on("alert", (data) => {
     console.log("alert", data);
+    console.log(data.roomid);
     io.to(data.roomid).emit("alertData", data);
   });
 });
