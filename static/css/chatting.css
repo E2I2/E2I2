@@ -51,6 +51,7 @@ body {
 }
 .my-chat {
   text-align: right;
+  /* background-color: yellow; */
   margin-bottom: 5px;
   width: auto;
 }
@@ -60,6 +61,8 @@ body {
 }
 .other-chat {
   text-align: left;
+  /* background-color: white; */
+
   margin-bottom: 5px;
   width: auto;
 }
