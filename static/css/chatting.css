@@ -47,8 +47,8 @@ body {
   height: 70px;
   width: 88%;
   background: #fff;
-    border-radius: 40px;
-    margin-right: 17px;
+  border-radius: 40px;
+  margin-right: 17px;
 }
 .sendBtn {
   float: right;
@@ -61,6 +61,11 @@ body {
   width: auto;
 }
 .my-chat div {
+  text-align: right;
+  background-color: yellow;
+  width: auto;
+}
+.my-chat span {
   text-align: right;
   background-color: yellow;
   width: auto;
