@@ -88,11 +88,12 @@
         method: "get",
       }).then((result) => {
         const data = result.data.data;
+        const others = result.data.others;
         const ul = document.querySelector("#chatList");
         for (let i = 0; i < data.length; i++) {
           const li = document.createElement("li");
           const a = document.createElement("a");
-          a.textContent = data[i] + "님 과의 채팅";
+          a.textContent = others[i] + "님 과의 채팅";
           a.setAttribute("href", `./${data[i]}`);
           ul.append(li);
           li.append(a);

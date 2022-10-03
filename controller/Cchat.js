@@ -54,18 +54,30 @@ exports.chat_main = async (req, res) => {
 };
 
 exports.chatList = (req, res) => {
-  Chat_room.findAll({}).then((result) => {
-    console.log(result);
-    var data = [];
+  Chat_room.findAll({}).then(async (result) => {
+    console.log("room", result);
+    let data = [];
+    let others = [];
     for (let i of result) {
       if (i.dataValues.room_title.indexOf(req.session.user[1]) != -1) {
-        let dummy = i.dataValues.room_title.replace(req.session.user[1], "");
-
-        data.push(dummy.replace("+", ""));
+        console.log("a", i.dataValues.room_id);
+        console.log(i.dataValues.room_title);
+        let other_id = i.dataValues.room_title
+          .replace(req.session.user[1], "")
+          .replace("+", "");
+        console.log("other_id", other_id);
+        await Userinfo.findOne({
+          where: { id: other_id },
+        }).then((result) => {
+          if (result) {
+            others.push(result.dataValues.nick);
+            console.log("result.dataValues.nick", result.dataValues.nick);
+          }
+        });
+        data.push(other_id);
       }
     }
-    console.log(data);
-    res.send({ data: data });
+    res.send({ data: data, others: others });
   });
 };
 
