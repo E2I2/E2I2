@@ -80,17 +80,26 @@
         for (let i = 0; i < result.data.length - 1; i++)
           if (result.data[i].split(",")[0] == myName) {
             $("#chatBox").append(
-              `<div class="my-chat">${
-                result.data[i].split(",")[2]
-              }</div><div class="my-chat">${result.data[i].split(",")[1]}</div>`
+              `<div class="my-chat">${result.data[i]
+                .split(",")[2]
+                .replace("[", "")
+                .replace("]", "")}</div><div class="my-chat">${result.data[i]
+                .split(",")[1]
+                .replace("[", "")
+                .replace("]", "")}</div>`
             );
           } else {
             $("#chatBox").append(
-              `<div class="other-chat">${
-                result.data[i].split(",")[1]
-              }</div><div class="other-chat">${
-                result.data[i].split(",")[2]
-              }</div>`
+              `<div class="other-chat div">${result.data[i]
+                .split(",")[1]
+                .replace("[", "")
+                .replace(
+                  "]",
+                  ""
+                )}</div><div class="other-chat div">${result.data[i]
+                .split(",")[2]
+                .replace("[", "")
+                .replace("]", "")}</div>`
             );
           }
       });
@@ -141,7 +150,7 @@
           if (data.sendNick == `<%=me%>`) div.classList.add("my-chat");
           else if (data.sendNick != `<%=me%>`) div.classList.add("other-chat");
           div_chat.textContent = data.sendNick + " : " + data.msg;
-          div_clock.textContent = hours + ":" + minutes;
+          div_clock.textContent = time;
           div.appendChild(div_chat);
           chat_box.appendChild(div);
           chat_box.appendChild(div_clock);
@@ -151,13 +160,19 @@
       var sendMsg = document.getElementById("msgBox");
 
       sendMsg.addEventListener("keyup", function (event) {
+        var theText = $(".sendBtn").val();
         if (event.keyCode === 13 && sendMsg.value != null) {
           event.preventDefault();
           document.getElementById("sendBtn").click();
           sendMsg.value = null;
-        } else if (event.keyCode === 13 && sendMsg.value == null) {
-          return false;
         }
+        // else if (
+        //   event.keyCode === 13 &&
+        //   theText.replace(/\s| /gi, "").length == 0
+        // ) {
+        //   alert("내용을 입력해주세요.");
+        //   $("#text").focus();
+        // }
       });
 
       // 알림
