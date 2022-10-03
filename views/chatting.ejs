@@ -34,8 +34,9 @@
     </script>
   </head>
   <body>
+    <%-include("chatlist.ejs")%>
     <div class="wrap">
-      <div class="chatList" id="chatList">
+      <!-- <div class="chatList" id="chatList">
         <br />
         <input
           id="sendNick"
@@ -44,7 +45,7 @@
           readonly
           style="text-align: center"
         /><br />
-      </div>
+      </div> -->
       <div class="chatd">
         <div class="chatBox" id="chatBox"></div>
         <div class="sendBox">
@@ -72,39 +73,26 @@
         data: {
           room_id: "<%=room_id%>",
         },
-      }).then(
-        (result) => {
-          console.log(result.data);
-          console.log(result.data[0].split(",")[0]);
-          for (let i = 0; i < result.data.length - 1; i++)
-            if (result.data[i].split(",")[0] == myName) {
-              $("#chatBox").append(
-                `<div class="my-chat">오른쪽${
-                  result.data[i].split(",")[2]
-                }</div><div class="my-chat">오른쪽${
-                  result.data[i].split(",")[1]
-                }</div>`
-              );
-            } else {
-              $("#chatBox").append(
-                `<div class="other-chat">왼쪽${
-                  result.data[i].split(",")[1]
-                }</div><div class="other-chat">왼쪽${
-                  result.data[i].split(",")[2]
-                }</div>`
-              );
-            }
-        }
-
-        // for (let i of result.data) {
-        //   if (i.split(",")[0] == myName) {
-        //     $("#chatBox").append(`<div>오른쪽${i.split(",")[1]}</div>`);
-        //   } else {
-        //     $("#chatBox").append(`<div>왼쪽${i.split(",")[1]}</div>`);
-        //   }
-        // }
-        // }
-      );
+      }).then((result) => {
+        console.log(result.data);
+        console.log(result.data[0].split(",")[0]);
+        for (let i = 0; i < result.data.length - 1; i++)
+          if (result.data[i].split(",")[0] == myName) {
+            $("#chatBox").append(
+              `<div class="my-chat">${
+                result.data[i].split(",")[2]
+              }</div><div class="my-chat">${result.data[i].split(",")[1]}</div>`
+            );
+          } else {
+            $("#chatBox").append(
+              `<div class="other-chat">${
+                result.data[i].split(",")[1]
+              }</div><div class="other-chat">${
+                result.data[i].split(",")[2]
+              }</div>`
+            );
+          }
+      });
 
       function send() {
         console.log($(".msgBox").val());
@@ -162,10 +150,12 @@
       var sendMsg = document.getElementById("msgBox");
 
       sendMsg.addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
+        if (event.keyCode === 13 && sendMsg.value != null) {
           event.preventDefault();
           document.getElementById("sendBtn").click();
           sendMsg.value = null;
+        } else if (event.keyCode === 13 && sendMsg.value == null) {
+          return false;
         }
       });
 
