@@ -91,8 +91,15 @@
         const ul = document.querySelector("#chatList");
         for (let i = 0; i < data.length; i++) {
           const li = document.createElement("li");
-          li.textContent = data[i];
+          const a = document.createElement("a");
+          a.textContent = data[i] + "님 과의 채팅";
+          a.setAttribute("href", `./${data[i]}`);
           ul.append(li);
+          li.append(a);
+
+          // li.textContent = data[i] + "님 과의 채팅";
+          // ul.appendChild(div);
+          // div.appendChild(li);
         }
       });
     </script>
