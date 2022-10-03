@@ -83,7 +83,7 @@
       }
       .user-alram {
         position: relative;
-        display: inline-block;
+        display: block;
         background: url('<%=img%>');
         background-size: cover;
         width: 54px;
@@ -104,7 +104,11 @@
         font-size: 12px;
         line-height: 17px;
       }
-
+      @media screen and (min-width:375px) and (max-width:499px) {
+  .logout{
+    margin-right: 18px;
+  }
+}
       @media screen and (min-width: 499px) and (max-width: 768px) {
         .main-header {
           padding: 10px 24px;
