@@ -30,6 +30,7 @@
         console.log("entrySuccess");
         socket.emit("chatlistUp", "room<%=room_id%>");
         msgAlert();
+        console.log("alertSuccess");
       });
     </script>
   </head>
@@ -122,7 +123,7 @@
           console.log(result);
         });
         socket.emit("send", data);
-        socket.emit("alert", "알림");
+        socket.emit("alert", { msg: "알림" });
       }
 
       function socketEvent() {
@@ -162,7 +163,7 @@
       // 알림
       function msgAlert() {
         socket.on("alertData", (data) => {
-          console.log(data);
+          console.log("data", data);
         });
       }
     </script>

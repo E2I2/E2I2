@@ -53,7 +53,7 @@ io.on("connection", function (socket) {
   });
 
   socket.on("alert", (data) => {
-    console.log("data", data);
+    console.log("alert", data);
     io.to(data.roomid).emit("alertData", data);
   });
 });
