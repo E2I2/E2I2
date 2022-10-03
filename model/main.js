@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
-// const config = require("../config/config.json")["local"];
-const config = require("../config/config.json")["mysql"];
+const config = require("../config/config.json")["local"];
+// const config = require("../config/config.json")["mysql"];
 
 const db = {};
 
