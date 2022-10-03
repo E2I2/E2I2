@@ -36,6 +36,9 @@ aside.asideChat .logo img {
   width: 100%;
   height: auto;
 }
+.chatList {
+  overflow: auto;
+}
 .chatList h3 {
   color: #6e4cde94;
   margin: 1rem 0;
