@@ -53,6 +53,22 @@ exports.chat_main = async (req, res) => {
   res.render("chatting", data);
 };
 
+exports.chatList = (req, res) => {
+  Chat_room.findAll({}).then((result) => {
+    console.log(result);
+    var data = [];
+    for (let i of result) {
+      if (i.dataValues.room_title.indexOf(req.session.user[1]) != -1) {
+        let dummy = i.dataValues.room_title.replace(req.session.user[1], "");
+
+        data.push(dummy.replace("+", ""));
+      }
+    }
+    console.log(data);
+    res.send({ data: data });
+  });
+};
+
 exports.saveDB = async (req, res) => {
   console.log("req.body");
   var theRoom = await Chat_room.findOne({
@@ -103,21 +119,5 @@ exports.getDB = (req, res) => {
     } else {
       res.send(result.dataValues.content.split("//"));
     }
-  });
-};
-
-exports.chatList = (req, res) => {
-  Chat_room.findAll({}).then((result) => {
-    console.log(result);
-    var data = [];
-    for (let i of result) {
-      if (i.dataValues.room_title.indexOf(req.session.user[1]) != -1) {
-        let dummy = i.dataValues.room_title.replace(req.session.user[1], "");
-
-        data.push(dummy.replace("+", ""));
-      }
-    }
-    console.log(data);
-    res.render("chatlist", { data: data });
   });
 };

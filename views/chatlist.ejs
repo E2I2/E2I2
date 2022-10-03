@@ -46,13 +46,10 @@
         <ul id="chatList"></ul>
       </div>
     </aside>
-    <div class="containerChat">
+    <!-- <div class="containerChat">
       <div class="chatView">채팅뷰</div>
-    </div>
+    </div> -->
     <script>
-      console.log("room_id : " + "<%=data[0].room_id%>");
-      console.log("user_id : " + "<%=data[0].user_id%>");
-
       var socket = io.connect();
 
       socket.on("chatlistUpdate", (data) => {
@@ -85,6 +82,19 @@
           );
         }
       }
+
+      axios({
+        url: "/chatlist",
+        method: "get",
+      }).then((result) => {
+        const data = result.data.data;
+        const ul = document.querySelector("#chatList");
+        for (let i = 0; i < data.length; i++) {
+          const li = document.createElement("li");
+          li.textContent = data[i];
+          ul.append(li);
+        }
+      });
     </script>
   </body>
 </html>
