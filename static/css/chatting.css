@@ -1,17 +1,21 @@
 body {
-  margin: 0;
-  padding: 0 50px;
+  background-color: #eee;
 }
-.wrap {
+.containerChatting {
   width: 80%;
-  margin-left: 10%;
-  display: flex;
-  flex-direction: row;
-  /* text-align: center; */
-  gap: 30px;
   height: 100vh;
-  /* justify-content: center; */
+  display: flex;
   align-items: center;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  /* overflow: hidden; */
+  box-shadow: inset 2px 2px 2px 10px rgba(255, 255, 255, 0.5),
+    7px 7px 10px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  /* margin-left: 10%; */
+  /* flex-direction: row; */
+  /* text-align: center; */
+  /* gap: 30px; */
+  /* justify-content: center; */
 }
 .chatList {
   /* border: 1px solid black; */
@@ -27,30 +31,51 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 90%;
+  height: 100%;
   flex: 7;
 }
 .chatBox {
-  background-color: skyblue;
+  background-color: #fff;
   width: 100%;
   height: 70%;
   position: relative;
   overflow: auto;
   flex: 9;
+  padding: 1rem;
 }
 .sendBox {
   background: #f5f5f5;
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 100px;
+  height: 3.5rem;
   width: 100%;
+}
+.sendBox button {
+  display: block;
+  /* margin: 0.8rem auto 0; */
+  background: linear-gradient(
+      180.9deg,
+      #b06ab3 -18.92%,
+      #4568dc 99.21%,
+      rgba(69, 104, 220, 0) 99.23%,
+      #6769cf 99.23%,
+      #6469d0 99.23%
+    ),
+    #4568dc;
+  width: 4.5rem;
+  height: 2rem;
+  font-size: 1rem;
+  color: #fff;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 0.3rem;
 }
 .msgBox {
   padding: 0px 15px 0px 15px;
   border: 0;
-  height: 70px;
-  width: 88%;
+  height: 70%;
+  width: 84%;
   background: #fff;
   border-radius: 40px;
   margin-right: 17px;
@@ -69,10 +94,12 @@ body {
 .my-chat_DB {
   display: inline-block;
   justify-content: end;
-  background-color: yellow;
+  background-color: #6e4cde5e;
   margin-bottom: 5px;
   max-width: 50%;
   word-break: break-all;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 
 .other-chat,
@@ -84,25 +111,29 @@ body {
 
 .other-chat > div,
 .other-chat_DB {
-  background-color: white;
+  background-color: #89d8d3ab;
   display: inline-block;
   margin-bottom: 5px;
   max-width: 50%;
   word-break: break-all;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 
 .my-chat_time,
 .other-chat_time {
-  background-color: skyblue !important;
+  background-color: #fff !important;
   font-size: x-small;
   display: flex;
   /* width: 15%; */
+  margin-top: auto;
 }
 .my-chat_time {
   text-align: right;
   justify-content: right;
   align-items: right;
   margin-right: 5px;
+  margin-top: auto;
 }
 .other-chat_time {
   text-align: left;
@@ -192,4 +223,14 @@ aside.asideChat .logo img {
 }
 .chatList ul li a:hover {
   background-color: #6e4cde49;
+}
+.chatBox div {
+  margin-bottom: 0.5rem;
+}
+/* mobile */
+
+@media (max-width: 576px) {
+  .containerChatting {
+    width: 100%;
+  }
 }
