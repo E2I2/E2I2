@@ -314,10 +314,13 @@ font-size: 22px;
     padding:10px 0px 10px 0px;
   }
   .post-slider .post-wrapper .post{
+    display:flex;
+    justify-content: center;
     width: 200px;
+    max-width: 330px;
     height: 350px;
     margin:0px 10px;
-    display:inline-block;
+    margin-right: 10px;
     background-color: rgb(246, 242, 255);
     border-radius: 20px;
   }

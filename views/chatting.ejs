@@ -5,7 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./../static/css/main.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/chatlist.css" />
     <link rel="stylesheet" href="../static/css/chatting.css" />
+    <script
+      src="https://kit.fontawesome.com/c44f54db1d.js"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -37,16 +44,7 @@
   <body>
     <%-include("chatlist.ejs")%>
     <div class="wrap">
-      <!-- <div class="chatList" id="chatList">
-        <br />
-        <input
-          id="sendNick"
-          value="MyNick : <%=me%>"
-          type="text"
-          readonly
-          style="text-align: center"
-        /><br />
-      </div> -->
+      <div style="margin-bottom: 20px"></div>
       <div class="chatd">
         <div class="chatBox" id="chatBox"></div>
         <div class="sendBox">
@@ -81,33 +79,36 @@
           if (result.data[i].split(",")[0] == myName) {
             console.log(result.data[1]);
             $("#chatBox").append(
-              `<div class="my-chat">${result.data[i]
-                .split(",")[2]
-                .replace("[", "")
-                .replace("]", "")}</div><div class="my-chat">${result.data[i]
-                .split(",")[1]
-                .replace("[", "")
-                .replace("]", "")}</div><div class="my-chat">${result.data[i]
+              `<div style="display: flex; justify-content: end">
+                <div class="my-chat_time">${result.data[i]
+                  .split(",")[2]
+                  .replace("[", "")
+                  .replace("]", "")}</div><div class="my-chat_DB">${result.data[
+                i
+              ]
                 .split(",")[0]
                 .replace("[", "")
-                .replace("]", "")} : </div>`
+                .replace("]", "")} : ${result.data[i]
+                .split(",")[1]
+                .replace("[", "")
+                .replace("]", "")}</div>
+                </div>`
             );
           } else {
             $("#chatBox").append(
-              `<div class="other-chat div">${result.data[i]
+              `<div style="display: flex; ">
+              <div class="other-chat_DB">${result.data[i]
                 .split(",")[0]
                 .replace("[", "")
-                .replace("]", "")} : </div>
-              <div class="other-chat div">${result.data[i]
+                .replace("]", "")} : ${result.data[i]
                 .split(",")[1]
                 .replace("[", "")
-                .replace(
-                  "]",
-                  ""
-                )}</div><div class="other-chat div">${result.data[i]
+                .replace("]", "")} </div>
+              <div class="other-chat_time div">${result.data[i]
                 .split(",")[2]
                 .replace("[", "")
-                .replace("]", "")}</div>`
+                .replace("]", "")}</div>
+              </div>`
             );
           }
       });
@@ -158,26 +159,23 @@
           let chat_box = document.getElementById("chatBox");
           let div = document.createElement("div");
           let div_chat = document.createElement("div");
-          let span_chat = document.createElement("span");
-
           let div_clock = document.createElement("div");
-          let span = document.createElement("span");
-
-          // if (data.sendNick == `<%=me%>`) div.classList.add("my-chat");
-          // else if (data.sendNick != `<%=me%>`) div.classList.add("other-chat");
-          if (data.sendNick == `<%=me%>`) span.classList.add("my-chat");
-          else if (data.sendNick != `<%=me%>`) span.classList.add("other-chat");
-          // div_chat.textContent = data.sendNick + " : " + data.msg;
-          span_chat.textContent = data.sendNick + " : " + data.msg;
-
+          div_chat.textContent = data.sendNick + " : " + data.msg;
           div_clock.textContent = time;
-          // div.appendChild(div_chat);
-          span.appendChild(span_chat);
 
-          // div.appendChild(span_chat);
-          // chat_box.appendChild(div);
-          chat_box.appendChild(span);
-          chat_box.appendChild(div_clock);
+          if (data.sendNick == `<%=me%>`) {
+            div_clock.classList.add("my-chat_time");
+            div.classList.add("my-chat");
+            chat_box.appendChild(div);
+            div.appendChild(div_clock);
+            div.appendChild(div_chat);
+          } else if (data.sendNick != `<%=me%>`) {
+            div.classList.add("other-chat");
+            div_clock.classList.add("other-chat_time");
+            chat_box.appendChild(div);
+            div.appendChild(div_chat);
+            div.appendChild(div_clock);
+          }
         });
       } // 입장 공지
 

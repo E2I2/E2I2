@@ -10,7 +10,7 @@ aside.asideChat {
   text-align: center;
   padding: 1rem;
   box-sizing: border-box;
-  z-index: 100;
+  z-index: 1000001;
 }
 aside.asideChat #autoBtn {
   position: absolute;
@@ -22,6 +22,7 @@ aside.asideChat #autoBtn {
   background-color: #fff;
   border-radius: 0 0.5rem 0.5rem 0;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+  z-index: 1000001;
 }
 aside.asideChat #autoBtn i {
   font-size: 1.2rem;
