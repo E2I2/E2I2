@@ -23,6 +23,7 @@ button {
 :root {
   --main-color: #6e4cde;
   --sub-color: #2e97f9;
+  --sub-color2: #89d8d3;
 }
 label {
   cursor: pointer;
