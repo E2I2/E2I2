@@ -3,21 +3,26 @@ body {
   padding: 0 50px;
 }
 .wrap {
-  width: 100%;
+  width: 80%;
+  margin-left: 10%;
   display: flex;
   flex-direction: row;
-  text-align: center;
+  /* text-align: center; */
   gap: 30px;
   height: 100vh;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 .chatList {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   height: 90%;
   flex: 3;
 }
+.chatList::-webkit-scrollbar {
+  display: none;
+}
+
 .chatd {
   display: flex;
   flex-direction: column;
@@ -54,39 +59,58 @@ body {
   float: right;
   width: 5%;
 }
-.my-chat {
+.my-chat,
+.my-chat_DB {
   text-align: right;
-  /* background-color: yellow; */
+  display: flex;
+  justify-content: end;
+}
+.my-chat > div,
+.my-chat_DB {
+  display: inline-block;
+  justify-content: end;
+  background-color: yellow;
   margin-bottom: 5px;
-  width: auto;
+  max-width: 50%;
+  word-break: break-all;
 }
-.my-chat div {
-  text-align: right;
-  background-color: yellow;
-  width: auto;
-}
-.my-chat span {
-  text-align: right;
-  background-color: yellow;
-  width: auto;
-}
-.other-chat {
-  text-align: left;
-  /* background-color: white; */
 
-  margin-bottom: 5px;
-  width: auto;
-}
-.other-chat div {
+.other-chat,
+.other-chat_DB {
   text-align: left;
+  display: flex;
+  /* justify-content: end; */
+}
+
+.other-chat > div,
+.other-chat_DB {
   background-color: white;
-  width: auto;
+  display: inline-block;
+  margin-bottom: 5px;
+  max-width: 50%;
+  word-break: break-all;
 }
-.notice {
-  text-align: center;
-  color: #005397;
-  font-size: 12px;
+
+.my-chat_time,
+.other-chat_time {
+  background-color: skyblue !important;
+  font-size: x-small;
+  display: flex;
+  /* width: 15%; */
 }
+.my-chat_time {
+  text-align: right;
+  justify-content: right;
+  align-items: right;
+  margin-right: 5px;
+}
+.other-chat_time {
+  text-align: left;
+  justify-content: left;
+  align-items: left;
+  margin-left: 5px;
+}
+
 .d-none {
   display: none;
 }
@@ -104,14 +128,7 @@ body {
   font-size: larger;
   width: auto;
 }
-.room_list {
-  width: 80%;
-  height: 15%;
-  border: 1px solid black;
-  font-size: larger;
-  margin: 10% 0 0 10%;
-  text-align: center;
-}
+
 aside.asideChat {
   position: fixed;
   left: -280px;

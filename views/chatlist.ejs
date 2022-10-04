@@ -1,104 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>채팅</title>
-    <!-- jquery -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
-      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
-      crossorigin="anonymous"
-    ></script>
-    <!-- icon -->
-    <script
-      src="https://kit.fontawesome.com/c44f54db1d.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- style -->
-    <link rel="stylesheet" href="./../static/css/style.css" />
-    <link rel="stylesheet" href="./../static/css/chatlist.css" />
-    <!-- socket-->
-    <script
-      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
-      integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      $(document).ready(function () {});
-    </script>
-  </head>
-  <body>
-    <aside class="asideChat">
-      <button type="button" id="autoBtn" onclick="onAuto()">
-        <i class="fa-solid fa-comments"></i>
-      </button>
-      <a class="logo" href="/"><img src="../static/img/logo.png" /></a>
-      <div class="chatList">
-        <hr />
-        <h3><i class="fa-solid fa-comment"></i> 채팅 리스트</h3>
-        <ul id="chatList"></ul>
-      </div>
-    </aside>
-    <!-- <div class="containerChat">
+<aside class="asideChat">
+  <button type="button" id="autoBtn" onclick="onAuto()">
+    <i class="fa-solid fa-comments"></i>
+  </button>
+  <a class="logo" href="/"><img src="../static/img/logo.png" /></a>
+  <div class="chatList">
+    <hr />
+    <h3><i class="fa-solid fa-comment"></i> 채팅 리스트</h3>
+    <ul id="chatList"></ul>
+  </div>
+</aside>
+<!-- <div class="containerChat">
       <div class="chatView">채팅뷰</div>
     </div> -->
-    <script>
-      var socket = io.connect();
+<script>
+  var socket = io.connect();
 
-      socket.on("chatlistUpdate", (data) => {
-        var chatListUl = document.getElementById("chatList");
-        var chatListLi = chatListUl.appndChild();
-      }); //data: room_id
+  socket.on("chatlistUpdate", (data) => {
+    var chatListUl = document.getElementById("chatList");
+    var chatListLi = chatListUl.appndChild();
+  }); //data: room_id
 
-      function onAuto() {
-        var button = $("#autoBtn i");
-        var close = $("#autoBtn i").hasClass("fa-comments");
-        var open = $("#autoBtn i").hasClass("fa-chevron-left");
-        // <i class="fa-solid fa-chevron-left"></i>
-        if (close) {
-          button.addClass("fa-chevron-left");
-          button.removeClass("fa-comments");
-          $("aside").animate(
-            {
-              left: "0",
-            },
-            1000
-          );
-        } else {
-          button.addClass("fa-comments");
-          button.removeClass("fa-chevron-left");
-          $("aside").animate(
-            {
-              left: "-280px",
-            },
-            1000
-          );
-        }
-      }
+  function onAuto() {
+    var button = $("#autoBtn i");
+    var close = $("#autoBtn i").hasClass("fa-comments");
+    var open = $("#autoBtn i").hasClass("fa-chevron-left");
+    // <i class="fa-solid fa-chevron-left"></i>
+    if (close) {
+      button.addClass("fa-chevron-left");
+      button.removeClass("fa-comments");
+      $("aside").animate(
+        {
+          left: "0",
+        },
+        1000
+      );
+    } else {
+      button.addClass("fa-comments");
+      button.removeClass("fa-chevron-left");
+      $("aside").animate(
+        {
+          left: "-280px",
+        },
+        1000
+      );
+    }
+  }
 
-      axios({
-        url: "/chatlist",
-        method: "get",
-      }).then((result) => {
-        const data = result.data.data;
-        const others = result.data.others;
-        const ul = document.querySelector("#chatList");
-        for (let i = 0; i < data.length; i++) {
-          const li = document.createElement("li");
-          const a = document.createElement("a");
-          a.textContent = others[i] + "님 과의 채팅";
-          a.setAttribute("href", `./${data[i]}`);
-          ul.append(li);
-          li.append(a);
-        }
-      });
-    </script>
-  </body>
-</html>
+  axios({
+    url: "/chatlist",
+    method: "get",
+  }).then((result) => {
+    const data = result.data.data;
+    const others = result.data.others;
+    const ul = document.querySelector("#chatList");
+    for (let i = 0; i < data.length; i++) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.textContent = others[i] + "님 과의 채팅";
+      a.setAttribute("href", `/chatting/${data[i]}`);
+      ul.append(li);
+      li.append(a);
+    }
+  });
+</script>
