@@ -1,6 +1,6 @@
 ![image](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F69aee781-97e4-4144-8f46-aa72635c0e7a%2FMBTingI_logo(nobg).png?table=block&id=8012164e-eaf7-4375-a72e-19b120687faf&spaceId=6e9ffcdf-452b-494c-a455-03f79451456b&width=1640&userId=b30b4534-c8a0-4959-9f96-2c49d1a62326&cache=v2)
 # MBTingI - E2I2
-- [KDT - 2차 프로젝트](https://joodeng.notion.site/joodeng/Joo-Young-Lee-61db50959426458db50275c985d2de2a?p=8012164eeaf74375a72e19b120687faf&pm=c)
+- [KDT - 2차 프로젝트](https://joodeng.notion.site/4-MBTingI-4e3903fc8fc547589f6db40e0286d39b)
 - 20220919 ~ 20221003
 - Use: HTML, CSS, JavaScript, Git, Node.js, Express, jQuery, Axios, Multer, MySQL, Sequelize, Socket.io
 ## 구현 기능
